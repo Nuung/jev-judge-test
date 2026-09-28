@@ -232,5 +232,15 @@ export async function writeReport(input: ReportInput): Promise<string> {
   await mkdir(dir, { recursive: true });
   const file = new URL(`${formatTimestamp(input.startedAt)}.md`, dir);
   await writeFile(file, buildMarkdown(input, rows), "utf8");
+  // 요약표로는 다시 계산할 수 없는 지연 분포·확률 여유폭을 보려고 케이스별 원본도 남긴다
+  const raw = {
+    startedAt: input.startedAt.toISOString(),
+    runs: input.runs.map((run) => ({
+      name: run.name,
+      versions: run.versions,
+      results: run.results.map(({ case: c, ...rest }) => ({ id: c.id, category: c.category, labels: c.labels, ...rest })),
+    })),
+  };
+  await writeFile(new URL(`${formatTimestamp(input.startedAt)}.json`, dir), JSON.stringify(raw, null, 2), "utf8");
   return file.pathname;
 }
