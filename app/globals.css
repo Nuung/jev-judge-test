@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* 세로가 낮은 화면(예: 1280×720 노트북) — 결과 카드가 잘리지 않게 간격·글자를 한 단계 줄일 때 쓴다 */
+@custom-variant short (@media (max-height: 800px));
+
+/*
+ * Toss(TDS) 디자인 토큰 — 컴포넌트는 raw hex 대신 이 토큰(유틸리티 클래스)만 쓴다.
+ * 키컬러는 Toss Blue 하나뿐이다(CTA·1위 막대·선택 칩·강조 수치·포커스 링).
+ * Tailwind 기본 팔레트는 비워 둬서 토큰 밖의 색이 섞여 들어오지 못하게 한다.
+ */
+@theme {
+  --color-*: initial;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* 키컬러 */
+  --color-toss-blue: #3182f6;
+  --color-toss-blue-strong: #1b64da; /* hover·pressed, 옅은 배경 위 파란 글자 */
+  --color-toss-blue-soft: #e8f3ff;
+
+  /* 그레이 */
+  --color-grey-50: #f9fafb;
+  --color-grey-100: #f2f4f6; /* 페이지 배경·입력 배경 */
+  --color-grey-200: #e5e8eb; /* 막대 트랙·비활성 버튼 */
+  --color-grey-300: #d1d6db; /* 1위가 아닌 막대 */
+  --color-grey-400: #b0b8c1;
+  --color-grey-500: #8b95a1; /* 비활성 수치 — 흰 배경 본문 캡션은 grey-600 */
+  --color-grey-600: #6b7684; /* 13px 캡션(흰 배경 4.5:1 이상) */
+  --color-grey-700: #4e5968; /* 보조 본문 */
+  --color-grey-800: #333d4b;
+  --color-grey-900: #191f28; /* 본문·제목 */
+
+  /* 기능색 — 키컬러가 아니다. 가드레일 태그·불일치 아이콘에만 쓴다 */
+  --color-danger: #f04452;
+  --color-danger-soft: #feeced;
+  --color-warning: #ff9f00;
+  --color-warning-soft: #fff4e0;
+
+  --font-sans:
+    var(--font-pretendard), -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
+    sans-serif;
+
+  --animate-bar-grow: bar-grow 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-rise: rise 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-shimmer: shimmer 1.2s ease-in-out infinite;
+  --animate-dot: dot 900ms ease-in-out infinite;
+
+  @keyframes bar-grow {
+    from {
+      transform: scaleX(0);
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+  /* 스켈레톤은 그라데이션 없이 grey100 ↔ grey200 사이를 오간다 */
+  @keyframes shimmer {
+    50% {
+      background-color: var(--color-grey-200);
+    }
+  }
+  /* 버튼 안 점 3개 로더 */
+  @keyframes dot {
+    0%,
+    80%,
+    100% {
+      opacity: 0.35;
+      transform: translateY(0);
+    }
+    40% {
+      opacity: 1;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-grey-100);
+    color: var(--color-grey-900);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* 키보드 포커스는 어디서나 같은 Toss Blue 링으로 보인다 */
+  :focus-visible {
+    outline: 2px solid var(--color-toss-blue);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
