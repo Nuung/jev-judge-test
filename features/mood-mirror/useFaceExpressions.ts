@@ -17,7 +17,6 @@ export type FaceReadingState =
   | { status: "no_face" }
   | { status: "detected"; probabilities: FaceProbabilities };
 
-/** 약 300ms 간격으로 추론을 반복한다 */
 const DETECTION_INTERVAL_MS = 300;
 const DETECTOR_INPUT_SIZE = 224;
 const DETECTOR_SCORE_THRESHOLD = 0.5;
@@ -39,7 +38,7 @@ export function useFaceExpressions(snapshotRef: RefObject<FaceProbabilities | nu
   videoRef: RefObject<HTMLVideoElement | null>;
   state: FaceReadingState;
 } {
-  // video 엘리먼트는 React 상태가 아니라 DOM 핸들 — ref로만 다뤄야 자유롭게 mutate할 수 있다
+  // video 엘리먼트는 React 상태가 아니라 DOM 핸들이라 ref로 다뤄야 마음대로 mutate할 수 있다
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [state, setState] = useState<FaceReadingState>({ status: "idle" });
 
@@ -51,7 +50,7 @@ export function useFaceExpressions(snapshotRef: RefObject<FaceProbabilities | nu
     let stream: MediaStream | null = null;
     let timerId: ReturnType<typeof setTimeout> | null = null;
 
-    // video를 매개변수로 넘겨 닫힘(closure) 너머에서도 non-null 타입이 유지되게 한다
+    // video를 인자로 넘겨야 클로저 안에서도 non-null 타입이 유지된다
     async function start(video: HTMLVideoElement) {
       if (typeof navigator === "undefined" || !navigator.mediaDevices?.getUserMedia) {
         setState({ status: "unsupported" });
@@ -77,7 +76,7 @@ export function useFaceExpressions(snapshotRef: RefObject<FaceProbabilities | nu
       try {
         await video.play();
       } catch {
-        // 자동 재생이 막혀도 사용자가 화면과 상호작용하면 대개 재개된다 — 치명적이지 않음
+        // 자동 재생이 막혀도 사용자가 화면을 건드리면 대개 다시 재생되니 치명적이지 않다
       }
       if (cancelled) return;
 
@@ -152,7 +151,7 @@ export function useFaceExpressions(snapshotRef: RefObject<FaceProbabilities | nu
         void tick();
       } catch (error) {
         if (!cancelled) {
-          const message = error instanceof Error ? error.message : "모델을 불러오지 못했습니다.";
+          const message = error instanceof Error ? error.message : "알 수 없는 오류";
           setState({ status: "model_error", message });
         }
       }

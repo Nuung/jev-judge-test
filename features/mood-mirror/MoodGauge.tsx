@@ -1,6 +1,6 @@
-// 기분 판정 결과 카드 — 헤드라인 → 불일치 알림 → 6종 확률 막대 → 맞춤 추천 행.
-// 헤드라인·알림·추천은 줄어들지 않고(shrink-0), 막대 목록만 남는 높이를 나눠 가져 어떤 화면 높이에서도 핵심이 잘리지 않는다.
-// 결과 전(빈 상태)과 요청 중(스켈레톤)에도 같은 골격을 그려 레이아웃이 흔들리지 않게 한다.
+// 기분 판정 결과 카드. 헤드라인 → 불일치 알림 → 6종 확률 막대 → 맞춤 추천 행 순서다.
+// 헤드라인·알림·추천은 줄지 않고(shrink-0) 막대 목록만 남는 높이를 나눠 가지므로, 화면이 낮아도 핵심이 잘리지 않는다.
+// 결과 전(빈 상태)과 요청 중(스켈레톤)에도 같은 골격을 그려 레이아웃이 흔들리지 않는다.
 import { ChevronDown } from "lucide-react";
 import type { ReactNode } from "react";
 import { MOOD_KEYS, MOOD_LABEL_KO } from "@/lib/judge/labels";
@@ -11,7 +11,7 @@ import { BAR_ROW_CLASS, ProbabilityRow } from "./ProbabilityRow";
 import { ReactionHint } from "./ReactionCard";
 
 /**
- * 막대 목록 — 남는 높이만 차지하고, 그래도 모자라면 목록 안에서만 스크롤한다.
+ * 막대 목록. 남는 높이만 차지하고, 그래도 모자라면 목록 안에서만 스크롤한다.
  * 행은 남는 높이를 나눠 갖되 BAR_ROW_CLASS 상한(44px)까지만 늘어나 카드가 비어 보이지 않게 한다.
  */
 const BARS_CLASS = "flex min-h-0 flex-1 flex-col overflow-y-auto";
@@ -58,7 +58,7 @@ function GaugeFrame({
   );
 }
 
-/** 판정 메타 한 줄 — 평소엔 응답 시간만, "자세히"를 펼치면 모델·확신·가드레일 수치를 보여준다 */
+/** 판정 메타 한 줄. 평소엔 응답 시간만 보이고 "자세히"를 펼치면 모델·확신·가드레일 수치가 나온다 */
 function DecisionMeta({
   decision,
   model,
@@ -125,7 +125,7 @@ export function MoodGauge({ decision, model, latencyMs, roundTripMs, insight, fo
   const withheldReason =
     guardrail.injection >= guardrail.harmful
       ? "다른 지시가 섞인 문장 같아요."
-      : "조심스러운 내용이 담긴 것 같아요.";
+      : "민감한 내용이 담긴 것 같아요.";
   const meta = <DecisionMeta decision={decision} model={model} latencyMs={latencyMs} roundTripMs={roundTripMs} />;
 
   return (
@@ -215,7 +215,7 @@ export function MoodGaugePlaceholder({ loading, notice }: MoodGaugePlaceholderPr
           ))}
         </ul>
       }
-      // 결과가 나오면 추천이 뜰 자리를 미리 보여 준다 — 모바일 빈 상태는 입력창이 먼저 보이도록 숨긴다
+      // 추천이 뜰 자리를 미리 보여 준다. 모바일 빈 상태에서는 입력창이 먼저 보이도록 숨긴다
       footer={<ReactionHint />}
       footerClassName={loading ? "" : "max-lg:hidden"}
     />

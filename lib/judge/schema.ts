@@ -2,7 +2,7 @@
 import { z } from "zod";
 import { MOOD_KEYS, REACTION_KINDS, type FACE_KEYS } from "./labels";
 
-const PROBABILITY_ERROR = "확률은 0 이상 1 이하의 숫자여야 합니다.";
+const PROBABILITY_ERROR = "확률은 0 이상 1 이하의 숫자여야 해요.";
 const probability = z
   .number({ error: PROBABILITY_ERROR })
   .min(0, { error: PROBABILITY_ERROR })
@@ -24,7 +24,7 @@ export const FaceProbabilitiesSchema = z.object({
 
 export const JudgeRequestSchema = z.object({
   text: z
-    .string({ error: "text는 문자열이어야 합니다." })
+    .string({ error: "text는 문자열이어야 해요." })
     .trim()
     .min(1, { error: "한마디를 입력해 주세요." })
     .max(TEXT_MAX_LENGTH, { error: `한마디는 ${TEXT_MAX_LENGTH}자 이하로 입력해 주세요.` }),

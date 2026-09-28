@@ -1,7 +1,7 @@
-// 표정 라이브 리드아웃 — 1위 표정을 큰 숫자로, 7개 표정을 고정 순서의 막대+수치로 보여준다.
+// 표정 라이브 리드아웃. 1위 표정은 큰 숫자로, 7개 표정은 고정 순서의 막대와 수치로 보여 준다.
 // 데스크톱은 캠 오른쪽 아래 세로 패널(FaceOverlay), 모바일은 캠 위에 작은 상태 칩만 두고
-// 수치는 캠 바로 아래 시트 최상단 가로 행(FaceReadout)으로 뺀다 — 오버레이가 입을 가리지 않게.
-// 행 순서를 확률순으로 바꾸지 않는 이유: 추론이 약 300ms마다 갱신돼 순서가 계속 뒤바뀌면 읽을 수 없다.
+// 수치는 캠 바로 아래 시트 최상단 가로 행(FaceReadout)으로 뺀다. 오버레이가 입을 가리지 않게 하려는 것이다.
+// 행을 확률순으로 정렬하지 않는다. 추론이 약 300ms마다 갱신돼 순서가 계속 바뀌면 읽을 수 없다.
 // 영상은 이 기기 밖으로 나가지 않는다.
 import { rankFace, type FaceStrength } from "@/lib/judge/face";
 import { FACE_KEYS, type FaceKey, type FaceProbabilities } from "@/lib/judge/labels";
@@ -19,7 +19,7 @@ interface FaceBarsProps {
   state: LiveFaceState;
 }
 
-/** 화면에 그릴 내용 — 얼굴을 읽었으면 수치, 아니면 다음 행동 안내 */
+/** 화면에 그릴 내용. 얼굴을 읽었으면 수치, 못 읽었으면 다음 행동 안내 */
 type View =
   | { kind: "reading"; probabilities: FaceProbabilities; dominant: FaceKey; strength: FaceStrength }
   | { kind: "guide"; text: string };
@@ -65,7 +65,7 @@ function statusLabelOf(status: LiveFaceState["status"]): string {
   }
 }
 
-/** 1위 표정 이름 아래의 세기 문구 — 무표정은 세기 대신 상태를 풀어 쓴다 */
+/** 1위 표정 이름 아래 세기 문구. 무표정은 세기 대신 상태를 풀어 쓴다 */
 function strengthPhraseOf(dominant: FaceKey, strength: FaceStrength): string {
   if (dominant === "neutral") return "특별한 표정이 없어요";
   return FACE_STRENGTH_PHRASE_KO[strength];
@@ -85,13 +85,13 @@ const METER_TONE: Readonly<Record<Surface, { track: string; fill: string }>> = {
   light: { track: "bg-grey-200", fill: "bg-grey-400" },
 };
 
-/** 얼굴을 읽는 중인지 보여주는 점 — 인식 중일 때만 키컬러 */
+/** 얼굴을 읽는 중인지 보여 주는 점. 인식 중일 때만 키컬러 */
 function LiveDot({ live, surface }: { live: boolean; surface: Surface }) {
   const idle = surface === "dark" ? "bg-white/40" : "bg-grey-300";
   return <span aria-hidden="true" className={`size-1.5 shrink-0 rounded-full ${live ? "bg-toss-blue" : idle}`} />;
 }
 
-/** 표정 하나의 확률 미터 — 트랙은 항상 그려서 얼굴이 없어도 자리가 흔들리지 않는다 */
+/** 표정 하나의 확률 미터. 트랙을 항상 그려서 얼굴이 없어도 자리가 흔들리지 않는다 */
 function Meter({
   faceKey,
   value,
@@ -127,7 +127,7 @@ function Meter({
   );
 }
 
-/** 1위 퍼센트 — 숫자는 크게, % 기호는 작게 붙인다 */
+/** 1위 퍼센트. 숫자는 크게, % 기호는 작게 */
 function BigPercent({ value, className, unitClassName }: { value: number; className: string; unitClassName: string }) {
   return (
     <p className={`shrink-0 leading-none font-bold tracking-[-0.03em] tabular-nums ${className}`}>
@@ -137,7 +137,7 @@ function BigPercent({ value, className, unitClassName }: { value: number; classN
   );
 }
 
-/** 데스크톱 세로 패널 — 폭 264px, 캠 오른쪽 아래. 낮은 화면(short)에서는 캠을 절반 넘게 덮지 않도록 줄인다 */
+/** 데스크톱 세로 패널(폭 264px, 캠 오른쪽 아래). 낮은 화면(short)에서는 캠을 절반 넘게 덮지 않게 줄인다 */
 function DesktopPanel({ view }: { view: View }) {
   const reading = view.kind === "reading" ? view : null;
   return (
@@ -150,7 +150,7 @@ function DesktopPanel({ view }: { view: View }) {
         표정
       </p>
 
-      {/* 1위 표정 — 높이를 고정해 얼굴이 사라졌다 나타나도 아래 행이 밀리지 않는다 */}
+      {/* 1위 표정. 높이를 고정해 얼굴이 사라졌다 나타나도 아래 행이 밀리지 않는다 */}
       <div className="mt-1 flex h-[76px] flex-col justify-center short:h-[60px]">
         {view.kind === "reading" ? (
           <>
@@ -197,7 +197,7 @@ function DesktopPanel({ view }: { view: View }) {
 }
 
 /**
- * 캠 위 오버레이 — 데스크톱 패널 + 모바일 상태 칩 + 스크린리더용 1위 표정 알림.
+ * 캠 위 오버레이: 데스크톱 패널, 모바일 상태 칩, 스크린리더용 1위 표정 알림.
  * 알림 영역에는 1위 표정 이름만 넣는다: 수치가 300ms마다 바뀌어도 이름이 같으면 React가 DOM을 건드리지 않아
  * 1위가 바뀔 때만 다시 읽힌다.
  */
@@ -211,12 +211,12 @@ export function FaceOverlay({ state }: FaceBarsProps) {
         {announcement}
       </p>
 
-      {/* 데스크톱 — 얼굴은 대개 가운데이므로 수치는 오른쪽 가장자리에 둔다 */}
+      {/* 데스크톱: 얼굴은 대개 가운데에 있으니 수치는 오른쪽 가장자리에 둔다 */}
       <div className="pointer-events-none absolute right-4 bottom-4 max-lg:hidden">
         <DesktopPanel view={view} />
       </div>
 
-      {/* 모바일 — 수치는 캠 아래 시트로 빼고, 캠 위에는 상태 칩만. 시트가 캠 아래 24px을 덮으므로 그만큼 띄운다 */}
+      {/* 모바일: 수치는 캠 아래 시트로 빼고 캠 위에는 상태 칩만 둔다. 시트가 캠 아래 24px을 덮으므로 그만큼 띄운다 */}
       <p
         aria-hidden="true"
         className="pointer-events-none absolute bottom-9 left-3 inline-flex h-8 items-center gap-1.5 rounded-xl bg-black/60 px-2.5 text-[12px] font-semibold text-white lg:hidden"
@@ -228,7 +228,7 @@ export function FaceOverlay({ state }: FaceBarsProps) {
   );
 }
 
-/** 모바일 시트 최상단 — 1위 표정 + 큰 % 한 줄, 그 아래 7열 컴팩트 미터 */
+/** 모바일 시트 최상단. 1위 표정과 큰 %를 한 줄에, 그 아래 7열 미터 */
 export function FaceReadout({ state }: FaceBarsProps) {
   const view = viewOf(state);
   const reading = view.kind === "reading" ? view : null;

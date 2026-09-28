@@ -1,8 +1,8 @@
-// 화면 표시용 숫자 포맷 — FaceBars·GuardrailBadge·MoodGauge가 공유한다.
+// 화면에 쓰는 숫자 포맷. FaceBars·GuardrailBadge·MoodGauge가 같이 쓴다.
 
 /**
  * 확률(0–1)을 정수 퍼센트로 바꾼다.
- * 항목마다 따로 반올림하므로 여러 값의 합이 100에서 1–2 벗어날 수 있다 — 표시 전용이라 보정하지 않는다.
+ * 항목마다 따로 반올림하므로 여러 값의 합이 100에서 1–2 벗어날 수 있다. 표시 전용이라 보정하지 않는다.
  */
 export function toPercent(value: number): number {
   return Math.round(value * 100);

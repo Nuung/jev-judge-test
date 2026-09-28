@@ -1,5 +1,5 @@
-// 기분 맞춤 반응 — 결과 카드의 마지막 행으로 들어간다.
-// Jev는 텍스트를 만들지 않으므로 문구는 lib/judge/reactions.ts에 미리 정의돼 있고 Jev는 종류만 골랐다.
+// 기분 맞춤 반응. 결과 카드의 마지막 행으로 들어간다.
+// Jev는 문장을 만들지 않는다. 문구는 lib/judge/reactions.ts에 미리 써 두고 Jev는 종류만 고른다.
 import { Coffee, EyeOff, MessageCircle, Music, Sparkles, type LucideIcon } from "lucide-react";
 import type { ReactionKind } from "@/lib/judge/labels";
 import type { ReactionDecision } from "@/lib/judge/schema";
@@ -10,7 +10,7 @@ const KIND_ICON: Readonly<Record<ReactionKind, LucideIcon>> = {
   rest: Coffee,
 };
 
-/** 토스 리스트 행 — 좌측 둥근 아이콘, 우측 캡션·제목·본문 */
+/** 토스 리스트 행: 왼쪽 둥근 아이콘, 오른쪽 캡션·제목·본문 */
 function Row({ icon: Icon, caption, title, body }: {
   icon: LucideIcon;
   caption: string;
@@ -36,14 +36,14 @@ function Row({ icon: Icon, caption, title, body }: {
 
 export function ReactionRow({ reaction }: { reaction: ReactionDecision }) {
   if (reaction.status === "hidden") {
-    return <Row icon={EyeOff} caption="기분에 맞춘 추천" title="판정을 보류해서 추천은 쉬어 갈게요" />;
+    return <Row icon={EyeOff} caption="기분에 맞춘 추천" title="판정을 보류해서 추천은 없어요" />;
   }
 
   const { item } = reaction;
   return <Row icon={KIND_ICON[item.kind]} caption="기분에 맞춘 추천" title={item.title} body={item.body} />;
 }
 
-/** 결과 전 자리 표시 — 추천이 어디에 뜨는지 미리 보여 준다 */
+/** 결과 전 자리 표시. 추천이 어디에 뜨는지 미리 보여 준다 */
 export function ReactionHint() {
   return <Row icon={Sparkles} caption="기분에 맞춘 추천" title="살펴보고 나면 여기에 추천이 떠요" />;
 }

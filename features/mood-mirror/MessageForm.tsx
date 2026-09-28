@@ -1,4 +1,4 @@
-// 한국어 한마디 입력 — 제출 시에만 판정을 요청한다. 예시 칩은 데모를 쉽게 만들어 준다.
+// 한국어 한마디 입력. 제출할 때만 판정을 요청하고, 예시 칩으로 데모 문장을 바로 채울 수 있다.
 // 제출 버튼은 모바일에서 화면 하단에 고정돼야 하므로 폼 밖에 두고 form 속성으로 연결한다.
 "use client";
 
@@ -79,7 +79,7 @@ interface SubmitButtonProps {
   disabled: boolean;
 }
 
-/** 토스 하단 CTA — 로딩 중에는 버튼 안에 점 3개 로더를 보여준다 */
+/** 토스 하단 CTA. 로딩 중에는 버튼 안에 점 3개 로더를 띄운다 */
 export function SubmitButton({ loading, disabled }: SubmitButtonProps) {
   return (
     <button

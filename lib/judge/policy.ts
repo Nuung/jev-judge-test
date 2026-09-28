@@ -41,7 +41,7 @@ export function decide(answers: JevAnswers, face: FaceRanking | null): Decision 
   const harmful = answers.harmful_content.noul;
   const guardrail = guardrailStatus(injection, harmful);
 
-  // 가드레일이 safe가 아니면(주의·차단) 반응을 보여주지 않는다 — 인젝션이 기분을 조작했을 수 있다
+  // 가드레일이 safe가 아니면(주의·차단) 반응을 숨긴다. 인젝션이 기분을 조작했을 수 있어서다
   let reaction: ReactionDecision;
   if (guardrail !== "safe") {
     reaction = { status: "hidden", reason: "guardrail" };

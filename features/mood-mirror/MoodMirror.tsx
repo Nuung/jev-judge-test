@@ -1,4 +1,4 @@
-// Jev 무드 미러 데모 화면 — 웹캠(로컬 표정) + 한국어 한마디를 묶어 서버 라우트로 판정을 요청한다.
+// Jev 무드 미러 데모 화면. 웹캠(로컬 표정)과 한국어 한마디를 묶어 서버 라우트에 판정을 요청한다.
 // 데스크톱은 한 화면(h-dvh)에 캠을 주인공으로 꽉 채우고, 모바일은 캠 아래로 토스 바텀시트처럼 표정 수치·결과·입력이 올라온다.
 "use client";
 
@@ -48,12 +48,12 @@ function errorMessageOf(error: JudgmentError): string {
   return ERROR_GUIDE_KO[error.code];
 }
 
-/** 토스 카드 — 흰 배경, 테두리·그림자 없음. 모바일에서는 시트 안의 구획이 되어 모서리를 없앤다 */
+/** 토스 카드: 흰 배경, 테두리·그림자 없음. 모바일에서는 시트 안 구획이라 모서리를 없앤다 */
 const CARD = "bg-white px-5 lg:rounded-3xl lg:px-6";
 /** 캠 위에 뜨는 반투명 칩(blur 없이 검정 60%) */
 const CAM_CHIP = "inline-flex h-9 items-center gap-1.5 rounded-xl bg-black/60 px-3 text-[13px] font-semibold text-white";
 
-/** 모바일(<1024)에서만 결과 카드로 스크롤한다 — 데스크톱은 한 화면이라 필요 없다 */
+/** 모바일(<1024)에서만 결과 카드로 스크롤한다. 데스크톱은 한 화면이라 필요 없다 */
 function revealResultOnMobile(target: HTMLElement | null) {
   if (!target || !window.matchMedia("(max-width: 1023.98px)").matches) return;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -72,7 +72,7 @@ export function MoodMirror() {
     if (!trimmed || isLoading) return;
 
     setRequest({ status: "loading" });
-    // 사용자 제출에 대한 응답이므로 effect가 아니라 핸들러에서 결과 자리로 옮겨 준다
+    // 사용자가 제출한 데 따른 동작이라 effect가 아니라 핸들러에서 결과 자리로 스크롤한다
     revealResultOnMobile(resultRef.current);
     const face = faceSnapshotRef.current;
     const result = await requestJudgment(trimmed, face);
@@ -85,7 +85,7 @@ export function MoodMirror() {
 
   return (
     <main className="flex min-h-dvh flex-col lg:grid lg:h-dvh lg:grid-cols-[minmax(0,1fr)_minmax(420px,34vw)] lg:gap-3 lg:overflow-hidden lg:p-3">
-      {/* 캠 — 데스크톱은 뷰포트 높이 전부, 모바일은 상단 48dvh 전폭 + 바로 아래 시트 최상단에 표정 수치 */}
+      {/* 캠: 데스크톱은 뷰포트 높이 전부, 모바일은 상단 48dvh 전폭이고 표정 수치는 바로 아래 시트 최상단 */}
       <section
         aria-labelledby="camera-heading"
         className="relative shrink-0 lg:h-full lg:overflow-hidden lg:rounded-3xl lg:bg-grey-800"
@@ -146,7 +146,7 @@ export function MoodMirror() {
           <MessageForm value={text} onChange={setText} onSubmit={() => void handleSubmit()} />
         </section>
 
-        {/* 토스 하단 고정 CTA — 모바일은 화면 하단에 붙고, 데스크톱은 입력 카드의 아랫부분이 된다 */}
+        {/* 토스 하단 고정 CTA. 모바일은 화면 하단에 붙고, 데스크톱은 입력 카드 아랫부분이 된다 */}
         <div className="sticky bottom-0 -mt-2 shrink-0 bg-white px-5 pt-3 pb-[max(12px,env(safe-area-inset-bottom))] lg:static lg:-mt-3 lg:rounded-b-3xl lg:px-6 lg:pt-3 lg:pb-6 short:lg:pt-2 short:lg:pb-4">
           <SubmitButton loading={isLoading} disabled={text.trim().length === 0} />
         </div>

@@ -1,11 +1,11 @@
-// 표정과 말의 불일치 알림 — 결과 헤드라인 바로 아래에 붙는다. 얼굴이 감지되지 않았을 때는 판정하지 않았음을 분명히 알린다.
+// 표정과 말의 불일치 알림. 결과 헤드라인 바로 아래에 붙고, 얼굴이 없었으면 비교하지 않았다고 알린다.
 // 불일치는 이 데모의 핵심 순간이라 키컬러(Toss Blue)를 쓴다. 결과 영역 전체가 aria-live라 여기엔 role을 따로 두지 않는다.
 import { Info, ScanFace } from "lucide-react";
 import { rankFace } from "@/lib/judge/face";
 import { MOOD_LABEL_KO, type FaceProbabilities, type MoodKey } from "@/lib/judge/labels";
 import { FACE_LABEL_KO, FACE_STRENGTH_CLAUSE_KO } from "./labels";
 
-/** mismatch 상태일 때만 face가 존재한다는 계약을 타입으로 못박아 불가능한 상태를 없앤다 */
+/** face는 mismatch 상태에만 있다. 타입으로 못박아 불가능한 상태를 없앤다 */
 export type MismatchAlertProps =
   | { status: "no_face" }
   | { status: "consistent" }

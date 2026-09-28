@@ -1,4 +1,4 @@
-// 웹캠 미리보기 — 데스크톱은 주어진 영역을 꽉 채우고 표정 수치를 영상 위 패널로 띄운다.
+// 웹캠 미리보기. 데스크톱은 주어진 영역을 꽉 채우고 표정 수치를 영상 위 패널로 띄운다.
 // 모바일은 영상 높이를 CAM_BOX_CLASS로 고정하고, 표정 수치는 영상 바로 아래 시트 최상단(FaceReadout)에 둔다.
 // next/dynamic(ssr:false)로만 로드된다.
 "use client";
@@ -21,7 +21,7 @@ function isBlocked(state: FaceReadingState): state is BlockedFaceState {
   return state.status === "unsupported" || state.status === "denied" || state.status === "model_error";
 }
 
-/** 카메라를 쓸 수 없을 때 영역 전체에 띄울 안내 — 원인과 다음 행동을 함께 적는다 */
+/** 카메라를 쓸 수 없을 때 영역 전체에 띄우는 안내. 원인과 다음 행동을 함께 적는다 */
 function coverOf(state: BlockedFaceState): CameraCoverProps {
   switch (state.status) {
     case "unsupported":
@@ -32,10 +32,10 @@ function coverOf(state: BlockedFaceState): CameraCoverProps {
       };
     case "denied":
       if (state.reason === "not_found") {
-        return { icon: CameraOff, title: "카메라를 찾을 수 없어요", body: "장치를 연결한 뒤 새로고침해 주세요." };
+        return { icon: CameraOff, title: "카메라를 찾을 수 없어요", body: "카메라를 연결하고 새로고침해 주세요." };
       }
       if (state.reason === "busy") {
-        return { icon: CameraOff, title: "다른 앱이 카메라를 쓰고 있어요", body: "그 앱을 종료한 뒤 새로고침해 주세요." };
+        return { icon: CameraOff, title: "다른 앱이 카메라를 쓰고 있어요", body: "그 앱을 닫고 새로고침해 주세요." };
       }
       return {
         icon: CameraOff,

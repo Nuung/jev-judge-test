@@ -19,7 +19,7 @@ const EvalCaseSchema = z.object({
   category: z.enum(CATEGORIES),
   text: z.string().min(1),
   face: FaceProbabilitiesSchema.nullable(),
-  /** 라벨이 애매한 경계 사례 — 지표에서 제외하고 리포트의 "관찰" 섹션에만 표시한다 */
+  /** 라벨이 애매한 경계 사례. 지표에서 빼고 리포트의 "관찰" 섹션에만 보여 준다 */
   boundary: z.boolean().optional(),
   labels: z.object({
     mood: z.enum(MOOD_KEYS).nullable(),
