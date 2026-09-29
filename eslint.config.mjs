@@ -2,7 +2,7 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 
-// SDK와 Jev 클라이언트(lib/jev) — 서버 라우트 핸들러와 eval만 쓴다
+// SDK와 Jev 클라이언트(lib/jev) — 서버 라우트 핸들러와 bench만 쓴다
 const SDK_PATTERN = {
   group: [
     "@typesafe-ai/sdk",
@@ -16,7 +16,7 @@ const SDK_PATTERN = {
     "../jev",
     "../jev/**",
   ],
-  message: "SDK/Jev 클라이언트는 app/api 라우트 핸들러(와 eval)에서만 사용한다",
+  message: "SDK/Jev 클라이언트는 app/api 라우트 핸들러(와 bench)에서만 사용한다",
 };
 
 const APP_PATTERN = {
@@ -46,11 +46,12 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     ".omc/**",
     ".claude/**",
-    "eval/results/**",
+    "bench/results/**",
+    "bench/.cache/**",
   ]),
   {
-    // 타입 안전 우회 금지 — app/features/lib/eval 전 계층
-    files: ["app/**/*.{ts,tsx}", "features/**/*.{ts,tsx}", "lib/**/*.{ts,tsx}", "eval/**/*.{ts,tsx}"],
+    // 타입 안전 우회 금지 — app/features/lib/bench 전 계층
+    files: ["app/**/*.{ts,tsx}", "features/**/*.{ts,tsx}", "lib/**/*.{ts,tsx}", "bench/**/*.{ts,tsx}"],
     rules: {
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/ban-ts-comment": "error",
@@ -98,8 +99,8 @@ const eslintConfig = defineConfig([
     },
   },
   {
-    // 평가 러너는 화면 계층에 의존할 수 없다
-    files: ["eval/**/*.{ts,tsx}"],
+    // 벤치 러너는 화면 계층에 의존할 수 없다(lib만 import)
+    files: ["bench/**/*.{ts,tsx}"],
     rules: {
       "no-restricted-imports": [
         "error",
@@ -107,7 +108,7 @@ const eslintConfig = defineConfig([
           patterns: [
             {
               group: ["@/features", "@/features/**", "@/app", "@/app/**", "**/features/**", "**/app/**"],
-              message: "eval은 features/app에 의존할 수 없다 (의존 방향 규칙)",
+              message: "bench는 features/app에 의존할 수 없다",
             },
           ],
         },
