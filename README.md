@@ -1,6 +1,9 @@
 # Jev 무드 미러
 
-웹캠 표정과 한국어 한마디로 지금 기분을 짚어 보는 웹 데모입니다. 브라우저 안에서 표정을 읽고 나면 판정은 TypeSafe의 판정 모델 Jev가 합니다. `pnpm bench`로 공개 데이터셋 7개에서 Jev와 Claude·OpenAI 모델 4개를 비교하는 벤치마크도 들어 있습니다.
+TypeSafe의 판정 모델 Jev가 무엇이고 어디에 쓸 만한지 clone해서 바로 확인해 보라고 만든 저장소입니다. 두 가지가 들어 있습니다.
+
+- 웹캠 표정과 한국어 한마디로 지금 기분을 짚어 보는 웹 데모. 표정은 브라우저 안에서 읽고 판정은 Jev가 합니다.
+- `pnpm bench`: 공개 데이터셋 7개에서 Jev와 Claude·OpenAI 모델 4개의 정확도·비용·지연을 같은 조건으로 재는 벤치마크.
 
 ![웃는 얼굴에 "나 괜찮아… 그냥 좀 지쳤어"를 입력해 표정과 말이 다르다는 알림이 뜬 화면](docs/images/hero-mismatch.png)
 
@@ -8,6 +11,41 @@
 
 > [!NOTE]
 > 웹캠 영상은 브라우저 밖으로 나가지 않으며 서버에는 한마디와 표정 확률 숫자 7개만 갑니다. [개인정보](#개인정보) 참고.
+
+## Jev가 뭔가요
+
+Jev는 글을 쓰지 않고 판정만 하는 모델입니다. TypeSafe는 이런 모델을 System One 모델이라고 부르고, 이 저장소는 `jev-1.13.0`을 씁니다. 판정할 내용(state)과 질문을 보내면 정해진 형식의 답이 확률과 함께 돌아옵니다.
+
+| 질문 형식 | 묻는 것 | 이 저장소에서 쓴 곳 |
+|---|---|---|
+| Choice | 보기 가운데 하나 고르기 | 기분 6종, 뉴스 주제, 은행 문의 의도 77종 |
+| Noul | 예/아니오 (참일 확률 하나) | 인젝션, 유해 요청, 스팸, 혐오 표현 |
+| Score | 정해 둔 척도의 점수 | 쓰지 않음 |
+
+벤치마크에서 실제로 받은 응답입니다(SST-2 감정 분류 1건, Enron 스팸 판정 1건).
+
+```json
+{ "sentiment": { "type": "choice", "choice": "positive", "confidence": 0.89, "probabilities": { "negative": 0.05, "positive": 0.95 } } }
+{ "spam": { "type": "noul", "noul": 0.02 } }
+```
+
+Choice의 `confidence`는 확률이 아닙니다. 보기 수 K와 가장 큰 확률 p로 (K·p − 1)/(K − 1)을 계산한 값과 같습니다(이번 벤치의 Choice 응답 1,200건에서 차이 0.02 이하, 확률이 소수 둘째 자리로 반올림돼 오는 만큼의 차이). 보기가 2개일 때 p=0.95면 0.9 근처가 됩니다. 확률로 쓸 때는 `probabilities`를 봐야 합니다. Noul은 참일 확률 하나만 주므로 예/아니오 기준선은 코드에서 정합니다.
+
+알고 쓰면 좋은 점:
+
+- 가격은 입력 100만 토큰당 $0.042이고 출력은 받지 않습니다(TypeSafe 발표). 이번 벤치에서 1천 건당 비용은 데이터셋 중앙값으로 $0.022였습니다.
+- TypeSafe는 응답 시간을 70–500ms로 발표했고 이번 벤치의 p50 중앙값은 213ms였습니다.
+- [공식 문서](https://docs.typesafe.ai/model-jaggedness/jev-1.13.md)는 약점도 밝힙니다. 개수 세기, 숫자·날짜 비교를 잘 못하고 판정과 상관없는 내용이 state에 섞이면 정확도가 떨어집니다. 영어가 주 학습 언어라 한국어는 정확도가 더 낮을 수 있다고도 적혀 있습니다. 그래서 이 데모는 계산을 코드에 맡기고 Jev에는 판정만 시킵니다.
+
+코드에서 볼 곳:
+
+| 보고 싶은 것 | 파일 |
+|---|---|
+| 질문을 정의하는 법 | `lib/jev/questions.ts` (데모), `bench/tasks.ts` (벤치) |
+| 클라이언트를 만들고 호출하는 법 | `lib/jev/client.ts`, `lib/jev/judge.ts` |
+| 응답을 zod로 검증해 좁히는 법 | `lib/judge/schema.ts`, `bench/providers/jev.ts` |
+| 같은 질문을 Claude·OpenAI에 묻는 법 | `bench/providers/anthropic.ts`, `bench/providers/openai.ts` |
+| 벤치 결과 원본 | `bench/results/2026-09-29T13-57-11/` |
 
 ## 한눈에 보기
 
@@ -456,4 +494,10 @@ import는 `app → features → lib` 방향으로만 흐르게 ESLint로 강제�
 
 ## 라이선스
 
-이 저장소의 라이선스는 아직 정하지 않았습니다. 함께 쓰는 face-api와 TypeSafe SDK는 MIT, Pretendard는 SIL Open Font License 1.1입니다.
+이 저장소의 코드와 문서는 [MIT 라이선스](LICENSE)입니다.
+
+그 밖의 것은 각자의 라이선스를 따릅니다.
+
+- face-api(표정 모델 가중치 포함)와 TypeSafe SDK는 MIT, Pretendard는 SIL Open Font License 1.1입니다.
+- 벤치마크 데이터셋은 저장소에 넣지 않았습니다. `pnpm bench`가 실행할 때 Hugging Face에서 받아 로컬 캐시(`bench/.cache/`)에 두고, 커밋한 결과 파일에는 케이스 id·예측·확률·토큰·지연만 있습니다. 데이터셋별 라이선스는 [무엇을 쟀나](#무엇을-쟀나)에 적었습니다.
+- README 스크린샷 속 인물 사진은 CC0입니다.
