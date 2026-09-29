@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-09-29T04:49:24.655Z",
+  "finishedAt": "2026-09-29T04:51:30.717Z",
+  "commit": "ef15adb1ce1e7fed3af937195ec7ef62a731cdf5",
+  "options": {
+    "models": [
+      "jev",
+      "haiku",
+      "sonnet",
+      "luna",
+      "sol"
+    ],
+    "datasets": [
+      "sst2",
+      "ag-news",
+      "banking77",
+      "enron-spam",
+      "jbb-judge",
+      "klue-ynat",
+      "kmhas"
+    ],
+    "limit": 5,
+    "reasoning": "off",
+    "yes": true,
+    "noCache": false
+  },
+  "seed": 20260929,
+  "timeoutMs": 60000,
+  "temperature": "unset",
+  "retryPolicy": {
+    "sdkMaxRetries": 0,
+    "maxRetries": 2,
+    "maxAttempts": 3,
+    "classification": {
+      "retryable": "408·409·429·5xx(529 포함), 타임아웃, 연결 오류",
+      "deterministic": "그 외 4xx(입력 기인, 예: Jev 422, Anthropic·OpenAI 400) → client_4xx, 캐시",
+      "config": "401·403·404(키·권한·모델명), API 키 없음 등 설정 오류 → 해당 모델 레인 중단, 미캐시",
+      "modelLevel": "refusal·format·max_tokens·range는 응답 수준의 결정적 실패로 재시도하지 않는다"
+    },
+    "retryableStatuses": [
+      408,
+      409,
+      429,
+      "500-599"
+    ],
+    "configStatuses": [
+      401,
+      403,
+      404
+    ],
+    "timeoutClasses": {
+      "jev": "APITimeoutError(APIConnectionError의 하위 클래스)",
+      "anthropic": "APIConnectionTimeoutError(APIConnectionError의 하위 클래스)",
+      "openai": "APIConnectionTimeoutError(APIConnectionError의 하위 클래스)"
+    },
+    "headers": {
+      "x-should-retry": "true면 상태 코드와 무관하게 재시도 대상, false면 재시도하지 않는다(분류는 상태 코드 규칙 유지)",
+      "wait": "retry-after-ms → Retry-After(초 또는 HTTP 날짜) → 지수 백오프 순"
+    },
+    "backoff": {
+      "initialMs": 500,
+      "multiplier": 2,
+      "maxMs": 5000,
+      "jitter": "±25%"
+    },
+    "retryAfterMaxMs": 60000
+  },
+  "parserHash": "c22429cbe98913844d338240193cc8460b9d89d6a481fb5b58ef6deb59be67a9",
+  "systemPromptHash": {
+    "sst2": "6e47da75b70e7a18e1e50830548fe6ee20b0f84e3652ae9db9a0ab023b3edcfc",
+    "ag-news": "479d1eac259f8f5a3942438a6071989cf1a18bafe49ce2821b02bcc4cbac4f8a",
+    "banking77": "9e30103d004b9f71210caf4463114c2b1b3723dcd828b9f07f3687d746291dcf",
+    "enron-spam": "67713e1243b96872bec64205d6008b0bc4a5d33da24686ad1d42b8d62d05ed4b",
+    "jbb-judge": "5233063a7775b04956b6eb36ece1dfb2467cf579ad92cdea0e3669a8a61c1023",
+    "klue-ynat": "0a8b62b82447730c3b685ecee7f6c77732454d4226d2a24463004230dcb4377f",
+    "kmhas": "cfae4e94a8a22ffd5175e7fe7142a0a997dbe3fc7b47f894a08f03fd159062a0"
+  },
+  "outputSchemaHash": {
+    "sst2": "a91b3e5dded45c017c260f05229e2d9fb53ba244e94bf924895bf81a09dfb0b0",
+    "ag-news": "0a33e4e0df360ed838ae00f374da57be7baac1f31ca6b3b6e701448856e82d02",
+    "banking77": "88968d66771548544b1028bcaf9d92f79bfd64d2c536c68f111c0d7494c647c4",
+    "enron-spam": "0543b93fa98a8fa868d2ef210d5da1bb224032877f4857186e46fc912addba68",
+    "jbb-judge": "62f342896f9d773300abb13406f3949cb1cc9b1f2730ca792c9303bab875f21a",
+    "klue-ynat": "854da135ac6015dcb5452d190658a7348580e310545d503467d3521526854714",
+    "kmhas": "f5e39145187035bf1fb0da6d0ab2a768be1160f2ca762c4aba453bf1bf9961c7"
+  },
+  "sdkVersions": {
+    "jev": "@typesafe-ai/sdk@0.6.0",
+    "anthropic": "@anthropic-ai/sdk@0.128.0",
+    "openai": "openai@7.23.0"
+  },
+  "laneInterpretation": "스펙의 \"순차 호출\"을 \"같은 제공자에 동시 요청 없음\"으로 해석했다. 제공자별 레인 3개(jev · anthropic[haiku → sonnet] · openai[luna → sol])를 동시에 돌리고, 레인 안에서는 데이터셋 → 모델 → 케이스 순서로 한 건씩 호출한다.",
+  "lanes": [
+    {
+      "provider": "jev",
+      "models": [
+        "jev"
+      ],
+      "start": "2026-09-29T04:49:24.655Z",
+      "end": "2026-09-29T04:49:32.751Z"
+    },
+    {
+      "provider": "anthropic",
+      "models": [
+        "haiku",
+        "sonnet"
+      ],
+      "start": "2026-09-29T04:49:24.657Z",
+      "end": "2026-09-29T04:51:30.717Z"
+    },
+    {
+      "provider": "openai",
+      "models": [
+        "luna",
+        "sol"
+      ],
+      "start": "2026-09-29T04:49:24.658Z",
+      "end": "2026-09-29T04:51:08.816Z"
+    }
+  ],
+  "models": [
+    {
+      "alias": "jev",
+      "provider": "jev",
+      "apiModel": "jev-1.13.0",
+      "pricing": {
+        "inputPerMTok": 0.042,
+        "outputPerMTok": 0,
+        "source": "https://docs.typesafe.ai/models.md (2026-09-29 조회)"
+      },
+      "tokenizerFactor": 1,
+      "probabilitySource": "jev-direct"
+    },
+    {
+      "alias": "haiku",
+      "provider": "anthropic",
+      "apiModel": "claude-haiku-4-5-20251001",
+      "pricing": {
+        "inputPerMTok": 1,
+        "outputPerMTok": 5,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing (2026-09-28 조회)"
+      },
+      "tokenizerFactor": 1.3,
+      "probabilitySource": "verbalized"
+    },
+    {
+      "alias": "sonnet",
+      "provider": "anthropic",
+      "apiModel": "claude-sonnet-5",
+      "pricing": {
+        "inputPerMTok": 2,
+        "outputPerMTok": 10,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing (2026-09-28 조회)"
+      },
+      "tokenizerFactor": 1.3,
+      "probabilitySource": "verbalized"
+    },
+    {
+      "alias": "luna",
+      "provider": "openai",
+      "apiModel": "gpt-6-luna",
+      "pricing": {
+        "inputPerMTok": 0.1,
+        "outputPerMTok": 0.5,
+        "source": "https://developers.openai.com/api/docs/models (2026-09-29 조회)"
+      },
+      "tokenizerFactor": 1,
+      "probabilitySource": "verbalized"
+    },
+    {
+      "alias": "sol",
+      "provider": "openai",
+      "apiModel": "gpt-6-sol",
+      "pricing": {
+        "inputPerMTok": 2,
+        "outputPerMTok": 10,
+        "source": "https://developers.openai.com/api/docs/models (2026-09-29 조회)"
+      },
+      "tokenizerFactor": 1,
+      "probabilitySource": "verbalized"
+    }
+  ],
+  "datasets": [
+    {
+      "id": "sst2",
+      "tier": "default",
+      "license": "unknown",
+      "source": {
+        "kind": "hf",
+        "repo": "stanfordnlp/sst2",
+        "config": "default",
+        "split": "validation"
+      },
+      "revision": "8d51e7e4887a4caaa95b3fbebbf53c0490b58bbb",
+      "numRows": 872,
+      "sampleIds": [
+        "73",
+        "412",
+        "489",
+        "780",
+        "808"
+      ],
+      "strata": {
+        "negative": 2,
+        "positive": 3
+      },
+      "maxInputChars": null,
+      "notes": []
+    },
+    {
+      "id": "ag-news",
+      "tier": "default",
+      "license": "unknown",
+      "source": {
+        "kind": "hf",
+        "repo": "fancyzhx/ag_news",
+        "config": "default",
+        "split": "test"
+      },
+      "revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+      "numRows": 7600,
+      "sampleIds": [
+        "484",
+        "976",
+        "3367",
+        "5492",
+        "5661"
+      ],
+      "strata": {
+        "Business": 2,
+        "Sci/Tech": 1,
+        "Sports": 1,
+        "World": 1
+      },
+      "maxInputChars": null,
+      "notes": []
+    },
+    {
+      "id": "banking77",
+      "tier": "default",
+      "license": "cc-by-4.0",
+      "source": {
+        "kind": "hf",
+        "repo": "legacy-datasets/banking77",
+        "config": "default",
+        "split": "test"
+      },
+      "revision": "f54121560de48f2852f90be299010d1d6dc612ec",
+      "numRows": 3080,
+      "sampleIds": [
+        "510",
+        "1441",
+        "1760",
+        "2871",
+        "2963"
+      ],
+      "strata": {
+        "Refund_not_showing_up": 1,
+        "activate_my_card": 1,
+        "age_limit": 1,
+        "apple_pay_or_google_pay": 1,
+        "atm_support": 1,
+        "automatic_top_up": 0,
+        "balance_not_updated_after_bank_transfer": 0,
+        "balance_not_updated_after_cheque_or_cash_deposit": 0,
+        "beneficiary_not_allowed": 0,
+        "cancel_transfer": 0,
+        "card_about_to_expire": 0,
+        "card_acceptance": 0,
+        "card_arrival": 0,
+        "card_delivery_estimate": 0,
+        "card_linking": 0,
+        "card_not_working": 0,
+        "card_payment_fee_charged": 0,
+        "card_payment_not_recognised": 0,
+        "card_payment_wrong_exchange_rate": 0,
+        "card_swallowed": 0,
+        "cash_withdrawal_charge": 0,
+        "cash_withdrawal_not_recognised": 0,
+        "change_pin": 0,
+        "compromised_card": 0,
+        "contactless_not_working": 0,
+        "country_support": 0,
+        "declined_card_payment": 0,
+        "declined_cash_withdrawal": 0,
+        "declined_transfer": 0,
+        "direct_debit_payment_not_recognised": 0,
+        "disposable_card_limits": 0,
+        "edit_personal_details": 0,
+        "exchange_charge": 0,
+        "exchange_rate": 0,
+        "exchange_via_app": 0,
+        "extra_charge_on_statement": 0,
+        "failed_transfer": 0,
+        "fiat_currency_support": 0,
+        "get_disposable_virtual_card": 0,
+        "get_physical_card": 0,
+        "getting_spare_card": 0,
+        "getting_virtual_card": 0,
+        "lost_or_stolen_card": 0,
+        "lost_or_stolen_phone": 0,
+        "order_physical_card": 0,
+        "passcode_forgotten": 0,
+        "pending_card_payment": 0,
+        "pending_cash_withdrawal": 0,
+        "pending_top_up": 0,
+        "pending_transfer": 0,
+        "pin_blocked": 0,
+        "receiving_money": 0,
+        "request_refund": 0,
+        "reverted_card_payment?": 0,
+        "supported_cards_and_currencies": 0,
+        "terminate_account": 0,
+        "top_up_by_bank_transfer_charge": 0,
+        "top_up_by_card_charge": 0,
+        "top_up_by_cash_or_cheque": 0,
+        "top_up_failed": 0,
+        "top_up_limits": 0,
+        "top_up_reverted": 0,
+        "topping_up_by_card": 0,
+        "transaction_charged_twice": 0,
+        "transfer_fee_charged": 0,
+        "transfer_into_account": 0,
+        "transfer_not_received_by_recipient": 0,
+        "transfer_timing": 0,
+        "unable_to_verify_identity": 0,
+        "verify_my_identity": 0,
+        "verify_source_of_funds": 0,
+        "verify_top_up": 0,
+        "virtual_card_not_working": 0,
+        "visa_or_mastercard": 0,
+        "why_verify_identity": 0,
+        "wrong_amount_of_cash_received": 0,
+        "wrong_exchange_rate_for_cash_withdrawal": 0
+      },
+      "maxInputChars": null,
+      "notes": []
+    },
+    {
+      "id": "enron-spam",
+      "tier": "default",
+      "license": "표기 없음",
+      "source": {
+        "kind": "hf",
+        "repo": "SetFit/enron_spam",
+        "config": "default",
+        "split": "test"
+      },
+      "revision": "1916f66c89d52221ae33eb57d44498b4f3a5df22",
+      "numRows": 2000,
+      "sampleIds": [
+        "80",
+        "184",
+        "382",
+        "623",
+        "1971"
+      ],
+      "strata": {
+        "ham": 2,
+        "spam": 3
+      },
+      "maxInputChars": 4000,
+      "notes": []
+    },
+    {
+      "id": "jbb-judge",
+      "tier": "default",
+      "license": "MIT",
+      "source": {
+        "kind": "hf",
+        "repo": "JailbreakBench/JBB-Behaviors",
+        "config": "judge_comparison",
+        "split": "test"
+      },
+      "revision": "886acc352a31533ffbcf4ef22c744658688086fc",
+      "numRows": 300,
+      "sampleIds": [
+        "0",
+        "24",
+        "126",
+        "177",
+        "249"
+      ],
+      "strata": {
+        "jailbroken": 2,
+        "not_jailbroken": 3
+      },
+      "maxInputChars": null,
+      "notes": []
+    },
+    {
+      "id": "klue-ynat",
+      "tier": "default",
+      "license": "cc-by-sa-4.0",
+      "source": {
+        "kind": "hf",
+        "repo": "klue/klue",
+        "config": "ynat",
+        "split": "validation"
+      },
+      "revision": "349481ec73fff722f88e0453ca05c77a447d967c",
+      "numRows": 9107,
+      "sampleIds": [
+        "162",
+        "728",
+        "2485",
+        "3882",
+        "7022"
+      ],
+      "strata": {
+        "economy": 1,
+        "it_science": 0,
+        "life_culture": 1,
+        "politics": 0,
+        "society": 2,
+        "sports": 0,
+        "world": 1
+      },
+      "maxInputChars": null,
+      "notes": []
+    },
+    {
+      "id": "kmhas",
+      "tier": "default",
+      "license": "cc-by-sa-4.0",
+      "source": {
+        "kind": "hf",
+        "repo": "jeanlee/kmhas_korean_hate_speech",
+        "config": "default",
+        "split": "test"
+      },
+      "revision": "c657d15baf277c48d467f0625f7d33c50d4352ef",
+      "numRows": 21939,
+      "sampleIds": [
+        "957",
+        "1909",
+        "3372",
+        "3992",
+        "10082"
+      ],
+      "strata": {
+        "hate": 2,
+        "not_hate": 3
+      },
+      "maxInputChars": null,
+      "notes": []
+    }
+  ],
+  "skipped": []
+}

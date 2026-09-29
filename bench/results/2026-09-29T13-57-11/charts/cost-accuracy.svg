@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1628" height="710" viewBox="0 0 1628 710">
+<rect width="1628" height="710" fill="#fcfcfb"/>
+<text x="40" y="40" font-family="Pretendard" font-size="24" font-weight="700" fill="#0b0b0b" text-anchor="start">비용 대비 주지표</text>
+<text x="40" y="66" font-family="Pretendard" font-size="13" font-weight="400" fill="#52514e" text-anchor="start">x: 1천 건당 비용(USD, 로그축, 토큰 사용량 기준) · y: 주지표 %(실패는 abstain, ITT) · 세로 막대: 95% paired bootstrap CI</text>
+<text x="40" y="100" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">SST-2</text>
+<text x="386" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=300</text>
+<line x1="92" y1="312" x2="386" y2="312" stroke="#e6e5e1" stroke-width="1"/>
+<text x="84" y="316" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">85</text>
+<line x1="92" y1="248" x2="386" y2="248" stroke="#e6e5e1" stroke-width="1"/>
+<text x="84" y="252" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">90</text>
+<line x1="92" y1="184" x2="386" y2="184" stroke="#e6e5e1" stroke-width="1"/>
+<text x="84" y="188" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">95</text>
+<line x1="92" y1="120" x2="386" y2="120" stroke="#e6e5e1" stroke-width="1"/>
+<text x="84" y="124" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">100</text>
+<line x1="92" y1="312" x2="386" y2="312" stroke="#b9b8b2" stroke-width="1"/>
+<line x1="92" y1="312" x2="92" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="92" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.01</text>
+<line x1="190" y1="312" x2="190" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="190" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.1</text>
+<line x1="288" y1="312" x2="288" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="288" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$1</text>
+<line x1="386" y1="312" x2="386" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="386" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$10</text>
+<line x1="111.3" y1="218.1" x2="111.3" y2="154.1" stroke="#2a78d6" stroke-width="2"/>
+<line x1="107.3" y1="218.1" x2="115.3" y2="218.1" stroke="#2a78d6" stroke-width="2"/>
+<line x1="107.3" y1="154.1" x2="115.3" y2="154.1" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="111.3" cy="184" r="5" stroke="#fcfcfb" stroke-width="2" fill="#2a78d6"/>
+<line x1="270.2" y1="230.9" x2="270.2" y2="162.7" stroke="#eb6834" stroke-width="2"/>
+<line x1="266.2" y1="230.9" x2="274.2" y2="230.9" stroke="#eb6834" stroke-width="2"/>
+<line x1="266.2" y1="162.7" x2="274.2" y2="162.7" stroke="#eb6834" stroke-width="2"/>
+<rect x="265.2" y="191.8" width="10" height="10" rx="1.5" stroke="#fcfcfb" stroke-width="2" fill="#eb6834"/>
+<line x1="312.3" y1="209.6" x2="312.3" y2="149.9" stroke="#1baf7a" stroke-width="2"/>
+<line x1="308.3" y1="209.6" x2="316.3" y2="209.6" stroke="#1baf7a" stroke-width="2"/>
+<line x1="308.3" y1="149.9" x2="316.3" y2="149.9" stroke="#1baf7a" stroke-width="2"/>
+<polygon points="312.3,173 319.1,179.7 312.3,186.5 305.6,179.7" stroke="#fcfcfb" stroke-width="2" fill="#1baf7a"/>
+<line x1="155.4" y1="235.2" x2="155.4" y2="166.9" stroke="#eda100" stroke-width="2"/>
+<line x1="151.4" y1="235.2" x2="159.4" y2="235.2" stroke="#eda100" stroke-width="2"/>
+<line x1="151.4" y1="166.9" x2="159.4" y2="166.9" stroke="#eda100" stroke-width="2"/>
+<polygon points="155.4,194.6 161.9,206.3 148.9,206.3" stroke="#fcfcfb" stroke-width="2" fill="#eda100"/>
+<line x1="282.9" y1="230.9" x2="282.9" y2="162.7" stroke="#e87ba4" stroke-width="2"/>
+<line x1="278.9" y1="230.9" x2="286.9" y2="230.9" stroke="#e87ba4" stroke-width="2"/>
+<line x1="278.9" y1="162.7" x2="286.9" y2="162.7" stroke="#e87ba4" stroke-width="2"/>
+<polygon points="282.9,203.3 289.4,191.6 276.4,191.6" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
+<text x="436" y="100" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">AG News</text>
+<text x="782" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=300</text>
+<line x1="488" y1="264" x2="782" y2="264" stroke="#e6e5e1" stroke-width="1"/>
+<text x="480" y="268" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">80</text>
+<line x1="488" y1="168" x2="782" y2="168" stroke="#e6e5e1" stroke-width="1"/>
+<text x="480" y="172" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">90</text>
+<line x1="488" y1="312" x2="782" y2="312" stroke="#b9b8b2" stroke-width="1"/>
+<line x1="488" y1="312" x2="488" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="488" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.01</text>
+<line x1="586" y1="312" x2="586" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="586" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.1</text>
+<line x1="684" y1="312" x2="684" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="684" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$1</text>
+<line x1="782" y1="312" x2="782" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="782" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$10</text>
+<line x1="517.3" y1="241.6" x2="517.3" y2="168" stroke="#2a78d6" stroke-width="2"/>
+<line x1="513.3" y1="241.6" x2="521.3" y2="241.6" stroke="#2a78d6" stroke-width="2"/>
+<line x1="513.3" y1="168" x2="521.3" y2="168" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="517.3" cy="203.2" r="5" stroke="#fcfcfb" stroke-width="2" fill="#2a78d6"/>
+<line x1="672" y1="270.4" x2="672" y2="190.4" stroke="#eb6834" stroke-width="2"/>
+<line x1="668" y1="270.4" x2="676" y2="270.4" stroke="#eb6834" stroke-width="2"/>
+<line x1="668" y1="190.4" x2="676" y2="190.4" stroke="#eb6834" stroke-width="2"/>
+<rect x="667" y="223.8" width="10" height="10" rx="1.5" stroke="#fcfcfb" stroke-width="2" fill="#eb6834"/>
+<line x1="713.9" y1="235.2" x2="713.9" y2="161.6" stroke="#1baf7a" stroke-width="2"/>
+<line x1="709.9" y1="235.2" x2="717.9" y2="235.2" stroke="#1baf7a" stroke-width="2"/>
+<line x1="709.9" y1="161.6" x2="717.9" y2="161.6" stroke="#1baf7a" stroke-width="2"/>
+<polygon points="713.9,190.1 720.7,196.8 713.9,203.6 707.2,196.8" stroke="#fcfcfb" stroke-width="2" fill="#1baf7a"/>
+<line x1="558.1" y1="280" x2="558.1" y2="200" stroke="#eda100" stroke-width="2"/>
+<line x1="554.1" y1="280" x2="562.1" y2="280" stroke="#eda100" stroke-width="2"/>
+<line x1="554.1" y1="200" x2="562.1" y2="200" stroke="#eda100" stroke-width="2"/>
+<polygon points="558.1,231.9 564.6,243.6 551.6,243.6" stroke="#fcfcfb" stroke-width="2" fill="#eda100"/>
+<line x1="685.6" y1="248" x2="685.6" y2="174.4" stroke="#e87ba4" stroke-width="2"/>
+<line x1="681.6" y1="248" x2="689.6" y2="248" stroke="#e87ba4" stroke-width="2"/>
+<line x1="681.6" y1="174.4" x2="689.6" y2="174.4" stroke="#e87ba4" stroke-width="2"/>
+<polygon points="685.6,216.1 692.1,204.4 679.1,204.4" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
+<text x="832" y="100" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">Banking77</text>
+<text x="1178" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=300</text>
+<line x1="884" y1="312" x2="1178" y2="312" stroke="#e6e5e1" stroke-width="1"/>
+<text x="876" y="316" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">70</text>
+<line x1="884" y1="248" x2="1178" y2="248" stroke="#e6e5e1" stroke-width="1"/>
+<text x="876" y="252" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">80</text>
+<line x1="884" y1="184" x2="1178" y2="184" stroke="#e6e5e1" stroke-width="1"/>
+<text x="876" y="188" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">90</text>
+<line x1="884" y1="120" x2="1178" y2="120" stroke="#e6e5e1" stroke-width="1"/>
+<text x="876" y="124" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">100</text>
+<line x1="884" y1="312" x2="1178" y2="312" stroke="#b9b8b2" stroke-width="1"/>
+<line x1="884" y1="312" x2="884" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="884" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.01</text>
+<line x1="982" y1="312" x2="982" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="982" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.1</text>
+<line x1="1080" y1="312" x2="1080" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="1080" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$1</text>
+<line x1="1178" y1="312" x2="1178" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="1178" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$10</text>
+<line x1="946.9" y1="290.7" x2="946.9" y2="230.9" stroke="#2a78d6" stroke-width="2"/>
+<line x1="942.9" y1="290.7" x2="950.9" y2="290.7" stroke="#2a78d6" stroke-width="2"/>
+<line x1="942.9" y1="230.9" x2="950.9" y2="230.9" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="946.9" cy="260.8" r="5" stroke="#fcfcfb" stroke-width="2" fill="#2a78d6"/>
+<line x1="1109.5" y1="294.9" x2="1109.5" y2="233.1" stroke="#eb6834" stroke-width="2"/>
+<line x1="1105.5" y1="294.9" x2="1113.5" y2="294.9" stroke="#eb6834" stroke-width="2"/>
+<line x1="1105.5" y1="233.1" x2="1113.5" y2="233.1" stroke="#eb6834" stroke-width="2"/>
+<rect x="1104.5" y="257.9" width="10" height="10" rx="1.5" stroke="#fcfcfb" stroke-width="2" fill="#eb6834"/>
+<line x1="1152.6" y1="254.4" x2="1152.6" y2="201.1" stroke="#1baf7a" stroke-width="2"/>
+<line x1="1148.6" y1="254.4" x2="1156.6" y2="254.4" stroke="#1baf7a" stroke-width="2"/>
+<line x1="1148.6" y1="201.1" x2="1156.6" y2="201.1" stroke="#1baf7a" stroke-width="2"/>
+<polygon points="1152.6,219.9 1159.3,226.7 1152.6,233.4 1145.8,226.7" stroke="#fcfcfb" stroke-width="2" fill="#1baf7a"/>
+<line x1="995.4" y1="271.5" x2="995.4" y2="213.9" stroke="#eda100" stroke-width="2"/>
+<line x1="991.4" y1="271.5" x2="999.4" y2="271.5" stroke="#eda100" stroke-width="2"/>
+<line x1="991.4" y1="213.9" x2="999.4" y2="213.9" stroke="#eda100" stroke-width="2"/>
+<polygon points="995.4,235.1 1001.9,246.8 988.9,246.8" stroke="#fcfcfb" stroke-width="2" fill="#eda100"/>
+<line x1="1122.9" y1="239.5" x2="1122.9" y2="188.3" stroke="#e87ba4" stroke-width="2"/>
+<line x1="1118.9" y1="239.5" x2="1126.9" y2="239.5" stroke="#e87ba4" stroke-width="2"/>
+<line x1="1118.9" y1="188.3" x2="1126.9" y2="188.3" stroke="#e87ba4" stroke-width="2"/>
+<polygon points="1122.9,220.4 1129.4,208.7 1116.4,208.7" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
+<text x="1228" y="100" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">Enron 스팸</text>
+<text x="1574" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=300</text>
+<line x1="1280" y1="312" x2="1574" y2="312" stroke="#e6e5e1" stroke-width="1"/>
+<text x="1272" y="316" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">80</text>
+<line x1="1280" y1="264" x2="1574" y2="264" stroke="#e6e5e1" stroke-width="1"/>
+<text x="1272" y="268" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">85</text>
+<line x1="1280" y1="216" x2="1574" y2="216" stroke="#e6e5e1" stroke-width="1"/>
+<text x="1272" y="220" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">90</text>
+<line x1="1280" y1="168" x2="1574" y2="168" stroke="#e6e5e1" stroke-width="1"/>
+<text x="1272" y="172" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">95</text>
+<line x1="1280" y1="120" x2="1574" y2="120" stroke="#e6e5e1" stroke-width="1"/>
+<text x="1272" y="124" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">100</text>
+<line x1="1280" y1="312" x2="1574" y2="312" stroke="#b9b8b2" stroke-width="1"/>
+<line x1="1280" y1="312" x2="1280" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="1280" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.01</text>
+<line x1="1378" y1="312" x2="1378" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="1378" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.1</text>
+<line x1="1476" y1="312" x2="1476" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="1476" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$1</text>
+<line x1="1574" y1="312" x2="1574" y2="316" stroke="#b9b8b2" stroke-width="1"/>
+<text x="1574" y="329" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$10</text>
+<line x1="1325.4" y1="142.4" x2="1325.4" y2="120" stroke="#2a78d6" stroke-width="2"/>
+<line x1="1321.4" y1="142.4" x2="1329.4" y2="142.4" stroke="#2a78d6" stroke-width="2"/>
+<line x1="1321.4" y1="120" x2="1329.4" y2="120" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="1325.4" cy="129.6" r="5" stroke="#fcfcfb" stroke-width="2" fill="#2a78d6"/>
+<line x1="1474.1" y1="136" x2="1474.1" y2="120" stroke="#eb6834" stroke-width="2"/>
+<line x1="1470.1" y1="136" x2="1478.1" y2="136" stroke="#eb6834" stroke-width="2"/>
+<line x1="1470.1" y1="120" x2="1478.1" y2="120" stroke="#eb6834" stroke-width="2"/>
+<rect x="1469.1" y="121.4" width="10" height="10" rx="1.5" stroke="#fcfcfb" stroke-width="2" fill="#eb6834"/>
+<line x1="1514.9" y1="264" x2="1514.9" y2="196.8" stroke="#1baf7a" stroke-width="2"/>
+<line x1="1510.9" y1="264" x2="1518.9" y2="264" stroke="#1baf7a" stroke-width="2"/>
+<line x1="1510.9" y1="196.8" x2="1518.9" y2="196.8" stroke="#1baf7a" stroke-width="2"/>
+<polygon points="1514.9,222.1 1521.7,228.8 1514.9,235.6 1508.2,228.8" stroke="#fcfcfb" stroke-width="2" fill="#1baf7a"/>
+<line x1="1364.5" y1="145.6" x2="1364.5" y2="123.2" stroke="#eda100" stroke-width="2"/>
+<line x1="1360.5" y1="145.6" x2="1368.5" y2="145.6" stroke="#eda100" stroke-width="2"/>
+<line x1="1360.5" y1="123.2" x2="1368.5" y2="123.2" stroke="#eda100" stroke-width="2"/>
+<polygon points="1364.5,126.3 1371,138 1358,138" stroke="#fcfcfb" stroke-width="2" fill="#eda100"/>
+<line x1="1492" y1="136" x2="1492" y2="120" stroke="#e87ba4" stroke-width="2"/>
+<line x1="1488" y1="136" x2="1496" y2="136" stroke="#e87ba4" stroke-width="2"/>
+<line x1="1488" y1="120" x2="1496" y2="120" stroke="#e87ba4" stroke-width="2"/>
+<polygon points="1492,132.9 1498.5,121.2 1485.5,121.2" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
+<text x="40" y="414" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">JBB judge</text>
+<text x="386" y="414" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=300</text>
+<line x1="92" y1="587.6" x2="386" y2="587.6" stroke="#e6e5e1" stroke-width="1"/>
+<text x="84" y="591.6" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">80</text>
+<line x1="92" y1="510.8" x2="386" y2="510.8" stroke="#e6e5e1" stroke-width="1"/>
+<text x="84" y="514.8" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">90</text>
+<line x1="92" y1="434" x2="386" y2="434" stroke="#e6e5e1" stroke-width="1"/>
+<text x="84" y="438" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">100</text>
+<line x1="92" y1="626" x2="386" y2="626" stroke="#b9b8b2" stroke-width="1"/>
+<line x1="92" y1="626" x2="92" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="92" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.01</text>
+<line x1="190" y1="626" x2="190" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="190" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.1</text>
+<line x1="288" y1="626" x2="288" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="288" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$1</text>
+<line x1="386" y1="626" x2="386" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="386" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$10</text>
+<line x1="126" y1="523.6" x2="126" y2="475" stroke="#2a78d6" stroke-width="2"/>
+<line x1="122" y1="523.6" x2="130" y2="523.6" stroke="#2a78d6" stroke-width="2"/>
+<line x1="122" y1="475" x2="130" y2="475" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="126" cy="498" r="5" stroke="#fcfcfb" stroke-width="2" fill="#2a78d6"/>
+<line x1="278.1" y1="526.2" x2="278.1" y2="477.5" stroke="#eb6834" stroke-width="2"/>
+<line x1="274.1" y1="526.2" x2="282.1" y2="526.2" stroke="#eb6834" stroke-width="2"/>
+<line x1="274.1" y1="477.5" x2="282.1" y2="477.5" stroke="#eb6834" stroke-width="2"/>
+<rect x="273.1" y="495.6" width="10" height="10" rx="1.5" stroke="#fcfcfb" stroke-width="2" fill="#eb6834"/>
+<line x1="319.6" y1="572.2" x2="319.6" y2="513.4" stroke="#1baf7a" stroke-width="2"/>
+<line x1="315.6" y1="572.2" x2="323.6" y2="572.2" stroke="#1baf7a" stroke-width="2"/>
+<line x1="315.6" y1="513.4" x2="323.6" y2="513.4" stroke="#1baf7a" stroke-width="2"/>
+<polygon points="319.6,534.8 326.4,541.5 319.6,548.3 312.9,541.5" stroke="#fcfcfb" stroke-width="2" fill="#1baf7a"/>
+<line x1="167" y1="551.8" x2="167" y2="498" stroke="#eda100" stroke-width="2"/>
+<line x1="163" y1="551.8" x2="171" y2="551.8" stroke="#eda100" stroke-width="2"/>
+<line x1="163" y1="498" x2="171" y2="498" stroke="#eda100" stroke-width="2"/>
+<polygon points="167,517.1 173.5,528.8 160.5,528.8" stroke="#fcfcfb" stroke-width="2" fill="#eda100"/>
+<line x1="294.6" y1="498" x2="294.6" y2="459.6" stroke="#e87ba4" stroke-width="2"/>
+<line x1="290.6" y1="498" x2="298.6" y2="498" stroke="#e87ba4" stroke-width="2"/>
+<line x1="290.6" y1="459.6" x2="298.6" y2="459.6" stroke="#e87ba4" stroke-width="2"/>
+<polygon points="294.6,484 301.1,472.3 288.1,472.3" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
+<text x="436" y="414" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">KLUE-YNAT</text>
+<text x="782" y="414" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">macro-F1 · n=300</text>
+<line x1="488" y1="626" x2="782" y2="626" stroke="#e6e5e1" stroke-width="1"/>
+<text x="480" y="630" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">70</text>
+<line x1="488" y1="549.2" x2="782" y2="549.2" stroke="#e6e5e1" stroke-width="1"/>
+<text x="480" y="553.2" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">80</text>
+<line x1="488" y1="472.4" x2="782" y2="472.4" stroke="#e6e5e1" stroke-width="1"/>
+<text x="480" y="476.4" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">90</text>
+<line x1="488" y1="626" x2="782" y2="626" stroke="#b9b8b2" stroke-width="1"/>
+<line x1="488" y1="626" x2="488" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="488" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.01</text>
+<line x1="586" y1="626" x2="586" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="586" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.1</text>
+<line x1="684" y1="626" x2="684" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="684" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$1</text>
+<line x1="782" y1="626" x2="782" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="782" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$10</text>
+<line x1="527.9" y1="573.5" x2="527.9" y2="504.6" stroke="#2a78d6" stroke-width="2"/>
+<line x1="523.9" y1="573.5" x2="531.9" y2="573.5" stroke="#2a78d6" stroke-width="2"/>
+<line x1="523.9" y1="504.6" x2="531.9" y2="504.6" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="527.9" cy="536.5" r="5" stroke="#fcfcfb" stroke-width="2" fill="#2a78d6"/>
+<line x1="676.4" y1="576.7" x2="676.4" y2="511.3" stroke="#eb6834" stroke-width="2"/>
+<line x1="672.4" y1="576.7" x2="680.4" y2="576.7" stroke="#eb6834" stroke-width="2"/>
+<line x1="672.4" y1="511.3" x2="680.4" y2="511.3" stroke="#eb6834" stroke-width="2"/>
+<rect x="671.4" y="537" width="10" height="10" rx="1.5" stroke="#fcfcfb" stroke-width="2" fill="#eb6834"/>
+<line x1="717.6" y1="567.9" x2="717.6" y2="499.1" stroke="#1baf7a" stroke-width="2"/>
+<line x1="713.6" y1="567.9" x2="721.6" y2="567.9" stroke="#1baf7a" stroke-width="2"/>
+<line x1="713.6" y1="499.1" x2="721.6" y2="499.1" stroke="#1baf7a" stroke-width="2"/>
+<polygon points="717.6,524.1 724.3,530.9 717.6,537.6 710.8,530.9" stroke="#fcfcfb" stroke-width="2" fill="#1baf7a"/>
+<line x1="563.8" y1="586.9" x2="563.8" y2="515.7" stroke="#eda100" stroke-width="2"/>
+<line x1="559.8" y1="586.9" x2="567.8" y2="586.9" stroke="#eda100" stroke-width="2"/>
+<line x1="559.8" y1="515.7" x2="567.8" y2="515.7" stroke="#eda100" stroke-width="2"/>
+<polygon points="563.8,542.4 570.3,554.1 557.3,554.1" stroke="#fcfcfb" stroke-width="2" fill="#eda100"/>
+<line x1="691.3" y1="545.8" x2="691.3" y2="482.5" stroke="#e87ba4" stroke-width="2"/>
+<line x1="687.3" y1="545.8" x2="695.3" y2="545.8" stroke="#e87ba4" stroke-width="2"/>
+<line x1="687.3" y1="482.5" x2="695.3" y2="482.5" stroke="#e87ba4" stroke-width="2"/>
+<polygon points="691.3,518.3 697.8,506.6 684.8,506.6" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
+<text x="832" y="414" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">K-MHaS</text>
+<text x="1178" y="414" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=300</text>
+<line x1="884" y1="626" x2="1178" y2="626" stroke="#e6e5e1" stroke-width="1"/>
+<text x="876" y="630" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">70</text>
+<line x1="884" y1="562" x2="1178" y2="562" stroke="#e6e5e1" stroke-width="1"/>
+<text x="876" y="566" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">80</text>
+<line x1="884" y1="498" x2="1178" y2="498" stroke="#e6e5e1" stroke-width="1"/>
+<text x="876" y="502" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">90</text>
+<line x1="884" y1="434" x2="1178" y2="434" stroke="#e6e5e1" stroke-width="1"/>
+<text x="876" y="438" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">100</text>
+<line x1="884" y1="626" x2="1178" y2="626" stroke="#b9b8b2" stroke-width="1"/>
+<line x1="884" y1="626" x2="884" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="884" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.01</text>
+<line x1="982" y1="626" x2="982" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="982" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$0.1</text>
+<line x1="1080" y1="626" x2="1080" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="1080" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$1</text>
+<line x1="1178" y1="626" x2="1178" y2="630" stroke="#b9b8b2" stroke-width="1"/>
+<text x="1178" y="643" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">$10</text>
+<line x1="910.2" y1="596.1" x2="910.2" y2="538.5" stroke="#2a78d6" stroke-width="2"/>
+<line x1="906.2" y1="596.1" x2="914.2" y2="596.1" stroke="#2a78d6" stroke-width="2"/>
+<line x1="906.2" y1="538.5" x2="914.2" y2="538.5" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="910.2" cy="566.3" r="5" stroke="#fcfcfb" stroke-width="2" fill="#2a78d6"/>
+<line x1="1065.6" y1="576.9" x2="1065.6" y2="521.5" stroke="#eb6834" stroke-width="2"/>
+<line x1="1061.6" y1="576.9" x2="1069.6" y2="576.9" stroke="#eb6834" stroke-width="2"/>
+<line x1="1061.6" y1="521.5" x2="1069.6" y2="521.5" stroke="#eb6834" stroke-width="2"/>
+<rect x="1060.6" y="544.2" width="10" height="10" rx="1.5" stroke="#fcfcfb" stroke-width="2" fill="#eb6834"/>
+<line x1="1105.7" y1="581.2" x2="1105.7" y2="525.7" stroke="#1baf7a" stroke-width="2"/>
+<line x1="1101.7" y1="581.2" x2="1109.7" y2="581.2" stroke="#1baf7a" stroke-width="2"/>
+<line x1="1101.7" y1="525.7" x2="1109.7" y2="525.7" stroke="#1baf7a" stroke-width="2"/>
+<polygon points="1105.7,546.7 1112.5,553.5 1105.7,560.2 1099,553.5" stroke="#fcfcfb" stroke-width="2" fill="#1baf7a"/>
+<line x1="952" y1="542.8" x2="952" y2="493.7" stroke="#eda100" stroke-width="2"/>
+<line x1="948" y1="542.8" x2="956" y2="542.8" stroke="#eda100" stroke-width="2"/>
+<line x1="948" y1="493.7" x2="956" y2="493.7" stroke="#eda100" stroke-width="2"/>
+<polygon points="952,510.7 958.5,522.4 945.5,522.4" stroke="#fcfcfb" stroke-width="2" fill="#eda100"/>
+<line x1="1079.5" y1="570.5" x2="1079.5" y2="517.2" stroke="#e87ba4" stroke-width="2"/>
+<line x1="1075.5" y1="570.5" x2="1083.5" y2="570.5" stroke="#e87ba4" stroke-width="2"/>
+<line x1="1075.5" y1="517.2" x2="1083.5" y2="517.2" stroke="#e87ba4" stroke-width="2"/>
+<polygon points="1079.5,549.3 1086,537.6 1073,537.6" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
+<text x="1244" y="440" font-family="Pretendard" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="start">모델</text>
+<circle cx="1251" cy="462" r="5" stroke="#fcfcfb" stroke-width="2" fill="#2a78d6"/>
+<text x="1266" y="466" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">jev · jev-1.13.0</text>
+<rect x="1246" y="481" width="10" height="10" rx="1.5" stroke="#fcfcfb" stroke-width="2" fill="#eb6834"/>
+<text x="1266" y="490" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">haiku · claude-haiku-4-5-20251001</text>
+<polygon points="1251,503.3 1257.8,510 1251,516.8 1244.3,510" stroke="#fcfcfb" stroke-width="2" fill="#1baf7a"/>
+<text x="1266" y="514" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">sonnet · claude-sonnet-5</text>
+<polygon points="1251,527.5 1257.5,539.2 1244.5,539.2" stroke="#fcfcfb" stroke-width="2" fill="#eda100"/>
+<text x="1266" y="538" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">luna · gpt-6-luna</text>
+<polygon points="1251,564.5 1257.5,552.8 1244.5,552.8" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
+<text x="1266" y="562" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">sol · gpt-6-sol</text>
+<text x="1244" y="602" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="start">y축 범위는 패널마다 다르다.</text>
+<text x="1244" y="620" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="start">x축(비용)은 모든 패널이 같다.</text>
+</svg>

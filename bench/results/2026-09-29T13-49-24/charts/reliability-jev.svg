@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1088" height="648" viewBox="0 0 1088 648">
+<rect width="1088" height="648" fill="#fcfcfb"/>
+<text x="40" y="40" font-family="Pretendard" font-size="22" font-weight="700" fill="#0b0b0b" text-anchor="start">신뢰도 곡선 — jev (jev-1.13.0)</text>
+<text x="40" y="66" font-family="Pretendard" font-size="13" font-weight="400" fill="#52514e" text-anchor="start">15개 등간격 bin(확률 1.0은 마지막 bin) · 점 = bin 평균 확률 대 실제 비율 · 옅은 막대 = bin별 표본 수</text>
+<text x="40" y="116" font-family="Pretendard" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="start">Choice — 선택 라벨 확률(top-label)</text>
+<text x="40" y="138" font-family="Pretendard" font-size="12" font-weight="400" fill="#52514e" text-anchor="start">Jev 직접 확률 · n=20 · ECE 0.150 · SST-2, AG News, Banking77, KLUE-YNAT</text>
+<line x1="104" y1="558" x2="504" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="104" y1="158" x2="104" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="96" y="562" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.0</text>
+<text x="104" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">0.0</text>
+<line x1="104" y1="478" x2="504" y2="478" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="184" y1="158" x2="184" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="96" y="482" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.2</text>
+<text x="184" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">0.2</text>
+<line x1="104" y1="398" x2="504" y2="398" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="264" y1="158" x2="264" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="96" y="402" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.4</text>
+<text x="264" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">0.4</text>
+<line x1="104" y1="318" x2="504" y2="318" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="344" y1="158" x2="344" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="96" y="322" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.6</text>
+<text x="344" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">0.6</text>
+<line x1="104" y1="238" x2="504" y2="238" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="424" y1="158" x2="424" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="96" y="242" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.8</text>
+<text x="424" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">0.8</text>
+<line x1="104" y1="158" x2="504" y2="158" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="504" y1="158" x2="504" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="96" y="162" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">1.0</text>
+<text x="504" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">1.0</text>
+<line x1="104" y1="558" x2="504" y2="558" stroke="#b9b8b2" stroke-width="1"/>
+<line x1="104" y1="158" x2="104" y2="558" stroke="#b9b8b2" stroke-width="1"/>
+<line x1="104" y1="558" x2="504" y2="158" stroke="#8a8984" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="476" y="178" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">완전 보정</text>
+<text x="304" y="598" font-family="Pretendard" font-size="12" font-weight="400" fill="#52514e" text-anchor="middle">예측 확률(bin 평균)</text>
+<text x="56" y="358" font-family="Pretendard" font-size="12" font-weight="400" fill="#52514e" text-anchor="middle" transform="rotate(-90 56 358)">실제 정답률</text>
+<text x="96" y="620" font-family="Pretendard" font-size="11" font-weight="600" fill="#52514e" text-anchor="end">n</text>
+<text x="117.3" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="144" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="170.7" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="197.3" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="224" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="250.7" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="277.3" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">1</text>
+<rect x="265" y="553.3" width="24.7" height="4.7" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="304" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="330.7" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">1</text>
+<rect x="318.3" y="553.3" width="24.7" height="4.7" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="357.3" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="384" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">1</text>
+<rect x="371.7" y="553.3" width="24.7" height="4.7" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="410.7" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="437.3" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">2</text>
+<rect x="425" y="548.7" width="24.7" height="9.3" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="464" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">3</text>
+<rect x="451.7" y="544" width="24.7" height="14" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="490.7" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">12</text>
+<rect x="478.3" y="502" width="24.7" height="56" fill="#2a78d6" fill-opacity="0.14"/>
+<polyline points="284,158 340,558 380,558 440,158 464,291.3 498.7,158" fill="none" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="284" cy="158" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="340" cy="558" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="380" cy="558" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="440" cy="158" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="464" cy="291.3" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="498.7" cy="158" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<text x="544" y="116" font-family="Pretendard" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="start">Noul — p(true)</text>
+<text x="544" y="138" font-family="Pretendard" font-size="12" font-weight="400" fill="#52514e" text-anchor="start">Jev 직접 확률 · n=15 · ECE 0.133 · Enron 스팸, JBB judge, K-MHaS</text>
+<line x1="608" y1="558" x2="1008" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="608" y1="158" x2="608" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="600" y="562" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.0</text>
+<text x="608" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">0.0</text>
+<line x1="608" y1="478" x2="1008" y2="478" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="688" y1="158" x2="688" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="600" y="482" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.2</text>
+<text x="688" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">0.2</text>
+<line x1="608" y1="398" x2="1008" y2="398" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="768" y1="158" x2="768" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="600" y="402" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.4</text>
+<text x="768" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">0.4</text>
+<line x1="608" y1="318" x2="1008" y2="318" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="848" y1="158" x2="848" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="600" y="322" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.6</text>
+<text x="848" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">0.6</text>
+<line x1="608" y1="238" x2="1008" y2="238" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="928" y1="158" x2="928" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="600" y="242" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.8</text>
+<text x="928" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">0.8</text>
+<line x1="608" y1="158" x2="1008" y2="158" stroke="#e6e5e1" stroke-width="1"/>
+<line x1="1008" y1="158" x2="1008" y2="558" stroke="#e6e5e1" stroke-width="1"/>
+<text x="600" y="162" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">1.0</text>
+<text x="1008" y="576" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="middle">1.0</text>
+<line x1="608" y1="558" x2="1008" y2="558" stroke="#b9b8b2" stroke-width="1"/>
+<line x1="608" y1="158" x2="608" y2="558" stroke="#b9b8b2" stroke-width="1"/>
+<line x1="608" y1="558" x2="1008" y2="158" stroke="#8a8984" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="980" y="178" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">완전 보정</text>
+<text x="808" y="598" font-family="Pretendard" font-size="12" font-weight="400" fill="#52514e" text-anchor="middle">예측 확률(bin 평균)</text>
+<text x="560" y="358" font-family="Pretendard" font-size="12" font-weight="400" fill="#52514e" text-anchor="middle" transform="rotate(-90 560 358)">실제 true 비율</text>
+<text x="600" y="620" font-family="Pretendard" font-size="11" font-weight="600" fill="#52514e" text-anchor="end">n</text>
+<text x="621.3" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">6</text>
+<rect x="609" y="502" width="24.7" height="56" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="648" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="674.7" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="701.3" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">1</text>
+<rect x="689" y="548.7" width="24.7" height="9.3" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="728" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="754.7" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="781.3" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="808" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">1</text>
+<rect x="795.7" y="548.7" width="24.7" height="9.3" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="834.7" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="861.3" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">1</text>
+<rect x="849" y="548.7" width="24.7" height="9.3" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="888" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">1</text>
+<rect x="875.7" y="548.7" width="24.7" height="9.3" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="914.7" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#8a8984" text-anchor="middle">0</text>
+<text x="941.3" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">1</text>
+<rect x="929" y="548.7" width="24.7" height="9.3" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="968" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">1</text>
+<rect x="955.7" y="548.7" width="24.7" height="9.3" fill="#2a78d6" fill-opacity="0.14"/>
+<text x="994.7" y="620" font-family="Pretendard" font-size="10" font-weight="400" fill="#52514e" text-anchor="middle">3</text>
+<rect x="982.3" y="530" width="24.7" height="28" fill="#2a78d6" fill-opacity="0.14"/>
+<polyline points="620,558 704,558 804,558 872,158 888,158 928,158 956,158 992,158" fill="none" stroke="#2a78d6" stroke-width="2"/>
+<circle cx="620" cy="558" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="704" cy="558" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="804" cy="558" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="872" cy="158" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="888" cy="158" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="928" cy="158" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="956" cy="158" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="992" cy="158" r="4.5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+</svg>

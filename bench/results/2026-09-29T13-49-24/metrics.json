@@ -1,0 +1,7065 @@
+{
+  "schemaVersion": 1,
+  "seed": 20260929,
+  "bootstrap": {
+    "iterations": 10000,
+    "percentile": "inverted_cdf",
+    "level": 0.95
+  },
+  "eceBins": 15,
+  "settings": {
+    "commit": "ef15adb1ce1e7fed3af937195ec7ef62a731cdf5",
+    "reasoning": "off",
+    "timeoutMs": 60000,
+    "maxRetries": 2,
+    "temperature": "unset",
+    "laneInterpretation": "스펙의 \"순차 호출\"을 \"같은 제공자에 동시 요청 없음\"으로 해석했다. 제공자별 레인 3개(jev · anthropic[haiku → sonnet] · openai[luna → sol])를 동시에 돌리고, 레인 안에서는 데이터셋 → 모델 → 케이스 순서로 한 건씩 호출한다.",
+    "lanes": [
+      {
+        "provider": "jev",
+        "models": [
+          "jev"
+        ],
+        "start": "2026-09-29T04:49:24.655Z",
+        "end": "2026-09-29T04:49:32.751Z"
+      },
+      {
+        "provider": "anthropic",
+        "models": [
+          "haiku",
+          "sonnet"
+        ],
+        "start": "2026-09-29T04:49:24.657Z",
+        "end": "2026-09-29T04:51:30.717Z"
+      },
+      {
+        "provider": "openai",
+        "models": [
+          "luna",
+          "sol"
+        ],
+        "start": "2026-09-29T04:49:24.658Z",
+        "end": "2026-09-29T04:51:08.816Z"
+      }
+    ],
+    "sdkVersions": {
+      "jev": "@typesafe-ai/sdk@0.6.0",
+      "anthropic": "@anthropic-ai/sdk@0.128.0",
+      "openai": "openai@7.23.0"
+    },
+    "parserHash": "c22429cbe98913844d338240193cc8460b9d89d6a481fb5b58ef6deb59be67a9",
+    "systemPromptHash": {
+      "sst2": "6e47da75b70e7a18e1e50830548fe6ee20b0f84e3652ae9db9a0ab023b3edcfc",
+      "ag-news": "479d1eac259f8f5a3942438a6071989cf1a18bafe49ce2821b02bcc4cbac4f8a",
+      "banking77": "9e30103d004b9f71210caf4463114c2b1b3723dcd828b9f07f3687d746291dcf",
+      "enron-spam": "67713e1243b96872bec64205d6008b0bc4a5d33da24686ad1d42b8d62d05ed4b",
+      "jbb-judge": "5233063a7775b04956b6eb36ece1dfb2467cf579ad92cdea0e3669a8a61c1023",
+      "klue-ynat": "0a8b62b82447730c3b685ecee7f6c77732454d4226d2a24463004230dcb4377f",
+      "kmhas": "cfae4e94a8a22ffd5175e7fe7142a0a997dbe3fc7b47f894a08f03fd159062a0"
+    },
+    "outputSchemaHash": {
+      "sst2": "a91b3e5dded45c017c260f05229e2d9fb53ba244e94bf924895bf81a09dfb0b0",
+      "ag-news": "0a33e4e0df360ed838ae00f374da57be7baac1f31ca6b3b6e701448856e82d02",
+      "banking77": "88968d66771548544b1028bcaf9d92f79bfd64d2c536c68f111c0d7494c647c4",
+      "enron-spam": "0543b93fa98a8fa868d2ef210d5da1bb224032877f4857186e46fc912addba68",
+      "jbb-judge": "62f342896f9d773300abb13406f3949cb1cc9b1f2730ca792c9303bab875f21a",
+      "klue-ynat": "854da135ac6015dcb5452d190658a7348580e310545d503467d3521526854714",
+      "kmhas": "f5e39145187035bf1fb0da6d0ab2a768be1160f2ca762c4aba453bf1bf9961c7"
+    }
+  },
+  "models": [
+    {
+      "alias": "jev",
+      "provider": "jev",
+      "apiModel": "jev-1.13.0",
+      "probabilitySource": "jev-direct",
+      "pricing": {
+        "inputPerMTok": 0.042,
+        "outputPerMTok": 0,
+        "source": "https://docs.typesafe.ai/models.md (2026-09-29 조회)"
+      }
+    },
+    {
+      "alias": "haiku",
+      "provider": "anthropic",
+      "apiModel": "claude-haiku-4-5-20251001",
+      "probabilitySource": "verbalized",
+      "pricing": {
+        "inputPerMTok": 1,
+        "outputPerMTok": 5,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing (2026-09-28 조회)"
+      }
+    },
+    {
+      "alias": "sonnet",
+      "provider": "anthropic",
+      "apiModel": "claude-sonnet-5",
+      "probabilitySource": "verbalized",
+      "pricing": {
+        "inputPerMTok": 2,
+        "outputPerMTok": 10,
+        "source": "https://platform.claude.com/docs/en/about-claude/pricing (2026-09-28 조회)"
+      }
+    },
+    {
+      "alias": "luna",
+      "provider": "openai",
+      "apiModel": "gpt-6-luna",
+      "probabilitySource": "verbalized",
+      "pricing": {
+        "inputPerMTok": 0.1,
+        "outputPerMTok": 0.5,
+        "source": "https://developers.openai.com/api/docs/models (2026-09-29 조회)"
+      }
+    },
+    {
+      "alias": "sol",
+      "provider": "openai",
+      "apiModel": "gpt-6-sol",
+      "probabilitySource": "verbalized",
+      "pricing": {
+        "inputPerMTok": 2,
+        "outputPerMTok": 10,
+        "source": "https://developers.openai.com/api/docs/models (2026-09-29 조회)"
+      }
+    }
+  ],
+  "datasets": [
+    {
+      "id": "sst2",
+      "task": null,
+      "tier": "default",
+      "license": "unknown",
+      "source": "stanfordnlp/sst2 (default/validation)",
+      "revision": "8d51e7e4887a4caaa95b3fbebbf53c0490b58bbb",
+      "n": 5,
+      "primaryMetric": "accuracy",
+      "labels": [
+        "negative",
+        "positive"
+      ],
+      "maxInputChars": null,
+      "results": [
+        {
+          "model": "jev",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": null,
+            "macroF1": 1
+          },
+          "vsJev": null,
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "sentiment",
+              "mode": "choice",
+              "source": "jev-direct",
+              "brier": 0.0034200000000000016,
+              "intersectionN": 5,
+              "ece": 0.042000000000000016,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.89,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 4,
+                  "meanConfidence": 0.975,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 248,
+            "p95": 386,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.000015548400000000002,
+            "per1kUsd": 0.015548400000000002,
+            "billedUsd": 0.000077742,
+            "meanInputTokens": 370.2,
+            "meanOutputTokens": 32
+          }
+        },
+        {
+          "model": "haiku",
+          "n": 5,
+          "primary": {
+            "value": 0.8,
+            "ci": [
+              0.4,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.8,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.8,
+            "f1Positive": null,
+            "macroF1": 0.8
+          },
+          "vsJev": {
+            "diff": {
+              "value": -0.19999999999999996,
+              "ci": [
+                -0.6,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 1,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "sentiment",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.10603999999999998,
+              "intersectionN": 5,
+              "ece": 0.184,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 1,
+                  "meanConfidence": 0.72,
+                  "observed": 0
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.92,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.96,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1506,
+            "p95": 1990,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0006533999999999999,
+            "per1kUsd": 0.6534,
+            "billedUsd": 0.003267,
+            "meanInputTokens": 568.4,
+            "meanOutputTokens": 17
+          }
+        },
+        {
+          "model": "sonnet",
+          "n": 5,
+          "primary": {
+            "value": 0.8,
+            "ci": [
+              0.4,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.8,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.8,
+            "f1Positive": null,
+            "macroF1": 0.8
+          },
+          "vsJev": {
+            "diff": {
+              "value": -0.19999999999999996,
+              "ci": [
+                -0.6,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 1,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "sentiment",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.08966000000000002,
+              "intersectionN": 5,
+              "ece": 0.17799999999999996,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 1,
+                  "meanConfidence": 0.65,
+                  "observed": 0
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.85,
+                  "observed": 1
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.9700000000000001,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1936,
+            "p95": 2097,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.001754,
+            "per1kUsd": 1.754,
+            "billedUsd": 0.00877,
+            "meanInputTokens": 757,
+            "meanOutputTokens": 24
+          }
+        },
+        {
+          "model": "luna",
+          "n": 5,
+          "primary": {
+            "value": 0.8,
+            "ci": [
+              0.4,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.8,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.8,
+            "f1Positive": null,
+            "macroF1": 0.8
+          },
+          "vsJev": {
+            "diff": {
+              "value": -0.19999999999999996,
+              "ci": [
+                -0.6,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 1,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "sentiment",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.13467999999999997,
+              "intersectionN": 5,
+              "ece": 0.17599999999999993,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.82,
+                  "observed": 0
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 4,
+                  "meanConfidence": 0.9850000000000001,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1612,
+            "p95": 2326,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.00004396,
+            "per1kUsd": 0.04396,
+            "billedUsd": 0.0002198,
+            "meanInputTokens": 329.6,
+            "meanOutputTokens": 22
+          }
+        },
+        {
+          "model": "sol",
+          "n": 5,
+          "primary": {
+            "value": 0.6,
+            "ci": [
+              0.2,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.6,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.6,
+            "f1Positive": null,
+            "macroF1": 0.5833333333333333
+          },
+          "vsJev": {
+            "diff": {
+              "value": -0.4,
+              "ci": [
+                -0.8,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 2,
+              "c": 0,
+              "p": 0.5,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "sentiment",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.22066100000000005,
+              "intersectionN": 5,
+              "ece": 0.30260000000000004,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 1,
+                  "meanConfidence": 0.68,
+                  "observed": 0
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.8,
+                  "observed": 0
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.989,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 2055,
+            "p95": 2537,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0008792,
+            "per1kUsd": 0.8792,
+            "billedUsd": 0.004396,
+            "meanInputTokens": 329.6,
+            "meanOutputTokens": 22
+          }
+        }
+      ],
+      "referenceBaselines": [],
+      "notes": []
+    },
+    {
+      "id": "ag-news",
+      "task": null,
+      "tier": "default",
+      "license": "unknown",
+      "source": "fancyzhx/ag_news (default/test)",
+      "revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+      "n": 5,
+      "primaryMetric": "accuracy",
+      "labels": [
+        "World",
+        "Sports",
+        "Business",
+        "Sci/Tech"
+      ],
+      "maxInputChars": null,
+      "results": [
+        {
+          "model": "jev",
+          "n": 5,
+          "primary": {
+            "value": 0.8,
+            "ci": [
+              0.4,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.8,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.8,
+            "f1Positive": null,
+            "macroF1": 0.7
+          },
+          "vsJev": null,
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "topic",
+              "mode": "choice",
+              "source": "jev-direct",
+              "brier": 0.17316000000000004,
+              "intersectionN": 5,
+              "ece": 0.1920000000000001,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.93,
+                  "observed": 0
+                },
+                {
+                  "index": 14,
+                  "n": 4,
+                  "meanConfidence": 0.9924999999999999,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 204,
+            "p95": 259,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0000197484,
+            "per1kUsd": 0.0197484,
+            "billedUsd": 0.00009874200000000001,
+            "meanInputTokens": 470.2,
+            "meanOutputTokens": 47
+          }
+        },
+        {
+          "model": "haiku",
+          "n": 5,
+          "primary": {
+            "value": 0.8,
+            "ci": [
+              0.4,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.8,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.8,
+            "f1Positive": null,
+            "macroF1": 0.7
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "topic",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.18364,
+              "intersectionN": 5,
+              "ece": 0.23200000000000004,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 1,
+                  "meanConfidence": 0.75,
+                  "observed": 1
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 2,
+                  "meanConfidence": 0.92,
+                  "observed": 0.5
+                },
+                {
+                  "index": 14,
+                  "n": 2,
+                  "meanConfidence": 0.965,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1349,
+            "p95": 2531,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0007478,
+            "per1kUsd": 0.7477999999999999,
+            "billedUsd": 0.0037389999999999997,
+            "meanInputTokens": 662.8,
+            "meanOutputTokens": 17
+          }
+        },
+        {
+          "model": "sonnet",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": null,
+            "macroF1": 1
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0.19999999999999996,
+              "ci": [
+                0,
+                0.6
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 1,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "topic",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.04986,
+              "intersectionN": 5,
+              "ece": 0.166,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 1,
+                  "meanConfidence": 0.62,
+                  "observed": 1
+                },
+                {
+                  "index": 10,
+                  "n": 1,
+                  "meanConfidence": 0.7,
+                  "observed": 1
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.88,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 2,
+                  "meanConfidence": 0.985,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 2045,
+            "p95": 2604,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0020184,
+            "per1kUsd": 2.0184,
+            "billedUsd": 0.010092,
+            "meanInputTokens": 894.2,
+            "meanOutputTokens": 23
+          }
+        },
+        {
+          "model": "luna",
+          "n": 5,
+          "primary": {
+            "value": 0.8,
+            "ci": [
+              0.4,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.8,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.8,
+            "f1Positive": null,
+            "macroF1": 0.7
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "topic",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.19545999999999997,
+              "intersectionN": 5,
+              "ece": 0.2500000000000001,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 1,
+                  "meanConfidence": 0.74,
+                  "observed": 1
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.92,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.9700000000000001,
+                  "observed": 0.6666666666666666
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1132,
+            "p95": 1640,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.000051460000000000005,
+            "per1kUsd": 0.051460000000000006,
+            "billedUsd": 0.0002573,
+            "meanInputTokens": 409.6,
+            "meanOutputTokens": 21
+          }
+        },
+        {
+          "model": "sol",
+          "n": 5,
+          "primary": {
+            "value": 0.8,
+            "ci": [
+              0.4,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.8,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.8,
+            "f1Positive": null,
+            "macroF1": 0.7
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "topic",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.1860402,
+              "intersectionN": 5,
+              "ece": 0.20379999999999995,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.91,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 4,
+                  "meanConfidence": 0.98225,
+                  "observed": 0.75
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1412,
+            "p95": 2285,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0010292,
+            "per1kUsd": 1.0292000000000001,
+            "billedUsd": 0.005146,
+            "meanInputTokens": 409.6,
+            "meanOutputTokens": 21
+          }
+        }
+      ],
+      "referenceBaselines": [],
+      "notes": []
+    },
+    {
+      "id": "banking77",
+      "task": null,
+      "tier": "default",
+      "license": "cc-by-4.0",
+      "source": "legacy-datasets/banking77 (default/test)",
+      "revision": "f54121560de48f2852f90be299010d1d6dc612ec",
+      "n": 5,
+      "primaryMetric": "accuracy",
+      "labels": [
+        "activate_my_card",
+        "age_limit",
+        "apple_pay_or_google_pay",
+        "atm_support",
+        "automatic_top_up",
+        "balance_not_updated_after_bank_transfer",
+        "balance_not_updated_after_cheque_or_cash_deposit",
+        "beneficiary_not_allowed",
+        "cancel_transfer",
+        "card_about_to_expire",
+        "card_acceptance",
+        "card_arrival",
+        "card_delivery_estimate",
+        "card_linking",
+        "card_not_working",
+        "card_payment_fee_charged",
+        "card_payment_not_recognised",
+        "card_payment_wrong_exchange_rate",
+        "card_swallowed",
+        "cash_withdrawal_charge",
+        "cash_withdrawal_not_recognised",
+        "change_pin",
+        "compromised_card",
+        "contactless_not_working",
+        "country_support",
+        "declined_card_payment",
+        "declined_cash_withdrawal",
+        "declined_transfer",
+        "direct_debit_payment_not_recognised",
+        "disposable_card_limits",
+        "edit_personal_details",
+        "exchange_charge",
+        "exchange_rate",
+        "exchange_via_app",
+        "extra_charge_on_statement",
+        "failed_transfer",
+        "fiat_currency_support",
+        "get_disposable_virtual_card",
+        "get_physical_card",
+        "getting_spare_card",
+        "getting_virtual_card",
+        "lost_or_stolen_card",
+        "lost_or_stolen_phone",
+        "order_physical_card",
+        "passcode_forgotten",
+        "pending_card_payment",
+        "pending_cash_withdrawal",
+        "pending_top_up",
+        "pending_transfer",
+        "pin_blocked",
+        "receiving_money",
+        "Refund_not_showing_up",
+        "request_refund",
+        "reverted_card_payment?",
+        "supported_cards_and_currencies",
+        "terminate_account",
+        "top_up_by_bank_transfer_charge",
+        "top_up_by_card_charge",
+        "top_up_by_cash_or_cheque",
+        "top_up_failed",
+        "top_up_limits",
+        "top_up_reverted",
+        "topping_up_by_card",
+        "transaction_charged_twice",
+        "transfer_fee_charged",
+        "transfer_into_account",
+        "transfer_not_received_by_recipient",
+        "transfer_timing",
+        "unable_to_verify_identity",
+        "verify_my_identity",
+        "verify_source_of_funds",
+        "verify_top_up",
+        "virtual_card_not_working",
+        "visa_or_mastercard",
+        "why_verify_identity",
+        "wrong_amount_of_cash_received",
+        "wrong_exchange_rate_for_cash_withdrawal"
+      ],
+      "maxInputChars": null,
+      "results": [
+        {
+          "model": "jev",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": null,
+            "macroF1": 0.06493506493506493
+          },
+          "vsJev": null,
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "intent",
+              "mode": "choice",
+              "source": "jev-direct",
+              "brier": 0.010580000000000006,
+              "intersectionN": 5,
+              "ece": 0.07000000000000009,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 2,
+                  "meanConfidence": 0.84,
+                  "observed": 1
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.9899999999999999,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 219,
+            "p95": 295,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.000043722,
+            "per1kUsd": 0.043722,
+            "billedUsd": 0.00021861,
+            "meanInputTokens": 1041,
+            "meanOutputTokens": 827.8
+          }
+        },
+        {
+          "model": "haiku",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": null,
+            "macroF1": 0.06493506493506493
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "intent",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.0072800000000000035,
+              "intersectionN": 5,
+              "ece": 0.0760000000000001,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.85,
+                  "observed": 1
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.92,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.9499999999999998,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1392,
+            "p95": 2184,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0019994,
+            "per1kUsd": 1.9994,
+            "billedUsd": 0.009996999999999999,
+            "meanInputTokens": 1886.4,
+            "meanOutputTokens": 22.6
+          }
+        },
+        {
+          "model": "sonnet",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": null,
+            "macroF1": 0.06493506493506493
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "intent",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.012220000000000005,
+              "intersectionN": 5,
+              "ece": 0.09000000000000002,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 2,
+                  "meanConfidence": 0.835,
+                  "observed": 1
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.93,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 2,
+                  "meanConfidence": 0.975,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1743,
+            "p95": 2423,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0054816000000000005,
+            "per1kUsd": 5.4816,
+            "billedUsd": 0.027408,
+            "meanInputTokens": 2604.8,
+            "meanOutputTokens": 27.2
+          }
+        },
+        {
+          "model": "luna",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": null,
+            "macroF1": 0.06493506493506493
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "intent",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.017440000000000004,
+              "intersectionN": 5,
+              "ece": 0.07599999999999998,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 1,
+                  "meanConfidence": 0.71,
+                  "observed": 1
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 4,
+                  "meanConfidence": 0.9775,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1269,
+            "p95": 1476,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.00013618000000000001,
+            "per1kUsd": 0.13618000000000002,
+            "billedUsd": 0.0006809,
+            "meanInputTokens": 1244.8,
+            "meanOutputTokens": 23.4
+          }
+        },
+        {
+          "model": "sol",
+          "n": 5,
+          "primary": {
+            "value": 0.8,
+            "ci": [
+              0.4,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.8,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.8,
+            "f1Positive": null,
+            "macroF1": 0.05194805194805195
+          },
+          "vsJev": {
+            "diff": {
+              "value": -0.19999999999999996,
+              "ci": [
+                -0.6,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 1,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "intent",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.06631999999999999,
+              "intersectionN": 5,
+              "ece": 0.13600000000000004,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 1,
+                  "meanConfidence": 0.57,
+                  "observed": 0
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.92,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.9899999999999999,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1420,
+            "p95": 2076,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0027236,
+            "per1kUsd": 2.7236000000000002,
+            "billedUsd": 0.013617999999999998,
+            "meanInputTokens": 1244.8,
+            "meanOutputTokens": 23.4
+          }
+        }
+      ],
+      "referenceBaselines": [],
+      "notes": []
+    },
+    {
+      "id": "enron-spam",
+      "task": null,
+      "tier": "default",
+      "license": "표기 없음",
+      "source": "SetFit/enron_spam (default/test)",
+      "revision": "1916f66c89d52221ae33eb57d44498b4f3a5df22",
+      "n": 5,
+      "primaryMetric": "accuracy",
+      "labels": null,
+      "maxInputChars": 4000,
+      "results": [
+        {
+          "model": "jev",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": null,
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "spam",
+              "mode": "noul",
+              "source": "jev-direct",
+              "brier": 0.001240000000000002,
+              "intersectionN": 5,
+              "ece": 0.03200000000000002,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 2,
+                  "meanConfidence": 0.02,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.96,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 191,
+            "p95": 298,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.000022663200000000004,
+            "per1kUsd": 0.022663200000000005,
+            "billedUsd": 0.000113316,
+            "meanInputTokens": 539.6,
+            "meanOutputTokens": 20
+          }
+        },
+        {
+          "model": "haiku",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "spam",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.0016600000000000024,
+              "intersectionN": 5,
+              "ece": 0.03800000000000009,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 2,
+                  "meanConfidence": 0.02,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.9499999999999998,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1584,
+            "p95": 2203,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0007934,
+            "per1kUsd": 0.7934,
+            "billedUsd": 0.003967,
+            "meanInputTokens": 728.4,
+            "meanOutputTokens": 13
+          }
+        },
+        {
+          "model": "sonnet",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "spam",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.0003650000000000002,
+              "intersectionN": 5,
+              "ece": 0.01700000000000003,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 2,
+                  "meanConfidence": 0.025,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.9883333333333333,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1993,
+            "p95": 2801,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.002088,
+            "per1kUsd": 2.088,
+            "billedUsd": 0.01044,
+            "meanInputTokens": 964,
+            "meanOutputTokens": 16
+          }
+        },
+        {
+          "model": "luna",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "spam",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.00010000000000000011,
+              "intersectionN": 5,
+              "ece": 0.010000000000000071,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 2,
+                  "meanConfidence": 0.01,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.9899999999999999,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1043,
+            "p95": 1456,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.000058439999999999996,
+            "per1kUsd": 0.05844,
+            "billedUsd": 0.00029220000000000006,
+            "meanInputTokens": 499.4,
+            "meanOutputTokens": 17
+          }
+        },
+        {
+          "model": "sol",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "spam",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.00002460000000000001,
+              "intersectionN": 5,
+              "ece": 0.003800000000000068,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 2,
+                  "meanConfidence": 0.006500000000000001,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 3,
+                  "meanConfidence": 0.9979999999999999,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1407,
+            "p95": 1568,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0011688,
+            "per1kUsd": 1.1688,
+            "billedUsd": 0.005844,
+            "meanInputTokens": 499.4,
+            "meanOutputTokens": 17
+          }
+        }
+      ],
+      "referenceBaselines": [],
+      "notes": [
+        "본문 4000자 절단 또는 응답 크기 제한으로 잘린 케이스 0건(표본 5건 중)."
+      ]
+    },
+    {
+      "id": "jbb-judge",
+      "task": null,
+      "tier": "default",
+      "license": "MIT",
+      "source": "JailbreakBench/JBB-Behaviors (judge_comparison/test)",
+      "revision": "886acc352a31533ffbcf4ef22c744658688086fc",
+      "n": 5,
+      "primaryMetric": "accuracy",
+      "labels": null,
+      "maxInputChars": null,
+      "results": [
+        {
+          "model": "jev",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": null,
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "harmful_response",
+              "mode": "noul",
+              "source": "jev-direct",
+              "brier": 0.026660000000000007,
+              "intersectionN": 5,
+              "ece": 0.11800000000000001,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 3,
+                  "meanConfidence": 0.03,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 1,
+                  "meanConfidence": 0.7,
+                  "observed": 1
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.8,
+                  "observed": 1
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 185,
+            "p95": 282,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.000022587599999999997,
+            "per1kUsd": 0.022587599999999996,
+            "billedUsd": 0.00011293800000000001,
+            "meanInputTokens": 537.8,
+            "meanOutputTokens": 22
+          }
+        },
+        {
+          "model": "haiku",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "harmful_response",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.01724,
+              "intersectionN": 5,
+              "ece": 0.092,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 3,
+                  "meanConfidence": 0.02,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 1,
+                  "meanConfidence": 0.75,
+                  "observed": 1
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.85,
+                  "observed": 1
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1411,
+            "p95": 1722,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.000805,
+            "per1kUsd": 0.805,
+            "billedUsd": 0.004025,
+            "meanInputTokens": 730,
+            "meanOutputTokens": 15
+          }
+        },
+        {
+          "model": "sonnet",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "harmful_response",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.022940000000000006,
+              "intersectionN": 5,
+              "ece": 0.10600000000000001,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 3,
+                  "meanConfidence": 0.02666666666666667,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 1,
+                  "meanConfidence": 0.7,
+                  "observed": 1
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.85,
+                  "observed": 1
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 2226,
+            "p95": 2866,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0021644,
+            "per1kUsd": 2.1644,
+            "billedUsd": 0.010822,
+            "meanInputTokens": 987.2,
+            "meanOutputTokens": 19
+          }
+        },
+        {
+          "model": "luna",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "harmful_response",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.0001600000000000002,
+              "intersectionN": 5,
+              "ece": 0.012000000000000005,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 3,
+                  "meanConfidence": 0.01,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 2,
+                  "meanConfidence": 0.985,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1056,
+            "p95": 1205,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.00005914,
+            "per1kUsd": 0.05914,
+            "billedUsd": 0.00029570000000000003,
+            "meanInputTokens": 496.4,
+            "meanOutputTokens": 19
+          }
+        },
+        {
+          "model": "sol",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "harmful_response",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.006500600000000004,
+              "intersectionN": 5,
+              "ece": 0.04660000000000002,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 3,
+                  "meanConfidence": 0.001,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.83,
+                  "observed": 1
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 1,
+                  "meanConfidence": 0.94,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1940,
+            "p95": 3730,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0011828,
+            "per1kUsd": 1.1827999999999999,
+            "billedUsd": 0.005914,
+            "meanInputTokens": 496.4,
+            "meanOutputTokens": 19
+          }
+        }
+      ],
+      "referenceBaselines": [
+        {
+          "name": "HarmBench classifier",
+          "accuracy": 0.6,
+          "f1Positive": 0.5,
+          "n": 5,
+          "published": null
+        },
+        {
+          "name": "GPT-4",
+          "accuracy": 1,
+          "f1Positive": 1,
+          "n": 5,
+          "published": "90.3%"
+        },
+        {
+          "name": "Llama Guard 2",
+          "accuracy": 1,
+          "f1Positive": 1,
+          "n": 5,
+          "published": "87.7%"
+        },
+        {
+          "name": "Llama 3 70B",
+          "accuracy": 0.8,
+          "f1Positive": 0.6666666666666666,
+          "n": 5,
+          "published": null
+        }
+      ],
+      "notes": [
+        "state = {request: goal, response: target_response}, 탈옥 프롬프트(prompt) 열은 제외"
+      ]
+    },
+    {
+      "id": "klue-ynat",
+      "task": null,
+      "tier": "default",
+      "license": "cc-by-sa-4.0",
+      "source": "klue/klue (ynat/validation)",
+      "revision": "349481ec73fff722f88e0453ca05c77a447d967c",
+      "n": 5,
+      "primaryMetric": "macro_f1",
+      "labels": [
+        "it_science",
+        "economy",
+        "society",
+        "life_culture",
+        "world",
+        "sports",
+        "politics"
+      ],
+      "maxInputChars": null,
+      "results": [
+        {
+          "model": "jev",
+          "n": 5,
+          "primary": {
+            "value": 0.3095238095238095,
+            "ci": [
+              0.047619047619047616,
+              0.42857142857142855
+            ]
+          },
+          "successOnly": {
+            "value": 0.3095238095238095,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.6,
+            "f1Positive": null,
+            "macroF1": 0.3095238095238095
+          },
+          "vsJev": null,
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "section",
+              "mode": "choice",
+              "source": "jev-direct",
+              "brier": 0.22822,
+              "intersectionN": 5,
+              "ece": 0.39,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 1,
+                  "meanConfidence": 0.45,
+                  "observed": 1
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 1,
+                  "meanConfidence": 0.59,
+                  "observed": 0
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 1,
+                  "meanConfidence": 0.6900000000000001,
+                  "observed": 0
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.88,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 1,
+                  "meanConfidence": 1,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 288,
+            "p95": 321,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.000025494000000000004,
+            "per1kUsd": 0.025494000000000003,
+            "billedUsd": 0.00012747000000000002,
+            "meanInputTokens": 607,
+            "meanOutputTokens": 78
+          }
+        },
+        {
+          "model": "haiku",
+          "n": 5,
+          "primary": {
+            "value": 0.23809523809523808,
+            "ci": [
+              0,
+              0.2857142857142857
+            ]
+          },
+          "successOnly": {
+            "value": 0.23809523809523808,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.4,
+            "f1Positive": null,
+            "macroF1": 0.23809523809523808
+          },
+          "vsJev": {
+            "diff": {
+              "value": -0.0714285714285714,
+              "ci": [
+                -0.14285714285714285,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 1,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "section",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.36563999999999997,
+              "intersectionN": 5,
+              "ece": 0.524,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 2,
+                  "meanConfidence": 0.72,
+                  "observed": 0
+                },
+                {
+                  "index": 11,
+                  "n": 1,
+                  "meanConfidence": 0.75,
+                  "observed": 1
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.85,
+                  "observed": 0
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.92,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 970,
+            "p95": 2292,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0008386,
+            "per1kUsd": 0.8386,
+            "billedUsd": 0.004193,
+            "meanInputTokens": 749.6,
+            "meanOutputTokens": 17.8
+          }
+        },
+        {
+          "model": "sonnet",
+          "n": 5,
+          "primary": {
+            "value": 0.38095238095238093,
+            "ci": [
+              0.07142857142857142,
+              0.42857142857142855
+            ]
+          },
+          "successOnly": {
+            "value": 0.38095238095238093,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.6,
+            "f1Positive": null,
+            "macroF1": 0.38095238095238093
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0.07142857142857145,
+              "ci": [
+                -0.14285714285714285,
+                0.16190476190476188
+              ]
+            },
+            "mcnemar": {
+              "b": 1,
+              "c": 1,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "section",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.15126,
+              "intersectionN": 5,
+              "ece": 0.17800000000000002,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 1,
+                  "meanConfidence": 0.45,
+                  "observed": 0
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 2,
+                  "meanConfidence": 0.62,
+                  "observed": 0.5
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.85,
+                  "observed": 1
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 1,
+                  "meanConfidence": 0.95,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 2097,
+            "p95": 2617,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0022076,
+            "per1kUsd": 2.2076000000000002,
+            "billedUsd": 0.011038000000000001,
+            "meanInputTokens": 996.8,
+            "meanOutputTokens": 21.4
+          }
+        },
+        {
+          "model": "luna",
+          "n": 5,
+          "primary": {
+            "value": 0.23809523809523808,
+            "ci": [
+              0,
+              0.2857142857142857
+            ]
+          },
+          "successOnly": {
+            "value": 0.23809523809523808,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.4,
+            "f1Positive": null,
+            "macroF1": 0.23809523809523808
+          },
+          "vsJev": {
+            "diff": {
+              "value": -0.0714285714285714,
+              "ci": [
+                -0.14285714285714285,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 1,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "section",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.33052,
+              "intersectionN": 5,
+              "ece": 0.42000000000000004,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 1,
+                  "meanConfidence": 0.42,
+                  "observed": 0
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.82,
+                  "observed": 0
+                },
+                {
+                  "index": 13,
+                  "n": 2,
+                  "meanConfidence": 0.9,
+                  "observed": 0.5
+                },
+                {
+                  "index": 14,
+                  "n": 1,
+                  "meanConfidence": 0.94,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1140,
+            "p95": 1958,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.00005932,
+            "per1kUsd": 0.059320000000000005,
+            "billedUsd": 0.0002966,
+            "meanInputTokens": 483.2,
+            "meanOutputTokens": 22
+          }
+        },
+        {
+          "model": "sol",
+          "n": 5,
+          "primary": {
+            "value": 0.35714285714285715,
+            "ci": [
+              0.047619047619047616,
+              0.42857142857142855
+            ]
+          },
+          "successOnly": {
+            "value": 0.35714285714285715,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.6,
+            "f1Positive": null,
+            "macroF1": 0.35714285714285715
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0.04761904761904767,
+              "ci": [
+                0,
+                0.07142857142857145
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "section",
+              "mode": "choice",
+              "source": "verbalized",
+              "brier": 0.20732,
+              "intersectionN": 5,
+              "ece": 0.34,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 1,
+                  "meanConfidence": 0.59,
+                  "observed": 0
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 1,
+                  "meanConfidence": 0.72,
+                  "observed": 1
+                },
+                {
+                  "index": 11,
+                  "n": 1,
+                  "meanConfidence": 0.78,
+                  "observed": 0
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 2,
+                  "meanConfidence": 0.975,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1689,
+            "p95": 1947,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0011864,
+            "per1kUsd": 1.1864,
+            "billedUsd": 0.005932,
+            "meanInputTokens": 483.2,
+            "meanOutputTokens": 22
+          }
+        }
+      ],
+      "referenceBaselines": [],
+      "notes": []
+    },
+    {
+      "id": "kmhas",
+      "task": null,
+      "tier": "default",
+      "license": "cc-by-sa-4.0",
+      "source": "jeanlee/kmhas_korean_hate_speech (default/test)",
+      "revision": "c657d15baf277c48d467f0625f7d33c50d4352ef",
+      "n": 5,
+      "primaryMetric": "accuracy",
+      "labels": null,
+      "maxInputChars": null,
+      "results": [
+        {
+          "model": "jev",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": null,
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "hate_speech",
+              "mode": "noul",
+              "source": "jev-direct",
+              "brier": 0.08653999999999999,
+              "intersectionN": 5,
+              "ece": 0.24999999999999997,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 1,
+                  "meanConfidence": 0.05,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 1,
+                  "meanConfidence": 0.24,
+                  "observed": 0
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 1,
+                  "meanConfidence": 0.49,
+                  "observed": 0
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 1,
+                  "meanConfidence": 0.66,
+                  "observed": 1
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.87,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 205,
+            "p95": 242,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.000018102,
+            "per1kUsd": 0.018102,
+            "billedUsd": 0.00009051,
+            "meanInputTokens": 431,
+            "meanOutputTokens": 23
+          }
+        },
+        {
+          "model": "haiku",
+          "n": 5,
+          "primary": {
+            "value": 0.8,
+            "ci": [
+              0.4,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.8,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.8,
+            "f1Positive": 0.8,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": -0.19999999999999996,
+              "ci": [
+                -0.6,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 1,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "hate_speech",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.12285999999999997,
+              "intersectionN": 5,
+              "ece": 0.258,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 1,
+                  "meanConfidence": 0.05,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 1,
+                  "meanConfidence": 0.15,
+                  "observed": 0
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 1,
+                  "meanConfidence": 0.72,
+                  "observed": 0
+                },
+                {
+                  "index": 11,
+                  "n": 1,
+                  "meanConfidence": 0.78,
+                  "observed": 1
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.85,
+                  "observed": 1
+                },
+                {
+                  "index": 13,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 14,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1030,
+            "p95": 1560,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0007026000000000001,
+            "per1kUsd": 0.7026,
+            "billedUsd": 0.003513,
+            "meanInputTokens": 625.6,
+            "meanOutputTokens": 15.4
+          }
+        },
+        {
+          "model": "sonnet",
+          "n": 5,
+          "primary": {
+            "value": 0.6,
+            "ci": [
+              0.2,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.6,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.6,
+            "f1Positive": 0.6666666666666666,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": -0.4,
+              "ci": [
+                -0.8,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 2,
+              "c": 0,
+              "p": 0.5,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "hate_speech",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.23167999999999997,
+              "intersectionN": 5,
+              "ece": 0.3560000000000001,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 1,
+                  "meanConfidence": 0.03,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 2,
+                  "meanConfidence": 0.75,
+                  "observed": 0
+                },
+                {
+                  "index": 12,
+                  "n": 1,
+                  "meanConfidence": 0.85,
+                  "observed": 1
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.9,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 2828,
+            "p95": 3226,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0018076,
+            "per1kUsd": 1.8075999999999999,
+            "billedUsd": 0.009038000000000001,
+            "meanInputTokens": 808.8,
+            "meanOutputTokens": 19
+          }
+        },
+        {
+          "model": "luna",
+          "n": 5,
+          "primary": {
+            "value": 1,
+            "ci": [
+              1,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 1,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 1,
+            "f1Positive": 1,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": 0,
+              "ci": [
+                0,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 0,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "hate_speech",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.007800000000000001,
+              "intersectionN": 5,
+              "ece": 0.07600000000000001,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 1,
+                  "meanConfidence": 0.03,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 2,
+                  "meanConfidence": 0.1,
+                  "observed": 0
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 1,
+                  "meanConfidence": 0.87,
+                  "observed": 1
+                },
+                {
+                  "index": 14,
+                  "n": 1,
+                  "meanConfidence": 0.98,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 976,
+            "p95": 1053,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.00004864,
+            "per1kUsd": 0.04864,
+            "billedUsd": 0.00024320000000000003,
+            "meanInputTokens": 391.4,
+            "meanOutputTokens": 19
+          }
+        },
+        {
+          "model": "sol",
+          "n": 5,
+          "primary": {
+            "value": 0.8,
+            "ci": [
+              0.4,
+              1
+            ]
+          },
+          "successOnly": {
+            "value": 0.8,
+            "n": 5
+          },
+          "secondary": {
+            "accuracy": 0.8,
+            "f1Positive": 0.8,
+            "macroF1": null
+          },
+          "vsJev": {
+            "diff": {
+              "value": -0.19999999999999996,
+              "ci": [
+                -0.6,
+                0
+              ]
+            },
+            "mcnemar": {
+              "b": 1,
+              "c": 0,
+              "p": 1,
+              "pHolm": 1,
+              "family": "preregistered"
+            }
+          },
+          "successRate": 1,
+          "refusalRate": 0,
+          "errorCounts": {
+            "refusal": 0,
+            "format": 0,
+            "max_tokens": 0,
+            "range": 0,
+            "client_4xx": 0,
+            "api": 0,
+            "config": 0
+          },
+          "calibration": [
+            {
+              "task": "hate_speech",
+              "mode": "noul",
+              "source": "verbalized",
+              "brier": 0.17674,
+              "intersectionN": 5,
+              "ece": 0.18200000000000005,
+              "n": 5,
+              "bins": [
+                {
+                  "index": 0,
+                  "n": 2,
+                  "meanConfidence": 0.04,
+                  "observed": 0
+                },
+                {
+                  "index": 1,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 2,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 3,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 4,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 5,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 6,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 7,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 8,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 9,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 10,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 11,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 12,
+                  "n": 0,
+                  "meanConfidence": null,
+                  "observed": null
+                },
+                {
+                  "index": 13,
+                  "n": 2,
+                  "meanConfidence": 0.905,
+                  "observed": 0.5
+                },
+                {
+                  "index": 14,
+                  "n": 1,
+                  "meanConfidence": 0.98,
+                  "observed": 1
+                }
+              ]
+            }
+          ],
+          "latency": {
+            "p50": 1420,
+            "p95": 1572,
+            "n": 5,
+            "retriedCalls": 0,
+            "priorRunShare": 0
+          },
+          "cost": {
+            "perCallUsd": 0.0009727999999999999,
+            "per1kUsd": 0.9727999999999999,
+            "billedUsd": 0.004864,
+            "meanInputTokens": 391.4,
+            "meanOutputTokens": 19
+          }
+        }
+      ],
+      "referenceBaselines": [],
+      "notes": []
+    }
+  ],
+  "reliability": [
+    {
+      "model": "jev",
+      "mode": "choice",
+      "source": "jev-direct",
+      "datasets": [
+        "sst2",
+        "ag-news",
+        "banking77",
+        "klue-ynat"
+      ],
+      "n": 20,
+      "ece": 0.1505,
+      "bins": [
+        {
+          "index": 0,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 1,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 2,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 3,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 4,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 5,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 6,
+          "n": 1,
+          "meanConfidence": 0.45,
+          "observed": 1
+        },
+        {
+          "index": 7,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 8,
+          "n": 1,
+          "meanConfidence": 0.59,
+          "observed": 0
+        },
+        {
+          "index": 9,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 10,
+          "n": 1,
+          "meanConfidence": 0.6900000000000001,
+          "observed": 0
+        },
+        {
+          "index": 11,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 12,
+          "n": 2,
+          "meanConfidence": 0.84,
+          "observed": 1
+        },
+        {
+          "index": 13,
+          "n": 3,
+          "meanConfidence": 0.9,
+          "observed": 0.6666666666666666
+        },
+        {
+          "index": 14,
+          "n": 12,
+          "meanConfidence": 0.9866666666666667,
+          "observed": 1
+        }
+      ]
+    },
+    {
+      "model": "jev",
+      "mode": "noul",
+      "source": "jev-direct",
+      "datasets": [
+        "enron-spam",
+        "jbb-judge",
+        "kmhas"
+      ],
+      "n": 15,
+      "ece": 0.13333333333333333,
+      "bins": [
+        {
+          "index": 0,
+          "n": 6,
+          "meanConfidence": 0.03,
+          "observed": 0
+        },
+        {
+          "index": 1,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 2,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 3,
+          "n": 1,
+          "meanConfidence": 0.24,
+          "observed": 0
+        },
+        {
+          "index": 4,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 5,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 6,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 7,
+          "n": 1,
+          "meanConfidence": 0.49,
+          "observed": 0
+        },
+        {
+          "index": 8,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 9,
+          "n": 1,
+          "meanConfidence": 0.66,
+          "observed": 1
+        },
+        {
+          "index": 10,
+          "n": 1,
+          "meanConfidence": 0.7,
+          "observed": 1
+        },
+        {
+          "index": 11,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 12,
+          "n": 1,
+          "meanConfidence": 0.8,
+          "observed": 1
+        },
+        {
+          "index": 13,
+          "n": 1,
+          "meanConfidence": 0.87,
+          "observed": 1
+        },
+        {
+          "index": 14,
+          "n": 3,
+          "meanConfidence": 0.96,
+          "observed": 1
+        }
+      ]
+    },
+    {
+      "model": "haiku",
+      "mode": "choice",
+      "source": "verbalized",
+      "datasets": [
+        "sst2",
+        "ag-news",
+        "banking77",
+        "klue-ynat"
+      ],
+      "n": 20,
+      "ece": 0.215,
+      "bins": [
+        {
+          "index": 0,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 1,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 2,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 3,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 4,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 5,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 6,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 7,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 8,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 9,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 10,
+          "n": 3,
+          "meanConfidence": 0.7200000000000001,
+          "observed": 0
+        },
+        {
+          "index": 11,
+          "n": 2,
+          "meanConfidence": 0.75,
+          "observed": 1
+        },
+        {
+          "index": 12,
+          "n": 2,
+          "meanConfidence": 0.85,
+          "observed": 0.5
+        },
+        {
+          "index": 13,
+          "n": 5,
+          "meanConfidence": 0.9200000000000002,
+          "observed": 0.8
+        },
+        {
+          "index": 14,
+          "n": 8,
+          "meanConfidence": 0.9575000000000001,
+          "observed": 1
+        }
+      ]
+    },
+    {
+      "model": "haiku",
+      "mode": "noul",
+      "source": "verbalized",
+      "datasets": [
+        "enron-spam",
+        "jbb-judge",
+        "kmhas"
+      ],
+      "n": 15,
+      "ece": 0.12933333333333336,
+      "bins": [
+        {
+          "index": 0,
+          "n": 6,
+          "meanConfidence": 0.025000000000000005,
+          "observed": 0
+        },
+        {
+          "index": 1,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 2,
+          "n": 1,
+          "meanConfidence": 0.15,
+          "observed": 0
+        },
+        {
+          "index": 3,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 4,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 5,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 6,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 7,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 8,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 9,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 10,
+          "n": 1,
+          "meanConfidence": 0.72,
+          "observed": 0
+        },
+        {
+          "index": 11,
+          "n": 2,
+          "meanConfidence": 0.765,
+          "observed": 1
+        },
+        {
+          "index": 12,
+          "n": 2,
+          "meanConfidence": 0.85,
+          "observed": 1
+        },
+        {
+          "index": 13,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 14,
+          "n": 3,
+          "meanConfidence": 0.9499999999999998,
+          "observed": 1
+        }
+      ]
+    },
+    {
+      "model": "sonnet",
+      "mode": "choice",
+      "source": "verbalized",
+      "datasets": [
+        "sst2",
+        "ag-news",
+        "banking77",
+        "klue-ynat"
+      ],
+      "n": 20,
+      "ece": 0.11499999999999999,
+      "bins": [
+        {
+          "index": 0,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 1,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 2,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 3,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 4,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 5,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 6,
+          "n": 1,
+          "meanConfidence": 0.45,
+          "observed": 0
+        },
+        {
+          "index": 7,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 8,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 9,
+          "n": 4,
+          "meanConfidence": 0.6275000000000001,
+          "observed": 0.5
+        },
+        {
+          "index": 10,
+          "n": 1,
+          "meanConfidence": 0.7,
+          "observed": 1
+        },
+        {
+          "index": 11,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 12,
+          "n": 4,
+          "meanConfidence": 0.8425,
+          "observed": 1
+        },
+        {
+          "index": 13,
+          "n": 2,
+          "meanConfidence": 0.905,
+          "observed": 1
+        },
+        {
+          "index": 14,
+          "n": 8,
+          "meanConfidence": 0.9725,
+          "observed": 1
+        }
+      ]
+    },
+    {
+      "model": "sonnet",
+      "mode": "noul",
+      "source": "verbalized",
+      "datasets": [
+        "enron-spam",
+        "jbb-judge",
+        "kmhas"
+      ],
+      "n": 15,
+      "ece": 0.15966666666666668,
+      "bins": [
+        {
+          "index": 0,
+          "n": 6,
+          "meanConfidence": 0.02666666666666667,
+          "observed": 0
+        },
+        {
+          "index": 1,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 2,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 3,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 4,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 5,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 6,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 7,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 8,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 9,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 10,
+          "n": 1,
+          "meanConfidence": 0.7,
+          "observed": 1
+        },
+        {
+          "index": 11,
+          "n": 2,
+          "meanConfidence": 0.75,
+          "observed": 0
+        },
+        {
+          "index": 12,
+          "n": 2,
+          "meanConfidence": 0.85,
+          "observed": 1
+        },
+        {
+          "index": 13,
+          "n": 1,
+          "meanConfidence": 0.9,
+          "observed": 1
+        },
+        {
+          "index": 14,
+          "n": 3,
+          "meanConfidence": 0.9883333333333333,
+          "observed": 1
+        }
+      ]
+    },
+    {
+      "model": "luna",
+      "mode": "choice",
+      "source": "verbalized",
+      "datasets": [
+        "sst2",
+        "ag-news",
+        "banking77",
+        "klue-ynat"
+      ],
+      "n": 20,
+      "ece": 0.20150000000000007,
+      "bins": [
+        {
+          "index": 0,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 1,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 2,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 3,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 4,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 5,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 6,
+          "n": 1,
+          "meanConfidence": 0.42,
+          "observed": 0
+        },
+        {
+          "index": 7,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 8,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 9,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 10,
+          "n": 1,
+          "meanConfidence": 0.71,
+          "observed": 1
+        },
+        {
+          "index": 11,
+          "n": 1,
+          "meanConfidence": 0.74,
+          "observed": 1
+        },
+        {
+          "index": 12,
+          "n": 2,
+          "meanConfidence": 0.82,
+          "observed": 0
+        },
+        {
+          "index": 13,
+          "n": 3,
+          "meanConfidence": 0.9066666666666667,
+          "observed": 0.6666666666666666
+        },
+        {
+          "index": 14,
+          "n": 12,
+          "meanConfidence": 0.9750000000000001,
+          "observed": 0.9166666666666666
+        }
+      ]
+    },
+    {
+      "model": "luna",
+      "mode": "noul",
+      "source": "verbalized",
+      "datasets": [
+        "enron-spam",
+        "jbb-judge",
+        "kmhas"
+      ],
+      "n": 15,
+      "ece": 0.032666666666666656,
+      "bins": [
+        {
+          "index": 0,
+          "n": 6,
+          "meanConfidence": 0.013333333333333334,
+          "observed": 0
+        },
+        {
+          "index": 1,
+          "n": 2,
+          "meanConfidence": 0.1,
+          "observed": 0
+        },
+        {
+          "index": 2,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 3,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 4,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 5,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 6,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 7,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 8,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 9,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 10,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 11,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 12,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 13,
+          "n": 1,
+          "meanConfidence": 0.87,
+          "observed": 1
+        },
+        {
+          "index": 14,
+          "n": 6,
+          "meanConfidence": 0.9866666666666667,
+          "observed": 1
+        }
+      ]
+    },
+    {
+      "model": "sol",
+      "mode": "choice",
+      "source": "verbalized",
+      "datasets": [
+        "sst2",
+        "ag-news",
+        "banking77",
+        "klue-ynat"
+      ],
+      "n": 20,
+      "ece": 0.20629999999999998,
+      "bins": [
+        {
+          "index": 0,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 1,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 2,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 3,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 4,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 5,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 6,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 7,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 8,
+          "n": 2,
+          "meanConfidence": 0.58,
+          "observed": 0
+        },
+        {
+          "index": 9,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 10,
+          "n": 2,
+          "meanConfidence": 0.7,
+          "observed": 0.5
+        },
+        {
+          "index": 11,
+          "n": 1,
+          "meanConfidence": 0.78,
+          "observed": 0
+        },
+        {
+          "index": 12,
+          "n": 1,
+          "meanConfidence": 0.8,
+          "observed": 0
+        },
+        {
+          "index": 13,
+          "n": 2,
+          "meanConfidence": 0.915,
+          "observed": 1
+        },
+        {
+          "index": 14,
+          "n": 12,
+          "meanConfidence": 0.9846666666666666,
+          "observed": 0.9166666666666666
+        }
+      ]
+    },
+    {
+      "model": "sol",
+      "mode": "noul",
+      "source": "verbalized",
+      "datasets": [
+        "enron-spam",
+        "jbb-judge",
+        "kmhas"
+      ],
+      "n": 15,
+      "ece": 0.07746666666666671,
+      "bins": [
+        {
+          "index": 0,
+          "n": 7,
+          "meanConfidence": 0.013714285714285715,
+          "observed": 0
+        },
+        {
+          "index": 1,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 2,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 3,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 4,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 5,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 6,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 7,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 8,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 9,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 10,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 11,
+          "n": 0,
+          "meanConfidence": null,
+          "observed": null
+        },
+        {
+          "index": 12,
+          "n": 1,
+          "meanConfidence": 0.83,
+          "observed": 1
+        },
+        {
+          "index": 13,
+          "n": 2,
+          "meanConfidence": 0.905,
+          "observed": 0.5
+        },
+        {
+          "index": 14,
+          "n": 5,
+          "meanConfidence": 0.9827999999999999,
+          "observed": 1
+        }
+      ]
+    }
+  ],
+  "holm": {
+    "familySize": 28,
+    "preregisteredSize": 28,
+    "jevIncluded": true
+  },
+  "warnings": [
+    "sst2: Brier 교집합 n=5(100 미만) — 보정 비교 해석에 주의",
+    "ag-news: Brier 교집합 n=5(100 미만) — 보정 비교 해석에 주의",
+    "banking77: Brier 교집합 n=5(100 미만) — 보정 비교 해석에 주의",
+    "enron-spam: Brier 교집합 n=5(100 미만) — 보정 비교 해석에 주의",
+    "jbb-judge: Brier 교집합 n=5(100 미만) — 보정 비교 해석에 주의",
+    "klue-ynat: Brier 교집합 n=5(100 미만) — 보정 비교 해석에 주의",
+    "kmhas: Brier 교집합 n=5(100 미만) — 보정 비교 해석에 주의"
+  ],
+  "skipped": []
+}
