@@ -1,4 +1,4 @@
-// 실행 계획 — 데이터셋을 받아 표본을 뽑고, 모델×데이터셋별 호출 수·캐시 적중 예정·토큰·비용·시간을 추정한다(계획 §6 U4, §7).
+// 실행 계획 — 데이터셋을 받아 표본을 뽑고, 모델×데이터셋별 호출 수·예상 캐시 적중·토큰·비용·시간을 추정한다(계획 §6 U4, §7).
 // 토큰 추정은 o200k 근사(영어 문자÷4, 한글 문자÷1.5)에 모델별 입력 계수를, 출력 기준선(과제당 25)에 출력 계수를 곱한다(models.ts).
 import { loadDataset, type DatasetMeta } from "./data/store";
 import { stratifiedSample } from "./data/sample";
@@ -299,7 +299,7 @@ export function renderPreview(cells: readonly PlannedCell[], options: BenchOptio
     "",
     renderTable(header, rows),
     "",
-    `비용은 캐시 미스 호출만의 추정에 안전계수 ${COST_SAFETY_FACTOR}을 곱한 값이다(토큰은 o200k 근사 × 모델별 입력·출력 계수).`,
+    `비용은 캐시 미스 호출만 추정해 안전계수 ${COST_SAFETY_FACTOR}을 곱한 값이다(토큰은 o200k 근사 × 모델별 입력·출력 계수).`,
     ...(showUpper
       ? ["default 상한은 출력이 max_tokens 4096을 모두 쓸 때의 비용이다(안전계수 미적용)."]
       : []),

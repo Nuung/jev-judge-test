@@ -12,11 +12,11 @@ const SDK_PATTERN = {
     "@/lib/jev",
     "@/lib/jev/**",
     "**/lib/jev/**",
-    // lib/judge에서의 상대경로
+    // lib/judge 기준 상대경로
     "../jev",
     "../jev/**",
   ],
-  message: "SDK/Jev 클라이언트는 app/api 라우트 핸들러(와 bench)에서만 사용한다",
+  message: "SDK/Jev 클라이언트는 app/api 라우트 핸들러(와 bench)에서만 쓴다",
 };
 
 const APP_PATTERN = {

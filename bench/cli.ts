@@ -56,7 +56,7 @@ const PARSER_SOURCES = ["providers/prompt.ts", "providers/jev.ts", "providers/an
 const HELP = `사용법: pnpm bench [옵션]
 
 공개 벤치마크로 Jev와 Claude·OpenAI 모델을 비교한다.
-실행 전 호출 수·캐시 적중 예정·토큰·비용·시간을 미리 보여 주고 확인을 받는다.
+실행 전에 호출 수·예상 캐시 적중·토큰·비용·시간을 보여 주고 확인을 받는다.
 결과는 bench/results/<시각>/에 저장한다.
 
 옵션:
@@ -86,7 +86,7 @@ function parseList<T extends string>(raw: string | undefined, allowed: readonly 
     if (found === undefined) throw new UsageError(`알 수 없는 ${what}: ${item} (가능: ${allowed.join(", ")})`);
     if (!out.includes(found)) out.push(found);
   }
-  if (out.length === 0) throw new UsageError(`${what}를 하나 이상 지정하세요.`);
+  if (out.length === 0) throw new UsageError(`${what} 목록이 비어 있습니다. 하나 이상 지정하세요.`);
   return out;
 }
 
@@ -111,7 +111,7 @@ function parseOptions(argv: readonly string[]): BenchOptions | "help" {
   if (!Number.isInteger(limit) || limit < 1) throw new UsageError(`--limit은 1 이상의 정수여야 합니다: ${values.limit}`);
   const reasoningRaw = values.reasoning ?? "off";
   const reasoning: ReasoningMode | undefined = REASONING_MODES.find((m) => m === reasoningRaw);
-  if (reasoning === undefined) throw new UsageError(`--reasoning은 ${REASONING_MODES.join(" | ")} 중 하나입니다: ${reasoningRaw}`);
+  if (reasoning === undefined) throw new UsageError(`--reasoning은 ${REASONING_MODES.join(" | ")} 중 하나여야 합니다: ${reasoningRaw}`);
 
   return {
     models: parseList<ModelAlias>(values.models, MODEL_ALIASES, "모델 별칭", MODEL_ALIASES),

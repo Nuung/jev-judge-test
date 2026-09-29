@@ -72,7 +72,7 @@ export function MoodMirror() {
     if (!trimmed || isLoading) return;
 
     setRequest({ status: "loading" });
-    // 사용자가 제출한 데 따른 동작이라 effect가 아니라 핸들러에서 결과 자리로 스크롤한다
+    // 사용자가 제출해서 일어나는 동작이라 effect가 아니라 핸들러에서 결과 자리로 스크롤한다
     revealResultOnMobile(resultRef.current);
     const face = faceSnapshotRef.current;
     const result = await requestJudgment(trimmed, face);

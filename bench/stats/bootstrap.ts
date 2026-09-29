@@ -14,7 +14,7 @@ const RANK_EPSILON = 1e-9;
  * 순위 = ⌈q·n − 1e-9⌉(1-based, 최소 1). values는 정렬하지 않아도 된다.
  */
 export function percentileInvertedCdf(values: readonly number[], q: number): number {
-  if (values.length === 0) throw new RangeError("빈 배열의 백분위");
+  if (values.length === 0) throw new RangeError("빈 배열은 백분위를 구할 수 없다");
   if (!(q >= 0 && q <= 1)) throw new RangeError(`q는 [0, 1]이어야 한다: ${q}`);
   const sorted = [...values].sort((a, b) => a - b);
   const rank = Math.max(1, Math.ceil(q * sorted.length - RANK_EPSILON));

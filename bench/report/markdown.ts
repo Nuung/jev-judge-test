@@ -226,7 +226,7 @@ function settingsSection(metrics: Metrics): string {
     "",
     `- 추론: \`${s.reasoning}\` · 시도당 타임아웃 ${s.timeoutMs.toLocaleString("en-US")}ms · 최대 재시도 ${s.maxRetries}회 · temperature ${s.temperature === "unset" ? "설정 안 함(제공자 기본값)" : s.temperature}`,
     `- 시드 ${metrics.seed}(mulberry32, 용도·데이터셋·모델 문자열 해시로 파생) · paired bootstrap B=${metrics.bootstrap.iterations.toLocaleString("en-US")}, ${Math.round(metrics.bootstrap.level * 100)}% CI(percentile \`${metrics.bootstrap.percentile}\`) · ECE ${metrics.eceBins} bin`,
-    `- 실패는 abstain으로 센다(ITT): 정확도에서는 오답, F1에서는 정답 클래스의 FN으로만 센다. 성공 기준 열은 성공 케이스만으로 계산했다.`,
+    `- 실패는 abstain(ITT)이다: 정확도에서는 오답, F1에서는 정답 클래스의 FN으로만 센다. 성공 기준 열은 성공 케이스만으로 계산했다.`,
     `- McNemar: 정확 이항 양측, b = Jev만 정답, c = LLM만 정답. Holm은 이번 실행의 비교 ${metrics.holm.familySize}개에 적용(사전 선언 집합 ${metrics.holm.preregisteredSize}개${metrics.holm.familySize < metrics.holm.preregisteredSize ? "의 부분 집합 — 해석에 주의" : ""}).${metrics.holm.jevIncluded ? "" : " Jev가 실행에 없어 McNemar를 생략했다."}`,
     `- Noul 판정은 모든 모델에 p(true)≥0.5 → true를 적용한다. 지연 p50/p95는 첫 시도에 성공한 호출만(nearest-rank).`,
     `- 비용: "1천 건당"은 토큰 사용량 기준 단가(캐시 여부 무관), "이번 실행 청구"는 캐시 미스 호출만 합친 추정.`,
@@ -242,8 +242,8 @@ function settingsSection(metrics: Metrics): string {
 }
 
 const LIMITATIONS = [
-  "LLM의 확률은 말로 답한(verbalized) 값이라 0.9·0.95 같은 값에 몰리는 양자화가 있다. Jev는 모델이 직접 낸 확률이라 출처가 다르다(표의 확률 출처 열).",
-  "LLM 시스템 프롬프트에만 과신 경고 문구가 있다. 보정 지표 비교에 이 개입이 섞여 있다.",
+  "LLM 확률은 말로 답한(verbalized) 값이라 0.9·0.95처럼 몇몇 값에 몰린다(양자화). Jev는 모델이 직접 낸 확률이라 출처가 다르다(표의 확률 출처 열).",
+  "LLM 시스템 프롬프트에만 과신 경고 문구가 있어 보정 지표 비교에 이 개입의 효과가 섞여 있다.",
   "추론은 기본으로 껐다(`--reasoning off`). 추론을 켜면 정확도·비용·지연이 달라질 수 있다.",
   "제공자별 레인을 동시에 돌려 모델마다 측정 시간대가 다르다. 레인 시작·종료 시각은 설정 절과 run.json에 있다. 캐시 적중 호출의 지연은 이전 실행에서 잰 값이다.",
   "Enron 스팸 본문은 모든 모델에 같은 길이로 잘라 보냈다(입력 절단 열).",

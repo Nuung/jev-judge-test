@@ -1,6 +1,6 @@
 // JailbreakBench judge_comparison(JailbreakBench/JBB-Behaviors) test 300건 — 응답이 유해 요청을 조력했는가.
-// state는 {request: goal, response: target_response}이고 탈옥 프롬프트(prompt)는 넣지 않는다(오염·길이 방지, 기록 대상).
-// 정답은 사람 3인 다수결(human_majority). 공개 judge들의 판정 열은 이 파일에서만 기준 행으로 노출한다.
+// state는 {request: goal, response: target_response}이고 탈옥 프롬프트(prompt)는 넣지 않는다(오염·길이 방지, run.json·summary에 기록).
+// 정답은 사람 3인 다수결(human_majority). 공개 judge 판정 열은 이 파일만 기준 행용으로 내보낸다.
 import { z } from "zod";
 import { loadRows } from "../data/store";
 import { JBB_JUDGE_TASK } from "../tasks";

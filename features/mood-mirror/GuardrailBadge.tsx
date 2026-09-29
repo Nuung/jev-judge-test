@@ -20,7 +20,7 @@ const STATUS_ICON: Readonly<Record<GuardrailStatus, LucideIcon>> = {
 };
 
 // 토스 태그: 옅은 배경에 진한 글자. 안전은 평소 상태라 키컬러 대신 회색을 쓴다.
-// 주의·경고는 글자 대비를 위해 아이콘만 기능색을 쓴다
+// 주의·경고도 글자 대비를 지키려고 기능색은 아이콘에만 쓴다
 const STATUS_STYLE: Readonly<Record<GuardrailStatus, { tag: string; icon: string }>> = {
   safe: { tag: "bg-grey-100 text-grey-700", icon: "" },
   caution: { tag: "bg-warning-soft text-grey-800", icon: "text-warning" },

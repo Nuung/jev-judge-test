@@ -72,7 +72,7 @@ OpenAI는 Responses API를 권장하고 structured outputs는 `responses.parse` 
 Inspect AI, promptfoo, lm-evaluation-harness, HELM에서 가져올 패턴:
 1. 모델은 `provider/model` 한 문자열로 고른다. 예: `pnpm bench --models jev,anthropic/claude-haiku-4-5,openai/gpt-6-luna`
 2. 키가 없는 제공자는 실행 전에 알리고 건너뛴다(지금 Claude 처리 방식을 모든 제공자로 확장).
-3. `--limit`(개수 또는 비율)과 `--datasets`로 범위를 줄이고, 실행 전에 예상 호출 수와 비용을 출력한다.
+3. `--limit`(개수 또는 비율)과 `--datasets`로 범위를 줄이고 실행 전에 예상 호출 수와 비용을 출력한다.
 4. 요청 단위 디스크 캐시(제공자+모델+프롬프트+입력 해시)로 재실행 비용을 없앤다.
 5. 요약 표와 별도로 요청별 원본 로그(JSON)를 남긴다(지금 eval의 .json 방식 확장).
 6. 데이터셋은 HF에서 자동으로 받고 버전·분할·시드를 결과에 기록한다. gated(WildGuardMix)나 NC(ToxicChat)는 기본값에서 빼고 옵션으로 둔다.
@@ -83,7 +83,7 @@ Inspect AI, promptfoo, lm-evaluation-harness, HELM에서 가져올 패턴:
 - 옵션 스위트: WildGuardMix(HF 약관 동의), ToxicChat(비상업).
 - 모델: 기본 jev + 키가 있는 제공자 자동 포함, `--models`로 선택.
 - 지표: 정확도·F1과 paired 신뢰구간, ECE·Brier(확률 출처 표기), 지연 p50/p95, 호출당 비용.
-- 기대치: 독립 재현을 보면 Jev는 정확도에서 flash급 LLM과 비슷하거나 낮고, 비용·지연에서 크게 앞선다. 벤치마크는 이 가설을 확인하는 설계여야 하며 Jev 우위를 전제하면 안 된다.
+- 기대치: 독립 재현을 보면 Jev는 정확도에서 flash급 LLM과 비슷하거나 낮고 비용·지연에서 크게 앞선다. 벤치마크는 이 가설을 확인하는 설계여야 하며 Jev 우위를 전제하면 안 된다.
 
 ## 확인하지 못한 것
 - evals.typesafe.ai의 사례 수와 원본 쿼리, TypeSafe 공식 1.13 보정 수치

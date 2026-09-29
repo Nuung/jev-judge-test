@@ -1,5 +1,5 @@
 // 화면에만 쓰는 라벨이라 features 계층에 둔다.
-// lib/judge/labels.ts는 판정 SDK·eval과 공유하는 최소 집합만 유지한다.
+// lib/judge/labels.ts는 판정 SDK·eval과 공유하는 최소 집합만 둔다.
 import type { FaceStrength } from "@/lib/judge/face";
 import type { FaceKey } from "@/lib/judge/labels";
 

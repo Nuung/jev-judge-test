@@ -15,7 +15,7 @@ bench/results/<시각>/metrics.json을 읽어 summary.md와 charts/*.{svg,png}�
 API를 호출하지 않는다.
 `;
 
-/** summary.md와 차트를 결과 폴더에 쓴다. 러너도 실행 끝에 같은 함수를 쓴다 */
+/** summary.md와 차트를 결과 폴더에 쓴다. 러너도 실행이 끝나면 이 함수를 부른다 */
 export async function writeReport(root: string, metrics: Metrics): Promise<void> {
   const paths = resultPaths(root);
   await writeFile(paths.summary, renderSummary(metrics), "utf8");

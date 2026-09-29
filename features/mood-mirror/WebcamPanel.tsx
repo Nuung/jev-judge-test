@@ -11,7 +11,7 @@ import { useFaceExpressions, type FaceReadingState } from "./useFaceExpressions"
 import type { FaceProbabilities } from "@/lib/judge/labels";
 
 export interface WebcamPanelProps {
-  /** 최신 표정 확률 스냅샷을 기록할 ref. 부모와 공유하며 리렌더를 유발하지 않는다. */
+  /** 최신 표정 확률 스냅샷을 기록할 ref. 부모와 공유하고 리렌더를 일으키지 않는다. */
   snapshotRef: RefObject<FaceProbabilities | null>;
 }
 
