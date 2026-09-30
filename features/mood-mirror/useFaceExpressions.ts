@@ -5,7 +5,7 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
 import type { FaceProbabilities } from "@/lib/judge/labels";
 
-/** 카메라·모델·추론 파이프라인의 현재 상태 (판별 유니온) */
+/** 카메라, 모델, 추론 파이프라인의 현재 상태 (판별 유니온) */
 export type FaceReadingState =
   | { status: "idle" }
   | { status: "requesting" }

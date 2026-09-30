@@ -1,7 +1,7 @@
-// Jev 질문 정의 단일 모듈 — 데모 라우트와 평가 스크립트가 공유한다.
+// Jev 질문 정의 단일 모듈이다. 데모 라우트와 평가 스크립트가 공유한다.
 // 한 번의 호출에 모든 질문을 묶어 보낸다(speculative fan-out). 코드가 필요한 답만 골라 쓴다.
 // 한국어는 Jev의 1차 언어가 아니므로 지시는 영어, 기준(criteria)에 한국어 예문을 둔다.
-// SDK 런타임(choice/noul)에 의존하므로 lib/jev에 둔다 — 화면 계층(features/app)에서는 import할 수 없다(ESLint 강제).
+// SDK 런타임(choice/noul)에 의존하므로 lib/jev에 둔다. 화면 계층(features/app)에서는 import할 수 없다(ESLint 강제).
 import { choice, noul, type Questions } from "@typesafe-ai/sdk";
 import { summarizeFace, type FaceState } from "@/lib/judge/face";
 import type { FaceProbabilities, MoodKey, ReactionKind } from "@/lib/judge/labels";
@@ -120,7 +120,7 @@ export const JUDGE_QUESTIONS = {
       },
     },
   ),
-  // 얼굴 유무·세기 조건은 코드(policy.ts decide)가 판단한다 — Jev에는 감정 모순 여부만 묻는다
+  // 얼굴 유무와 세기 조건은 코드(policy.ts decide)가 판단한다. Jev에는 감정 모순 여부만 묻는다
   mismatch: noul(
     "Does the emotion shown in `facial_expression` contradict the emotion expressed in `user_message`?",
     {

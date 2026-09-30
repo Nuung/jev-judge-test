@@ -1,4 +1,4 @@
-// 가드레일 태그. 인젝션·유해 확률 중 큰 값으로 안전·주의·경고 3단계를 나눠 아이콘과 글자로 보여 준다.
+// 가드레일 태그. 인젝션과 유해 확률 중 큰 값으로 안전, 주의, 경고 3단계를 나눠 아이콘과 글자로 보여 준다.
 import { ShieldAlert, ShieldCheck, ShieldX, type LucideIcon } from "lucide-react";
 import type { Decision, GuardrailStatus } from "@/lib/judge/schema";
 import { formatPercent } from "./format";
@@ -20,7 +20,7 @@ const STATUS_ICON: Readonly<Record<GuardrailStatus, LucideIcon>> = {
 };
 
 // 토스 태그: 옅은 배경에 진한 글자. 안전은 평소 상태라 키컬러 대신 회색을 쓴다.
-// 주의·경고도 글자 대비를 지키려고 기능색은 아이콘에만 쓴다
+// 주의와 경고도 글자 대비를 지키려고 기능색은 아이콘에만 쓴다
 const STATUS_STYLE: Readonly<Record<GuardrailStatus, { tag: string; icon: string }>> = {
   safe: { tag: "bg-grey-100 text-grey-700", icon: "" },
   caution: { tag: "bg-warning-soft text-grey-800", icon: "text-warning" },

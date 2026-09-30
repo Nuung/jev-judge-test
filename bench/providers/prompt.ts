@@ -1,5 +1,5 @@
-// LLM 베이스라인 공용 — system 프롬프트, 구조화 출력 스키마, 응답 파싱, 해시.
-// Anthropic·OpenAI가 같은 프롬프트·스키마·파서를 쓴다. 질문 JSON은 Jev에 보내는 것과 같은 객체다.
+// LLM 베이스라인 공용: system 프롬프트, 구조화 출력 스키마, 응답 파싱, 해시.
+// Anthropic과 OpenAI가 같은 프롬프트, 스키마, 파서를 쓴다. 질문 JSON은 Jev에 보내는 것과 같은 객체다.
 import { createHash } from "node:crypto";
 import type { JsonValue, Questions } from "@typesafe-ai/sdk";
 import { z } from "zod";
@@ -109,7 +109,7 @@ export function textToOutput(text: string): JsonValue {
   }
 }
 
-// ── 해시(캐시 키·run.json 기록용) ──
+// ── 해시(캐시 키와 run.json 기록용) ──
 
 export function sha256(text: string): string {
   return createHash("sha256").update(text).digest("hex");

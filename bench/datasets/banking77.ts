@@ -1,4 +1,4 @@
-// Banking77(legacy-datasets/banking77) test 3,080건 — 은행 앱 의도 77클래스(각 40).
+// Banking77(legacy-datasets/banking77) test 3,080건. 은행 앱 의도 77클래스(각 40).
 // PolyAI/banking77은 스크립트형이라 datasets-server로 받을 수 없어 같은 데이터의 legacy 경로를 쓴다.
 import { z } from "zod";
 import { BANKING77_LABELS, BANKING77_TASK } from "../tasks";

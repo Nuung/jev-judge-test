@@ -1,5 +1,5 @@
-// 분류 지표 — accuracy, 이진 F1(양성), macro-F1(라벨 체계 전체). 계획 §4 주지표·ITT.
-// 실패(모든 errorKind)는 abstain(null)이다: accuracy에서는 오답, F1·macro-F1에서는 정답 클래스의 FN으로만 세고
+// 분류 지표: accuracy, 이진 F1(양성), macro-F1(라벨 체계 전체). 계획 §4 주지표와 ITT.
+// 실패(모든 errorKind)는 abstain(null)이다: accuracy에서는 오답, F1과 macro-F1에서는 정답 클래스의 FN으로만 세고
 // 어느 클래스에도 FP를 더하지 않는다. 분모가 0인 F1은 0(sklearn zero_division=0과 동일).
 import type { GoldValue, PrimaryMetric } from "../types";
 
@@ -19,7 +19,7 @@ export type Statistic = (indices: readonly number[]) => number;
 /** 주지표 값과 병기용 성공 기준 수치 */
 export interface MetricSummary {
   readonly metric: PrimaryMetric;
-  /** ITT(실패=abstain) 값 — 주지표 */
+  /** ITT(실패=abstain) 값. 주지표 */
   readonly value: number;
   /** 성공 케이스만으로 계산한 값(성공 0건이면 null) */
   readonly successOnly: number | null;
@@ -112,7 +112,7 @@ function positiveCode<L extends GoldValue>(cases: ScoredCases<L>): number {
   return code;
 }
 
-/** 지표를 재표집 인덱스의 함수로 만든다(라벨 부호화는 한 번만) — bootstrap용 */
+/** 지표를 재표집 인덱스의 함수로 만든다(라벨 부호화는 한 번만). bootstrap용 */
 export function metricStatistic<L extends GoldValue>(metric: PrimaryMetric, cases: ScoredCases<L>): Statistic {
   const e = encode(cases);
   switch (metric) {
@@ -171,7 +171,7 @@ export function macroF1<L extends GoldValue>(
   return metricStatistic("macro_f1", { labels, gold, pred })(allIndices(gold.length));
 }
 
-/** 주지표(ITT)와 성공 기준 수치·실패율을 함께 낸다 */
+/** 주지표(ITT)와 성공 기준 수치, 실패율을 함께 낸다 */
 export function summarizeMetric<L extends GoldValue>(metric: PrimaryMetric, cases: ScoredCases<L>): MetricSummary {
   const n = cases.gold.length;
   const value = metricStatistic(metric, cases)(allIndices(n));

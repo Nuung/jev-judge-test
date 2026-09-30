@@ -10,7 +10,7 @@ const KIND_ICON: Readonly<Record<ReactionKind, LucideIcon>> = {
   rest: Coffee,
 };
 
-/** 토스 리스트 행: 왼쪽 둥근 아이콘, 오른쪽 캡션·제목·본문 */
+/** 토스 리스트 행: 왼쪽 둥근 아이콘, 오른쪽 캡션, 제목, 본문 */
 function Row({ icon: Icon, caption, title, body }: {
   icon: LucideIcon;
   caption: string;

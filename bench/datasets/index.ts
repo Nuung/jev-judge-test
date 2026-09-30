@@ -1,4 +1,4 @@
-// 데이터셋 레지스트리 — id → 정의. 기본 실행은 tier "default" 7개만 쓴다.
+// 데이터셋 레지스트리(id → 정의). 기본 실행은 tier "default" 7개만 쓴다.
 import { DATASET_IDS, type DatasetId, type DatasetSpec } from "../types";
 import { agNews } from "./ag-news";
 import { banking77 } from "./banking77";

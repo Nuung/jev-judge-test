@@ -1,6 +1,6 @@
-// 보정 — Brier(주), ECE 15 등간격 bin(보조)과 신뢰도 곡선 bin 데이터. 계획 §4 보정.
+// 보정: Brier(주), ECE 15 등간격 bin(보조)과 신뢰도 곡선 bin 데이터. 계획 §4 보정.
 // Choice는 top-label(선택 라벨의 확률 vs 정답 여부), Noul은 p(true)(vs gold가 true인지)로 분리한다.
-// bin 규칙: index = min(⌊conf·15⌋, 14) → conf = 1.0은 마지막 bin.
+// bin 규칙: index = min(⌊conf×15⌋, 14) → conf = 1.0은 마지막 bin.
 import type { ChoiceAnswer, NoulAnswer, ProbabilitySource } from "../types";
 
 export const ECE_BINS = 15;
@@ -84,7 +84,7 @@ export function reliabilityBins(points: readonly CalibrationPoint[], bins: numbe
   }));
 }
 
-/** ECE = Σ (n_b / N)·|관측 비율_b − 평균 확률_b| */
+/** ECE = Σ (n_b / N)×|관측 비율_b − 평균 확률_b| */
 export function ece(points: readonly CalibrationPoint[], bins: number = ECE_BINS): number | null {
   if (points.length === 0) return null;
   return expectedCalibrationError(reliabilityBins(points, bins), points.length);

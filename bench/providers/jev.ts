@@ -1,4 +1,4 @@
-// Jev 제공자 — lib/jev의 클라이언트를 재시도 0으로 만들고, 시도당 타임아웃은 호출별 옵션으로 준다(lib 수정 없음).
+// Jev 제공자. lib/jev의 클라이언트를 재시도 0으로 만들고, 시도당 타임아웃은 호출별 옵션으로 준다(lib 수정 없음).
 import {
   APIConnectionError,
   APIError,
@@ -59,7 +59,7 @@ function parseJev(raw: RawResponse, tasks: readonly TaskDefinition[]): ParsedRes
     if (outOfRange !== undefined) {
       return { ok: false, errorKind: "range", detail: `${task.name}.probabilities.${outOfRange[0]}=${outOfRange[1]}` };
     }
-    // confidence는 확률이 아니므로((K·p_max−1)/(K−1)) 보정에는 선택 라벨의 확률을 쓴다. confidence는 원 응답에만 남는다
+    // confidence는 확률이 아니므로((K×p_max−1)/(K−1)) 보정에는 선택 라벨의 확률을 쓴다. confidence는 원 응답에만 남는다
     const probability = probabilities[choice];
     if (probability === undefined) {
       return { ok: false, errorKind: "format", detail: `${task.name}.probabilities에 선택 라벨(${choice})이 없습니다` };
@@ -86,7 +86,7 @@ function classifyJev(error: unknown): ErrorClassification {
     }
     return classification;
   }
-  // 키 없음·설정 오류(TypeSafeError)와 그 밖의 예외는 레인을 멈춘다
+  // 키 없음, 설정 오류(TypeSafeError)와 그 밖의 예외는 레인을 멈춘다
   return classifyNonHttp("config", errorMessage(error));
 }
 

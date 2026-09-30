@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
-/* 세로가 낮은 화면(예: 1280×720 노트북) — 결과 카드가 잘리지 않게 간격·글자를 한 단계 줄일 때 쓴다 */
+/* 세로가 낮은 화면(예: 1280×720 노트북)에서는 결과 카드가 잘리지 않게 간격과 글자를 한 단계 줄일 때 쓴다 */
 @custom-variant short (@media (max-height: 800px));
 
 /*
- * Toss(TDS) 디자인 토큰 — 컴포넌트는 raw hex 대신 이 토큰(유틸리티 클래스)만 쓴다.
- * 키컬러는 Toss Blue 하나뿐이다(CTA·1위 막대·선택 칩·강조 수치·포커스 링).
+ * Toss(TDS) 디자인 토큰이다. 컴포넌트는 raw hex 대신 이 토큰(유틸리티 클래스)만 쓴다.
+ * 키컬러는 Toss Blue 하나뿐이다(CTA, 1위 막대, 선택 칩, 강조 수치, 포커스 링).
  * Tailwind 기본 팔레트는 비워 둬서 토큰 밖의 색이 섞여 들어오지 못하게 한다.
  */
 @theme {
@@ -16,22 +16,22 @@
 
   /* 키컬러 */
   --color-toss-blue: #3182f6;
-  --color-toss-blue-strong: #1b64da; /* hover·pressed, 옅은 배경 위 파란 글자 */
+  --color-toss-blue-strong: #1b64da; /* hover, pressed, 옅은 배경 위 파란 글자 */
   --color-toss-blue-soft: #e8f3ff;
 
   /* 그레이 */
   --color-grey-50: #f9fafb;
-  --color-grey-100: #f2f4f6; /* 페이지 배경·입력 배경 */
-  --color-grey-200: #e5e8eb; /* 막대 트랙·비활성 버튼 */
+  --color-grey-100: #f2f4f6; /* 페이지 배경과 입력 배경 */
+  --color-grey-200: #e5e8eb; /* 막대 트랙과 비활성 버튼 */
   --color-grey-300: #d1d6db; /* 1위가 아닌 막대 */
   --color-grey-400: #b0b8c1;
-  --color-grey-500: #8b95a1; /* 비활성 수치 — 흰 배경 본문 캡션은 grey-600 */
+  --color-grey-500: #8b95a1; /* 비활성 수치. 흰 배경 본문 캡션은 grey-600 */
   --color-grey-600: #6b7684; /* 13px 캡션(흰 배경 4.5:1 이상) */
   --color-grey-700: #4e5968; /* 보조 본문 */
   --color-grey-800: #333d4b;
-  --color-grey-900: #191f28; /* 본문·제목 */
+  --color-grey-900: #191f28; /* 본문과 제목 */
 
-  /* 기능색 — 키컬러가 아니다. 가드레일 태그·불일치 아이콘에만 쓴다 */
+  /* 기능색이다. 키컬러가 아니다. 가드레일 태그와 불일치 아이콘에만 쓴다 */
   --color-danger: #f04452;
   --color-danger-soft: #feeced;
   --color-warning: #ff9f00;

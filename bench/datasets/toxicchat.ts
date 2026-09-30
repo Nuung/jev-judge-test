@@ -1,4 +1,4 @@
-// ToxicChat(lmsys/toxic-chat, toxicchat0124) test 5,083건 — 옵션 데이터셋, 사용자 입력 유해성(양성 약 7%, 자연 비율).
+// ToxicChat(lmsys/toxic-chat, toxicchat0124) test 5,083건. 옵션 데이터셋, 사용자 입력 유해성(양성 약 7%, 자연 비율).
 import { z } from "zod";
 import { TOXICCHAT_TASK } from "../tasks";
 import type { DatasetSpec } from "../types";

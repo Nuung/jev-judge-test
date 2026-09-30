@@ -1,5 +1,5 @@
-// demo-smoke — 데모 평가셋 41건(로컬). 질문은 lib/jev/questions.ts의 JUDGE_QUESTIONS에서 4문항만 골라 재export한다
-// (반응 6문항 제외, 복제·수정 금지). 지표는 decide() 적용 전 원시 답 기준 범용 Choice/Noul 지표다.
+// demo-smoke: 데모 평가셋 41건(로컬). 질문은 lib/jev/questions.ts의 JUDGE_QUESTIONS에서 4문항만 골라 재export한다
+// (반응 6문항 제외, 복제와 수정 금지). 지표는 decide() 적용 전 원시 답 기준 범용 Choice/Noul 지표다.
 import { z } from "zod";
 import { buildState, JUDGE_QUESTIONS } from "@/lib/jev/questions";
 import { MOOD_KEYS } from "@/lib/judge/labels";
@@ -21,7 +21,7 @@ const RowSchema = z.object({
   category: z.enum(CATEGORIES),
   text: z.string().min(1),
   face: FaceProbabilitiesSchema.nullable(),
-  /** 라벨이 애매한 경계 사례 — 지표에서 빼고 관찰로만 보여 준다 */
+  /** 라벨이 애매한 경계 사례. 지표에서 빼고 관찰로만 보여 준다 */
   boundary: z.boolean().optional(),
   labels: z.object({
     mood: z.enum(MOOD_KEYS).nullable(),
@@ -69,7 +69,7 @@ export const demoSmoke: DatasetSpec<DemoSmokeRow> = {
   primaryMetric: "accuracy",
 };
 
-/** 경계 사례 id — 지표에서 빼고 summary의 관찰 섹션에만 보여 준다 */
+/** 경계 사례 id. 지표에서 빼고 summary의 관찰 섹션에만 보여 준다 */
 export async function loadDemoSmokeBoundaryIds(): Promise<ReadonlySet<string>> {
   const result = await loadRows(demoSmoke);
   if (!result.ok) throw new Error(`demo-smoke를 읽을 수 없습니다: ${result.skipReason}`);

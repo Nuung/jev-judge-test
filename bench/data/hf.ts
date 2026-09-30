@@ -1,5 +1,5 @@
-// HF datasets-server `/rows` 클라이언트 — 의존성 없는 fetch, 응답은 zod로 검증한다(계획 §0.1 B1).
-// 429·5xx·네트워크 오류는 Retry-After를 우선해 백오프하고 최대 6회 재시도한다.
+// HF datasets-server `/rows` 클라이언트. 의존성 없는 fetch, 응답은 zod로 검증한다(계획 §0.1 B1).
+// 429, 5xx, 네트워크 오류는 Retry-After를 우선해 백오프하고 최대 6회 재시도한다.
 import { z } from "zod";
 
 const ROWS_ENDPOINT = "https://datasets-server.huggingface.co/rows";
@@ -47,7 +47,7 @@ export interface HfPage {
   readonly rows: readonly HfRow[];
 }
 
-/** 인증 실패(토큰 없음·401·403) — gated 데이터셋은 이 오류를 건너뜀 사유로 바꾼다 */
+/** 인증 실패(토큰 없음, 401, 403). gated 데이터셋은 이 오류를 건너뜀 사유로 바꾼다 */
 export class HfAuthError extends Error {
   constructor(
     message: string,
@@ -89,7 +89,7 @@ const isRetryableStatus = (status: number) => status === 429 || status >= 500;
 
 /**
  * `/rows` 한 페이지. token이 있으면 Authorization 헤더로 보낸다.
- * @throws {HfAuthError} 401·403
+ * @throws {HfAuthError} 401, 403
  * @throws {HfRequestError} 그 밖의 4xx, 형식 오류, 재시도 소진
  */
 export async function fetchRowsPage(

@@ -1,4 +1,4 @@
-// 비교 모델 등록부 — 별칭 → 제공자·API 모델명·단가(출처)·토크나이저 계수(계획 §7).
+// 비교 모델 등록부. 별칭 → 제공자, API 모델명, 단가(출처), 토크나이저 계수(계획 §7).
 // 여기 없는 별칭은 단가가 없어 실행할 수 없다.
 import type { ModelAlias, ModelSpec, ProviderId } from "./types";
 
@@ -7,7 +7,7 @@ const ANTHROPIC_PRICING_SOURCE = "https://platform.claude.com/docs/en/about-clau
 const OPENAI_PRICING_SOURCE = "https://developers.openai.com/api/docs/models (2026-09-29 조회)";
 
 /**
- * 토큰 추정 계수 — o200k 근사 기준선(plan.ts estimateTokens, 출력은 과제당 25)에 곱한다.
+ * 토큰 추정 계수. o200k 근사 기준선(plan.ts estimateTokens, 출력은 과제당 25)에 곱한다.
  * 본 실행(bench/results/2026-09-29T13-57-11) 실측 usage 합 ÷ 기준선 합으로 맞췄다. 입력과 출력은 비율이 달라 따로 둔다.
  * 같은 프롬프트라도 Sonnet 5의 입력 토큰이 Haiku 4.5보다 약 34% 많아 제공자가 아니라 모델 단위로 둔다.
  */

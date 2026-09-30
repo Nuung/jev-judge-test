@@ -9,7 +9,7 @@ import { FACE_LABEL_KO, FACE_STRENGTH_PHRASE_KO, FACE_SUBJECT_KO } from "./label
 import { formatPercent, toPercent } from "./format";
 import type { FaceReadingState } from "./useFaceExpressions";
 
-/** 리드아웃이 뜨는 상태만 — 카메라를 쓸 수 없는 상태는 WebcamPanel이 화면 전체 안내로 덮는다 */
+/** 리드아웃이 뜨는 상태만이다. 카메라를 쓸 수 없는 상태는 WebcamPanel이 화면 전체 안내로 덮는다 */
 export type LiveFaceState = Extract<
   FaceReadingState,
   { status: "idle" | "requesting" | "loading_models" | "no_face" | "inference_error" | "detected" }
@@ -71,7 +71,7 @@ function strengthPhraseOf(dominant: FaceKey, strength: FaceStrength): string {
   return FACE_STRENGTH_PHRASE_KO[strength];
 }
 
-/** 한 줄 요약 — "웃음이 뚜렷해요" */
+/** 한 줄 요약. 예: "웃음이 뚜렷해요" */
 function summaryOf(dominant: FaceKey, strength: FaceStrength): string {
   if (dominant === "neutral") return "특별한 표정이 없어요";
   return `${FACE_SUBJECT_KO[dominant]} ${FACE_STRENGTH_PHRASE_KO[strength]}`;

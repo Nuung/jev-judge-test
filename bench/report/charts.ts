@@ -1,7 +1,7 @@
-// 차트 — SVG 문자열을 직접 만들고 @resvg/resvg-js로 PNG를 굽는다(글꼴은 Pretendard OTF 주입).
+// 차트. SVG 문자열을 직접 만들고 @resvg/resvg-js로 PNG를 굽는다(글꼴은 Pretendard OTF 주입).
 // 입력은 metrics.json뿐이다. resvg를 못 쓰면 SVG만 남기고 경고한다.
 //   cost-accuracy.svg      기본 데이터셋 패널(x = 1천 건당 비용 로그축, y = 주지표 + 95% CI 막대)
-//   reliability-<모델>.svg  Choice(top-label)·Noul(p(true)) 분리 신뢰도 곡선, 대각선, bin별 n
+//   reliability-<모델>.svg  Choice(top-label)와 Noul(p(true)) 분리 신뢰도 곡선, 대각선, bin별 n
 import { existsSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -12,8 +12,8 @@ import { DATASET_LABELS, METRIC_LABELS } from "./markdown";
 import type { CalibrationMode, DatasetMetrics, Metrics, Reliability } from "./raw";
 
 // ── 스타일 ──
-// 중립 표면·잉크 + 범주형 5색(모델 고정 순서, 순위가 아니라 모델을 따라간다).
-// 5계열은 색만으로 구분이 어려운 쌍이 있어 모양(원·사각·마름모·삼각·역삼각)을 함께 쓰고 범례를 항상 둔다.
+// 중립 표면과 잉크 + 범주형 5색(모델 고정 순서, 순위가 아니라 모델을 따라간다).
+// 5계열은 색만으로 구분이 어려운 쌍이 있어 모양(원, 사각, 마름모, 삼각, 역삼각)을 함께 쓰고 범례를 항상 둔다.
 const SURFACE = "#fcfcfb";
 const INK = "#0b0b0b";
 const INK_2 = "#52514e";
@@ -57,7 +57,7 @@ function text(x: number, y: number, content: string, o: TextOptions = {}): strin
 const line = (x1: number, y1: number, x2: number, y2: number, stroke: string, width = 1, dash?: string): string =>
   `<line x1="${r1(x1)}" y1="${r1(y1)}" x2="${r1(x2)}" y2="${r1(y2)}" stroke="${stroke}" stroke-width="${width}"${dash === undefined ? "" : ` stroke-dasharray="${dash}"`}/>`;
 
-/** 마커 — 겹칠 때 구분되도록 표면색 테두리(2px)를 두른다 */
+/** 마커. 겹칠 때 구분되도록 표면색 테두리(2px)를 두른다 */
 function marker(shape: Shape, x: number, y: number, color: string, size = 5): string {
   const ring = `stroke="${SURFACE}" stroke-width="2" fill="${color}"`;
   switch (shape) {
@@ -163,9 +163,9 @@ function costPanel(ds: DatasetMetrics, ox: number, oy: number, xd: Domain | null
   const right = ox + PANEL_W - PLOT_PAD.right;
   const top = oy + PLOT_PAD.top;
   const bottom = oy + PANEL_H - PLOT_PAD.bottom;
-  const title = ds.task === null ? DATASET_LABELS[ds.id] : `${DATASET_LABELS[ds.id]} · ${ds.task}`;
+  const title = ds.task === null ? DATASET_LABELS[ds.id] : `${DATASET_LABELS[ds.id]} (${ds.task})`;
   out.push(text(ox, oy + 14, title, { size: 15, weight: 700, fill: INK }));
-  out.push(text(right, oy + 14, `${METRIC_LABELS[ds.primaryMetric]} · n=${ds.n}`, { size: 11, fill: INK_2, anchor: "end" }));
+  out.push(text(right, oy + 14, `${METRIC_LABELS[ds.primaryMetric]}, n=${ds.n}`, { size: 11, fill: INK_2, anchor: "end" }));
 
   const yd = yDomain(ds);
   const sy = (v: number): number => bottom - ((v - yd.min) / (yd.max - yd.min)) * (bottom - top);
@@ -217,7 +217,7 @@ export function renderCostAccuracySvg(metrics: Metrics): string {
     text(
       marginX,
       66,
-      "x: 1천 건당 비용(USD, 로그축, 토큰 사용량 기준) · y: 주지표 %(실패는 abstain, ITT) · 세로 막대: 95% paired bootstrap CI",
+      "x: 1천 건당 비용(USD, 로그축, 토큰 사용량 기준) / y: 주지표 %(실패는 abstain, ITT) / 세로 막대: 95% paired bootstrap CI",
       { size: 13, fill: INK_2 },
     ),
   ];
@@ -230,7 +230,7 @@ export function renderCostAccuracySvg(metrics: Metrics): string {
   const lx = marginX + (slot % cols) * (PANEL_W + PANEL_GAP_X) + 16;
   const ly = headerH + Math.floor(slot / cols) * (PANEL_H + PANEL_GAP_Y) + 40;
   const models = MODEL_ALIASES.filter((m) => metrics.models.some((s) => s.alias === m));
-  const names = new Map(metrics.models.map((m) => [m.alias, `${m.alias} · ${m.apiModel}`] as const));
+  const names = new Map(metrics.models.map((m) => [m.alias, `${m.alias} (${m.apiModel})`] as const));
   body.push(...legend(lx, ly, models, names));
   body.push(
     text(lx, ly + 26 + models.length * 24 + 16, "y축 범위는 패널마다 다르다.", { size: 11, fill: INK_3 }),
@@ -243,8 +243,8 @@ export function renderCostAccuracySvg(metrics: Metrics): string {
 
 const REL_PLOT = 400;
 const MODE_TITLES: Readonly<Record<CalibrationMode, string>> = {
-  choice: "Choice — 선택 라벨 확률(top-label)",
-  noul: "Noul — p(true)",
+  choice: "Choice: 선택 라벨 확률(top-label)",
+  noul: "Noul: p(true)",
 };
 const MODE_Y: Readonly<Record<CalibrationMode, string>> = {
   choice: "실제 정답률",
@@ -265,7 +265,7 @@ function reliabilityPanel(rel: Reliability | undefined, mode: CalibrationMode, o
   const sub =
     rel === undefined
       ? "해당 형식 데이터셋 없음"
-      : `${SOURCE_TEXT[rel.source]} · n=${rel.n} · ECE ${rel.ece === null ? "—" : rel.ece.toFixed(3)} · ${rel.datasets.map((d) => DATASET_LABELS[d]).join(", ")}`;
+      : `${SOURCE_TEXT[rel.source]}, n=${rel.n}, ECE ${rel.ece === null ? "없음" : rel.ece.toFixed(3)}, ${rel.datasets.map((d) => DATASET_LABELS[d]).join(", ")}`;
   out.push(text(ox, oy + 38, sub, { size: 12, fill: INK_2 }));
 
   for (const t of [0, 0.2, 0.4, 0.6, 0.8, 1]) {
@@ -281,7 +281,7 @@ function reliabilityPanel(rel: Reliability | undefined, mode: CalibrationMode, o
   out.push(text((left + right) / 2, bottom + 40, "예측 확률(bin 평균)", { size: 12, anchor: "middle", fill: INK_2 }));
   out.push(text(ox + 16, (top + bottom) / 2, MODE_Y[mode], { size: 12, anchor: "middle", fill: INK_2, rotate: -90 }));
 
-  // bin별 n — x축 아래 한 줄, 그리고 표본 분포를 보여 주는 옅은 막대
+  // bin별 n. x축 아래 한 줄, 그리고 표본 분포를 보여 주는 옅은 막대
   const binW = REL_PLOT / bins;
   out.push(text(left - 8, bottom + 62, "n", { size: 11, anchor: "end", fill: INK_2, weight: 600 }));
   if (rel === undefined) return out;
@@ -312,8 +312,8 @@ export function renderReliabilitySvg(metrics: Metrics, model: ModelAlias): strin
   const find = (mode: CalibrationMode): Reliability | undefined =>
     metrics.reliability.find((r) => r.model === model && r.mode === mode);
   return svgDocument(width, height, [
-    text(40, 40, `신뢰도 곡선 — ${model}${spec === undefined ? "" : ` (${spec.apiModel})`}`, { size: 22, weight: 700, fill: INK }),
-    text(40, 66, `${metrics.eceBins}개 등간격 bin(확률 1.0은 마지막 bin) · 점 = bin 평균 확률 대 실제 비율 · 옅은 막대 = bin별 표본 수`, {
+    text(40, 40, `신뢰도 곡선: ${model}${spec === undefined ? "" : ` (${spec.apiModel})`}`, { size: 22, weight: 700, fill: INK }),
+    text(40, 66, `${metrics.eceBins}개 등간격 bin(확률 1.0은 마지막 bin). 점은 bin 평균 확률 대 실제 비율, 옅은 막대는 bin별 표본 수`, {
       size: 13,
       fill: INK_2,
     }),
@@ -322,7 +322,7 @@ export function renderReliabilitySvg(metrics: Metrics, model: ModelAlias): strin
   ]);
 }
 
-// ── PNG·파일 ──
+// ── PNG와 파일 ──
 
 /** SVG → PNG(2배). resvg를 불러오지 못하거나 렌더에 실패하면 null과 사유 */
 export async function svgToPng(svg: string): Promise<{ png: Buffer | null; warning: string | null }> {
@@ -348,7 +348,7 @@ export interface ChartResult {
   readonly warnings: readonly string[];
 }
 
-/** charts/ 아래에 cost-accuracy와 모델별 reliability를 SVG·PNG로 쓴다 */
+/** charts/ 아래에 cost-accuracy와 모델별 reliability를 SVG와 PNG로 쓴다 */
 export async function writeCharts(chartsDir: string, metrics: Metrics): Promise<ChartResult> {
   await mkdir(chartsDir, { recursive: true });
   const charts: { name: string; svg: string }[] = [

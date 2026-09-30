@@ -1,4 +1,4 @@
-// SST-2(stanfordnlp/sst2) validation 872건 — 영화 리뷰 문장 감성 2클래스. test는 라벨이 -1이라 쓰지 않는다.
+// SST-2(stanfordnlp/sst2) validation 872건. 영화 리뷰 문장 감성 2클래스. test는 라벨이 -1이라 쓰지 않는다.
 import { z } from "zod";
 import { SST2_LABELS, SST2_TASK } from "../tasks";
 import type { DatasetSpec } from "../types";

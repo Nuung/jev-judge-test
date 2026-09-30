@@ -26,7 +26,7 @@ export function MismatchAlert(props: MismatchAlertProps) {
   }
 
   if (props.status === "consistent") {
-    // 무표정·약한 표정이면 비교 자체를 건너뛰므로 "잘 어울린다"고 단정하지 않는다
+    // 무표정이거나 약한 표정이면 비교 자체를 건너뛰므로 "잘 어울린다"고 단정하지 않는다
     return <QuietNote>표정과 말 사이에 뚜렷한 차이는 보이지 않아요.</QuietNote>;
   }
 

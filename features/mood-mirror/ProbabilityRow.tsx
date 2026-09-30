@@ -1,14 +1,14 @@
 // 기분 확률 막대 한 행. 1위 막대만 Toss Blue(수치는 grey900)이고 나머지는 grey300이다. role="meter" 접근성 속성은 유지한다.
 import { formatPercent } from "./format";
 
-/** 막대 한 행의 높이. 목록의 남는 높이를 나눠 갖되 32–44px(낮은 화면은 20px부터) 안에 머문다 */
+/** 막대 한 행의 높이. 목록의 남는 높이를 나눠 갖되 32~44px(낮은 화면은 20px부터) 안에 머문다 */
 export const BAR_ROW_CLASS = "min-h-8 max-h-11 flex-1 short:min-h-5 short:leading-5";
 
 interface ProbabilityRowProps {
   label: string;
   value: number;
   ariaLabel: string;
-  /** 1위 항목 강조: 라벨·수치는 진하게, 막대만 Toss Blue */
+  /** 1위 항목 강조: 라벨과 수치는 진하게, 막대만 Toss Blue */
   emphasized?: boolean;
 }
 

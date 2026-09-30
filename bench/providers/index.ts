@@ -1,4 +1,4 @@
-// 제공자 생성·사용 가능 여부·결과 조립.
+// 제공자 생성, 사용 가능 여부, 결과 조립.
 import { MODELS, PROVIDER_API_KEY_ENV } from "../models";
 import type { RetryResult } from "../retry";
 import type { Attempt, JudgeOutcome, ModelAlias, Provider, ProviderId, RawResponse, TaskDefinition } from "../types";

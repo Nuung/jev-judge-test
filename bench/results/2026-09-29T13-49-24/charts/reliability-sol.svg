@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1088" height="648" viewBox="0 0 1088 648">
 <rect width="1088" height="648" fill="#fcfcfb"/>
-<text x="40" y="40" font-family="Pretendard" font-size="22" font-weight="700" fill="#0b0b0b" text-anchor="start">신뢰도 곡선 — sol (gpt-6-sol)</text>
-<text x="40" y="66" font-family="Pretendard" font-size="13" font-weight="400" fill="#52514e" text-anchor="start">15개 등간격 bin(확률 1.0은 마지막 bin) · 점 = bin 평균 확률 대 실제 비율 · 옅은 막대 = bin별 표본 수</text>
-<text x="40" y="116" font-family="Pretendard" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="start">Choice — 선택 라벨 확률(top-label)</text>
-<text x="40" y="138" font-family="Pretendard" font-size="12" font-weight="400" fill="#52514e" text-anchor="start">말로 답한 확률(verbalized) · n=20 · ECE 0.206 · SST-2, AG News, Banking77, KLUE-YNAT</text>
+<text x="40" y="40" font-family="Pretendard" font-size="22" font-weight="700" fill="#0b0b0b" text-anchor="start">신뢰도 곡선: sol (gpt-6-sol)</text>
+<text x="40" y="66" font-family="Pretendard" font-size="13" font-weight="400" fill="#52514e" text-anchor="start">15개 등간격 bin(확률 1.0은 마지막 bin). 점은 bin 평균 확률 대 실제 비율, 옅은 막대는 bin별 표본 수</text>
+<text x="40" y="116" font-family="Pretendard" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="start">Choice: 선택 라벨 확률(top-label)</text>
+<text x="40" y="138" font-family="Pretendard" font-size="12" font-weight="400" fill="#52514e" text-anchor="start">말로 답한 확률(verbalized), n=20, ECE 0.206, SST-2, AG News, Banking77, KLUE-YNAT</text>
 <line x1="104" y1="558" x2="504" y2="558" stroke="#e6e5e1" stroke-width="1"/>
 <line x1="104" y1="158" x2="104" y2="558" stroke="#e6e5e1" stroke-width="1"/>
 <text x="96" y="562" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.0</text>
@@ -63,8 +63,8 @@
 <circle cx="424" cy="558" r="4.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="2"/>
 <circle cx="470" cy="158" r="4.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="2"/>
 <circle cx="497.9" cy="191.3" r="4.5" fill="#e87ba4" stroke="#fcfcfb" stroke-width="2"/>
-<text x="544" y="116" font-family="Pretendard" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="start">Noul — p(true)</text>
-<text x="544" y="138" font-family="Pretendard" font-size="12" font-weight="400" fill="#52514e" text-anchor="start">말로 답한 확률(verbalized) · n=15 · ECE 0.077 · Enron 스팸, JBB judge, K-MHaS</text>
+<text x="544" y="116" font-family="Pretendard" font-size="16" font-weight="700" fill="#0b0b0b" text-anchor="start">Noul: p(true)</text>
+<text x="544" y="138" font-family="Pretendard" font-size="12" font-weight="400" fill="#52514e" text-anchor="start">말로 답한 확률(verbalized), n=15, ECE 0.077, Enron 스팸, JBB judge, K-MHaS</text>
 <line x1="608" y1="558" x2="1008" y2="558" stroke="#e6e5e1" stroke-width="1"/>
 <line x1="608" y1="158" x2="608" y2="558" stroke="#e6e5e1" stroke-width="1"/>
 <text x="600" y="562" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0.0</text>

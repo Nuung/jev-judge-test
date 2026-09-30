@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1628" height="710" viewBox="0 0 1628 710">
 <rect width="1628" height="710" fill="#fcfcfb"/>
 <text x="40" y="40" font-family="Pretendard" font-size="24" font-weight="700" fill="#0b0b0b" text-anchor="start">비용 대비 주지표</text>
-<text x="40" y="66" font-family="Pretendard" font-size="13" font-weight="400" fill="#52514e" text-anchor="start">x: 1천 건당 비용(USD, 로그축, 토큰 사용량 기준) · y: 주지표 %(실패는 abstain, ITT) · 세로 막대: 95% paired bootstrap CI</text>
+<text x="40" y="66" font-family="Pretendard" font-size="13" font-weight="400" fill="#52514e" text-anchor="start">x: 1천 건당 비용(USD, 로그축, 토큰 사용량 기준) / y: 주지표 %(실패는 abstain, ITT) / 세로 막대: 95% paired bootstrap CI</text>
 <text x="40" y="100" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">SST-2</text>
-<text x="386" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=5</text>
+<text x="386" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도, n=5</text>
 <line x1="92" y1="312" x2="386" y2="312" stroke="#e6e5e1" stroke-width="1"/>
 <text x="84" y="316" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0</text>
 <line x1="92" y1="264" x2="386" y2="264" stroke="#e6e5e1" stroke-width="1"/>
@@ -44,7 +44,7 @@
 <line x1="278.5" y1="120" x2="286.5" y2="120" stroke="#e87ba4" stroke-width="2"/>
 <polygon points="282.5,203.3 289,191.6 276,191.6" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
 <text x="436" y="100" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">AG News</text>
-<text x="782" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=5</text>
+<text x="782" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도, n=5</text>
 <line x1="488" y1="312" x2="782" y2="312" stroke="#e6e5e1" stroke-width="1"/>
 <text x="480" y="316" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">20</text>
 <line x1="488" y1="264" x2="782" y2="264" stroke="#e6e5e1" stroke-width="1"/>
@@ -85,7 +85,7 @@
 <line x1="681.2" y1="120" x2="689.2" y2="120" stroke="#e87ba4" stroke-width="2"/>
 <polygon points="685.2,174.5 691.7,162.8 678.7,162.8" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
 <text x="832" y="100" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">Banking77</text>
-<text x="1178" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=5</text>
+<text x="1178" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도, n=5</text>
 <line x1="884" y1="312" x2="1178" y2="312" stroke="#e6e5e1" stroke-width="1"/>
 <text x="876" y="316" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">20</text>
 <line x1="884" y1="264" x2="1178" y2="264" stroke="#e6e5e1" stroke-width="1"/>
@@ -126,7 +126,7 @@
 <line x1="1118.6" y1="120" x2="1126.6" y2="120" stroke="#e87ba4" stroke-width="2"/>
 <polygon points="1122.6,174.5 1129.1,162.8 1116.1,162.8" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
 <text x="1228" y="100" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">Enron 스팸</text>
-<text x="1574" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=5</text>
+<text x="1574" y="100" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도, n=5</text>
 <line x1="1280" y1="312" x2="1574" y2="312" stroke="#e6e5e1" stroke-width="1"/>
 <text x="1272" y="316" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">98</text>
 <line x1="1280" y1="216" x2="1574" y2="216" stroke="#e6e5e1" stroke-width="1"/>
@@ -163,7 +163,7 @@
 <line x1="1478.6" y1="120" x2="1486.6" y2="120" stroke="#e87ba4" stroke-width="2"/>
 <polygon points="1482.6,126.5 1489.1,114.8 1476.1,114.8" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
 <text x="40" y="414" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">JBB judge</text>
-<text x="386" y="414" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=5</text>
+<text x="386" y="414" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도, n=5</text>
 <line x1="92" y1="626" x2="386" y2="626" stroke="#e6e5e1" stroke-width="1"/>
 <text x="84" y="630" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">98</text>
 <line x1="92" y1="530" x2="386" y2="530" stroke="#e6e5e1" stroke-width="1"/>
@@ -200,7 +200,7 @@
 <line x1="291.1" y1="434" x2="299.1" y2="434" stroke="#e87ba4" stroke-width="2"/>
 <polygon points="295.1,440.5 301.6,428.8 288.6,428.8" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
 <text x="436" y="414" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">KLUE-YNAT</text>
-<text x="782" y="414" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">macro-F1 · n=5</text>
+<text x="782" y="414" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">macro-F1, n=5</text>
 <line x1="488" y1="626" x2="782" y2="626" stroke="#e6e5e1" stroke-width="1"/>
 <text x="480" y="630" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0</text>
 <line x1="488" y1="562" x2="782" y2="562" stroke="#e6e5e1" stroke-width="1"/>
@@ -239,7 +239,7 @@
 <line x1="687.3" y1="488.9" x2="695.3" y2="488.9" stroke="#e87ba4" stroke-width="2"/>
 <polygon points="691.3,518.2 697.8,506.5 684.8,506.5" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
 <text x="832" y="414" font-family="Pretendard" font-size="15" font-weight="700" fill="#0b0b0b" text-anchor="start">K-MHaS</text>
-<text x="1178" y="414" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도 · n=5</text>
+<text x="1178" y="414" font-family="Pretendard" font-size="11" font-weight="400" fill="#52514e" text-anchor="end">정확도, n=5</text>
 <line x1="884" y1="626" x2="1178" y2="626" stroke="#e6e5e1" stroke-width="1"/>
 <text x="876" y="630" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="end">0</text>
 <line x1="884" y1="578" x2="1178" y2="578" stroke="#e6e5e1" stroke-width="1"/>
@@ -281,15 +281,15 @@
 <polygon points="1078.8,478.9 1085.3,467.2 1072.3,467.2" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
 <text x="1244" y="440" font-family="Pretendard" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="start">모델</text>
 <circle cx="1251" cy="462" r="5" stroke="#fcfcfb" stroke-width="2" fill="#2a78d6"/>
-<text x="1266" y="466" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">jev · jev-1.13.0</text>
+<text x="1266" y="466" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">jev (jev-1.13.0)</text>
 <rect x="1246" y="481" width="10" height="10" rx="1.5" stroke="#fcfcfb" stroke-width="2" fill="#eb6834"/>
-<text x="1266" y="490" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">haiku · claude-haiku-4-5-20251001</text>
+<text x="1266" y="490" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">haiku (claude-haiku-4-5-20251001)</text>
 <polygon points="1251,503.3 1257.8,510 1251,516.8 1244.3,510" stroke="#fcfcfb" stroke-width="2" fill="#1baf7a"/>
-<text x="1266" y="514" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">sonnet · claude-sonnet-5</text>
+<text x="1266" y="514" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">sonnet (claude-sonnet-5)</text>
 <polygon points="1251,527.5 1257.5,539.2 1244.5,539.2" stroke="#fcfcfb" stroke-width="2" fill="#eda100"/>
-<text x="1266" y="538" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">luna · gpt-6-luna</text>
+<text x="1266" y="538" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">luna (gpt-6-luna)</text>
 <polygon points="1251,564.5 1257.5,552.8 1244.5,552.8" stroke="#fcfcfb" stroke-width="2" fill="#e87ba4"/>
-<text x="1266" y="562" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">sol · gpt-6-sol</text>
+<text x="1266" y="562" font-family="Pretendard" font-size="12" font-weight="400" fill="#0b0b0b" text-anchor="start">sol (gpt-6-sol)</text>
 <text x="1244" y="602" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="start">y축 범위는 패널마다 다르다.</text>
 <text x="1244" y="620" font-family="Pretendard" font-size="11" font-weight="400" fill="#8a8984" text-anchor="start">x축(비용)은 모든 패널이 같다.</text>
 </svg>

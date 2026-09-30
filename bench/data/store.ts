@@ -1,4 +1,4 @@
-// 데이터셋 로컬 캐시 — `bench/.cache/datasets/<id>/<revision>/rows.jsonl` + meta.json.
+// 데이터셋 로컬 캐시: `bench/.cache/datasets/<id>/<revision>/rows.jsonl` + meta.json.
 // 실행마다 첫 페이지로 현재 revision을 확인하고, 같은 revision이 캐시에 있으면 네트워크 없이 읽는다.
 // 받는 중에는 rows.partial.jsonl에 페이지 단위로 덧붙여 끊겨도 이어받는다. meta.json은 완료 표시다.
 // 원본 텍스트는 이 캐시에만 두고 저장소에 커밋하지 않는다(.gitignore).
@@ -61,7 +61,7 @@ export interface IndexedRow<Row> {
   readonly truncatedCells: readonly string[];
 }
 
-/** 건너뜀(gated 데이터셋의 토큰 없음·401·403)은 오류가 아니라 사유와 함께 돌려준다 */
+/** 건너뜀(gated 데이터셋의 토큰 없음, 401, 403)은 오류가 아니라 사유와 함께 돌려준다 */
 export type RowsResult<Row> =
   | { readonly ok: true; readonly meta: DatasetMeta; readonly rows: readonly IndexedRow<Row>[] }
   | { readonly ok: false; readonly skipReason: string };
@@ -97,7 +97,7 @@ async function readMeta(dir: string): Promise<HfDatasetMeta | null> {
   return HfMetaSchema.parse(JSON.parse(text));
 }
 
-/** 완료된(meta.json이 있는) 캐시 중 가장 최근에 받은 것 — 네트워크가 안 될 때 쓴다 */
+/** 완료된(meta.json이 있는) 캐시 중 가장 최근에 받은 것. 네트워크가 안 될 때 쓴다 */
 async function latestCachedDir(id: DatasetId): Promise<string | null> {
   const root = join(CACHE_ROOT, id);
   let entries: string[];
@@ -213,7 +213,7 @@ async function resolveHfDir(
     const cached = await latestCachedDir(id);
     if (cached === null) throw error;
     const reason = error instanceof Error ? error.message : String(error);
-    console.warn(`[data] ${id}: revision 확인 실패, 캐시(${cached})를 사용합니다 — ${reason}`);
+    console.warn(`[data] ${id}: revision 확인 실패, 캐시(${cached})를 사용합니다. 원인: ${reason}`);
     return { ok: true, dir: cached };
   }
 
@@ -249,7 +249,7 @@ async function loadLocalRows<Row>(spec: DatasetSpec<Row>, path: string): Promise
 
 /**
  * 검증된 원본 행 전체(모집단 이전). 데이터셋 전용 부가 정보(JBB 공개 기준 열, K-MHaS 원 범주 등)도 이걸로 읽는다.
- * @throws 네트워크·형식 오류, 행 스키마 불일치
+ * @throws 네트워크 오류, 형식 오류, 행 스키마 불일치
  */
 export async function loadRows<Row>(spec: DatasetSpec<Row>): Promise<RowsResult<Row>> {
   const source = spec.source;

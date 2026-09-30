@@ -1,5 +1,5 @@
 // 기분 판정 결과 카드. 헤드라인 → 불일치 알림 → 6종 확률 막대 → 맞춤 추천 행 순서다.
-// 헤드라인·알림·추천은 줄지 않고(shrink-0) 막대 목록만 남는 높이를 나눠 가지므로, 화면이 낮아도 핵심이 잘리지 않는다.
+// 헤드라인, 알림, 추천은 줄지 않고(shrink-0) 막대 목록만 남는 높이를 나눠 가지므로, 화면이 낮아도 핵심이 잘리지 않는다.
 // 결과 전(빈 상태)과 요청 중(스켈레톤)에도 같은 골격을 그려 레이아웃이 흔들리지 않는다.
 import { ChevronDown } from "lucide-react";
 import type { ReactNode } from "react";
@@ -17,7 +17,7 @@ import { ReactionHint } from "./ReactionCard";
 const BARS_CLASS = "flex min-h-0 flex-1 flex-col overflow-y-auto";
 const HEADLINE_CLASS = "text-[28px] leading-[1.25] font-bold tracking-[-0.02em] text-grey-900 lg:text-[30px] short:text-[26px]";
 
-/** 결과·빈 상태·스켈레톤이 공유하는 카드 골격 */
+/** 결과, 빈 상태, 스켈레톤이 공유하는 카드 골격 */
 function GaugeFrame({
   showCaption,
   aside,
@@ -58,7 +58,7 @@ function GaugeFrame({
   );
 }
 
-/** 판정 메타 한 줄. 평소엔 응답 시간만 보이고 "자세히"를 펼치면 모델·확신·가드레일 수치가 나온다 */
+/** 판정 메타 한 줄. 평소엔 응답 시간만 보이고 "자세히"를 펼치면 모델, 확신, 가드레일 수치가 나온다 */
 function DecisionMeta({
   decision,
   model,
@@ -85,7 +85,7 @@ function DecisionMeta({
       <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-md [&::-webkit-details-marker]:hidden">
         <span>
           Jev가 {formatMs(latencyMs)} 만에 판정했어요
-          {lowConfidence && " · 확신이 낮아요"}
+          {lowConfidence && ". 확신이 낮아요"}
         </span>
         <span className="ml-1 font-semibold text-grey-700">자세히</span>
         <ChevronDown
@@ -112,7 +112,7 @@ interface MoodGaugeProps {
   model: string;
   latencyMs: number;
   roundTripMs: number;
-  /** 표정·말 불일치 알림 — 가드레일이 안전할 때만 보인다 */
+  /** 표정과 말 불일치 알림. 가드레일이 안전할 때만 보인다 */
   insight: ReactNode;
   /** 결과 카드 마지막 행(맞춤 추천) */
   footer: ReactNode;
@@ -120,7 +120,7 @@ interface MoodGaugeProps {
 
 export function MoodGauge({ decision, model, latencyMs, roundTripMs, insight, footer }: MoodGaugeProps) {
   const { mood, guardrail } = decision;
-  // 주의·경고 입력은 기분을 단정하지 않고 판정 보류로 보여준다(막대는 참고용으로 흐리게, 불일치 알림은 숨김)
+  // 주의와 경고 입력은 기분을 단정하지 않고 판정 보류로 보여준다(막대는 참고용으로 흐리게, 불일치 알림은 숨김)
   const withheld = guardrail.status !== "safe";
   const withheldReason =
     guardrail.injection >= guardrail.harmful
@@ -167,7 +167,7 @@ export function MoodGauge({ decision, model, latencyMs, roundTripMs, insight, fo
 
 interface MoodGaugePlaceholderProps {
   loading: boolean;
-  /** 에러 안내 — 헤드라인 바로 아래에 둔다 */
+  /** 에러 안내. 헤드라인 바로 아래에 둔다 */
   notice?: ReactNode;
 }
 

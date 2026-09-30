@@ -1,4 +1,4 @@
-// pnpm bench:report <결과 폴더> — 저장된 결과로 summary.md와 차트를 다시 만든다(API 호출 없음).
+// pnpm bench:report <결과 폴더>: 저장된 결과로 summary.md와 차트를 다시 만든다(API 호출 없음).
 // 입력은 metrics.json이고, 같은 metrics.json이면 같은 summary.md가 나온다.
 import { writeFile } from "node:fs/promises";
 import path from "node:path";

@@ -1,4 +1,4 @@
-// K-MHaS(jeanlee/kmhas_korean_hate_speech) test 21,939건 — 다중 레이블 9범주를 이진으로 접는다.
+// K-MHaS(jeanlee/kmhas_korean_hate_speech) test 21,939건. 다중 레이블 9범주를 이진으로 접는다.
 // [8](not_hate_speech)만 있으면 false, 그 밖의 범주가 하나라도 있으면 true. 원 범주는 loadKmhasCategories로 보존한다.
 import { z } from "zod";
 import { loadRows } from "../data/store";

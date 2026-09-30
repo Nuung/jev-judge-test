@@ -1,4 +1,4 @@
-// OpenAI 제공자 — Responses API + 구조화 출력(zodTextFormat). SDK 재시도 0, 시도당 타임아웃은 요청 옵션으로 준다.
+// OpenAI 제공자. Responses API + 구조화 출력(zodTextFormat). SDK 재시도 0, 시도당 타임아웃은 요청 옵션으로 준다.
 // 응답은 원문으로 저장하고 parse에서 읽는다(파서가 바뀌어도 재호출하지 않도록). 같은 출력 형식을 create()에 넘긴다.
 import OpenAI, { APIConnectionError, APIConnectionTimeoutError, APIError, APIUserAbortError } from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -9,7 +9,7 @@ import { buildOutputSchema, buildSystemPrompt, buildUserMessage, parseLlmOutput,
 
 /** 추론 끔(off)의 출력 상한 */
 export const MAX_OUTPUT_TOKENS_OFF = 512;
-/** 제공자 기본 추론(default, medium)의 출력 상한 — 추론 토큰 포함, 비용 상한용 값 */
+/** 제공자 기본 추론(default, medium)의 출력 상한. 추론 토큰 포함, 비용 상한용 값 */
 export const MAX_OUTPUT_TOKENS_DEFAULT = 4096;
 
 /** stop 기록값: 거절 항목이 있으면 "refusal", 미완료면 "incomplete:<사유>", 그 외 응답 status */
@@ -30,7 +30,7 @@ function parseOpenAI(raw: RawResponse, tasks: readonly TaskDefinition[]): Parsed
 }
 
 function classifyOpenAI(error: unknown): ErrorClassification {
-  // 타임아웃·중단은 APIConnectionError/APIError의 하위 클래스라 먼저 본다
+  // 타임아웃과 중단은 APIConnectionError/APIError의 하위 클래스라 먼저 본다
   if (error instanceof APIConnectionTimeoutError) return classifyNonHttp("retryable", "timeout");
   if (error instanceof APIConnectionError) return classifyNonHttp("retryable", "connection");
   if (error instanceof APIUserAbortError) return classifyNonHttp("config", "aborted");

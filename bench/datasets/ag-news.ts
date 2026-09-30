@@ -1,4 +1,4 @@
-// AG News(fancyzhx/ag_news) test 7,600건 — 뉴스 섹션 4클래스(각 1,900).
+// AG News(fancyzhx/ag_news) test 7,600건. 뉴스 섹션 4클래스(각 1,900).
 import { z } from "zod";
 import { AG_NEWS_LABELS, AG_NEWS_TASK } from "../tasks";
 import type { DatasetSpec } from "../types";

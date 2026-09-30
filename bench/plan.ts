@@ -1,4 +1,4 @@
-// 실행 계획 — 데이터셋을 받아 표본을 뽑고, 모델×데이터셋별 호출 수·예상 캐시 적중·토큰·비용·시간을 추정한다(계획 §6 U4, §7).
+// 실행 계획. 데이터셋을 받아 표본을 뽑고, 모델×데이터셋별 호출 수, 예상 캐시 적중, 토큰, 비용, 시간을 추정한다(계획 §6 U4, §7).
 // 토큰 추정은 o200k 근사(영어 문자÷4, 한글 문자÷1.5)에 모델별 입력 계수를, 출력 기준선(과제당 25)에 출력 계수를 곱한다(models.ts).
 import { loadDataset, type DatasetMeta } from "./data/store";
 import { stratifiedSample } from "./data/sample";
@@ -22,7 +22,7 @@ import type {
   TaskDefinition,
 } from "./types";
 
-/** 시도당 타임아웃(ms) — 세 제공자 공통 */
+/** 시도당 타임아웃(ms). 세 제공자 공통 */
 export const TIMEOUT_MS = 60_000;
 
 /** 미리보기 표시값 = 추정 × 안전계수 */
@@ -34,7 +34,7 @@ const OUTPUT_TOKENS_PER_TASK = 25;
 /** `--reasoning default`의 출력 상한(비용 상한 열) */
 const DEFAULT_REASONING_MAX_OUTPUT = 4096;
 
-/** 호출당 가정 지연(초, §7 시간 추정) — 스모크 실측으로 다시 본다 */
+/** 호출당 가정 지연(초, §7 시간 추정). 스모크 실측으로 다시 본다 */
 const ASSUMED_LATENCY_S: Readonly<Record<ModelAlias, number>> = {
   jev: 0.5,
   haiku: 1.5,
@@ -84,7 +84,7 @@ export interface PlannedCell {
 
 // ── 데이터셋 ──
 
-/** 선택한 데이터셋을 받고(캐시 우선) 표본을 뽑는다. gated·인증 실패는 건너뜀 사유로 돌려준다 */
+/** 선택한 데이터셋을 받고(캐시 우선) 표본을 뽑는다. gated 인증 실패는 건너뜀 사유로 돌려준다 */
 export async function prepareDatasets(
   ids: readonly DatasetId[],
   limit: number,
@@ -130,7 +130,7 @@ export function selectModels(aliases: readonly ModelAlias[]): { models: ModelSpe
   return { models, skipped };
 }
 
-// ── 토큰·비용 추정 ──
+// ── 토큰과 비용 추정 ──
 
 const HANGUL = /[ᄀ-ᇿ㄰-㆏가-힣]/gu;
 
@@ -151,7 +151,7 @@ export function costUsd(model: ModelSpec, inputTokens: number, outputTokens: num
   return (inputTokens * model.pricing.inputPerMTok + outputTokens * model.pricing.outputPerMTok) / 1e6;
 }
 
-/** 케이스별 캐시 항목(캐시를 끄면 모두 null) — 미리보기와 러너가 같은 조회 결과를 쓴다 */
+/** 케이스별 캐시 항목(캐시를 끄면 모두 null). 미리보기와 러너가 같은 조회 결과를 쓴다 */
 export type CacheLookup = ReadonlyMap<string, CacheEntry | null>;
 
 export async function lookupCache(
@@ -293,13 +293,13 @@ export function renderPreview(cells: readonly PlannedCell[], options: BenchOptio
   const { lanes, wall } = laneSeconds(cells);
   const laneText = LANE_ORDER.filter((p) => lanes.has(p))
     .map((p) => `${p} ${fmtDuration(lanes.get(p) ?? 0)}`)
-    .join(" · ");
+    .join(", ");
   const lines = [
-    `미리보기 — 추론 ${options.reasoning} · 데이터셋당 최대 ${options.limit}건 · 캐시 ${options.noCache ? "끔" : "켬"}`,
+    `미리보기: 추론 ${options.reasoning}, 데이터셋당 최대 ${options.limit}건, 캐시 ${options.noCache ? "끔" : "켬"}`,
     "",
     renderTable(header, rows),
     "",
-    `비용은 캐시 미스 호출만 추정해 안전계수 ${COST_SAFETY_FACTOR}을 곱한 값이다(토큰은 o200k 근사 × 모델별 입력·출력 계수).`,
+    `비용은 캐시 미스 호출만 추정해 안전계수 ${COST_SAFETY_FACTOR}을 곱한 값이다(토큰은 o200k 근사 × 모델별 입력, 출력 계수).`,
     ...(showUpper
       ? ["default 상한은 출력이 max_tokens 4096을 모두 쓸 때의 비용이다(안전계수 미적용)."]
       : []),

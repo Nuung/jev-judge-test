@@ -1,5 +1,5 @@
 // 화면에만 쓰는 라벨이라 features 계층에 둔다.
-// lib/judge/labels.ts는 판정 SDK·eval과 공유하는 최소 집합만 둔다.
+// lib/judge/labels.ts는 판정 SDK, eval과 공유하는 최소 집합만 둔다.
 import type { FaceStrength } from "@/lib/judge/face";
 import type { FaceKey } from "@/lib/judge/labels";
 
@@ -34,7 +34,7 @@ export const FACE_STRENGTH_PHRASE_KO: Readonly<Record<FaceStrength, string>> = {
   weak: "살짝 보여요",
 };
 
-/** 불일치 문장 앞절용 연결형 — "웃음 표정이 뚜렷한데, 말은 ~" */
+/** 불일치 문장 앞절용 연결형. 예: "웃음 표정이 뚜렷한데, 말은 ~" */
 export const FACE_STRENGTH_CLAUSE_KO: Readonly<Record<FaceStrength, string>> = {
   strong: "뚜렷한데",
   moderate: "보이는데",

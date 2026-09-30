@@ -1,4 +1,4 @@
-// paired bootstrap — 계획 §4. 모든 모델이 같은 재표집 인덱스를 쓰고, 매 반복 주지표를 다시 계산한다.
+// paired bootstrap(계획 §4). 모든 모델이 같은 재표집 인덱스를 쓰고, 매 반복 주지표를 다시 계산한다.
 // 모델 CI와 (모델 − 기준(Jev)) 차이 CI를 낸다. 백분위는 inverted_cdf로 고정한다.
 import { mulberry32, randomInt } from "./prng";
 import { allIndices, type Statistic } from "./metrics";
@@ -6,12 +6,12 @@ import { allIndices, type Statistic } from "./metrics";
 export const BOOTSTRAP_REPLICATES = 10_000;
 export const CI_LEVEL = 0.95;
 
-/** 부동소수 오차 보정(q·B가 정수인데 1e-15만큼 커져 순위가 하나 밀리는 것을 막는다) */
+/** 부동소수 오차 보정(q×B가 정수인데 1e-15만큼 커져 순위가 하나 밀리는 것을 막는다) */
 const RANK_EPSILON = 1e-9;
 
 /**
  * inverted_cdf 백분위(numpy percentile method='inverted_cdf'와 동일).
- * 순위 = ⌈q·n − 1e-9⌉(1-based, 최소 1). values는 정렬하지 않아도 된다.
+ * 순위 = ⌈q×n − 1e-9⌉(1-based, 최소 1). values는 정렬하지 않아도 된다.
  */
 export function percentileInvertedCdf(values: readonly number[], q: number): number {
   if (values.length === 0) throw new RangeError("빈 배열은 백분위를 구할 수 없다");
@@ -39,7 +39,7 @@ export interface BootstrapInput {
   readonly models: readonly BootstrapModel[];
   /** 차이 기준 모델 id(Jev). null이면 차이 CI를 내지 않는다 */
   readonly reference: string | null;
-  /** 데이터셋 단위로 파생한 시드 — 모델별로 나누지 않아야 같은 인덱스를 공유한다 */
+  /** 데이터셋 단위로 파생한 시드. 모델별로 나누지 않아야 같은 인덱스를 공유한다 */
   readonly seed: number;
   readonly replicates?: number;
   readonly level?: number;

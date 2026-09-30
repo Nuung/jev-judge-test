@@ -1,4 +1,4 @@
-// Enron 스팸(SetFit/enron_spam) test 2,000건 — 스팸 여부. 본문은 모든 모델에 같은 4,000자로 자른다.
+// Enron 스팸(SetFit/enron_spam) test 2,000건. 스팸 여부. 본문은 모든 모델에 같은 4,000자로 자른다.
 import { z } from "zod";
 import { loadRows } from "../data/store";
 import { ENRON_SPAM_TASK } from "../tasks";
@@ -35,8 +35,8 @@ export const enronSpam: DatasetSpec<EnronRow> = {
 };
 
 /**
- * 본문이 잘린 케이스 id — 4,000자 절단 또는 datasets-server 응답 크기 제한으로 잘린 셀.
- * 표본 id와 교집합을 세어 run.json·summary에 기록한다. 건너뜀이면 null.
+ * 본문이 잘린 케이스 id. 4,000자 절단 또는 datasets-server 응답 크기 제한으로 잘린 셀.
+ * 표본 id와 교집합을 세어 run.json과 summary에 기록한다. 건너뜀이면 null.
  */
 export async function loadEnronTruncatedIds(): Promise<ReadonlySet<string> | null> {
   const result = await loadRows(enronSpam);

@@ -1,4 +1,4 @@
-// 러너 — 제공자별 레인 3개(jev · anthropic · openai)를 동시에 돌리고, 레인 안은 데이터셋 → 모델 → 케이스 순서로 순차 호출한다(D3).
+// 러너. 제공자별 레인 3개(jev, anthropic, openai)를 동시에 돌리고, 레인 안은 데이터셋 → 모델 → 케이스 순서로 순차 호출한다(D3).
 // "순차 호출"을 "같은 제공자에 동시 요청 없음"으로 해석한다. config 실패가 나면 그 모델만 멈추고 나머지 케이스는 config로 기록한다.
 import { writeCache, cacheKey } from "./cache";
 import { LANE_ORDER, TIMEOUT_MS, type CacheLookup, type PlannedDataset, type Skipped } from "./plan";
@@ -7,7 +7,7 @@ import { judgeWithRetry } from "./retry";
 import type { BenchOptions, DatasetId, JudgeOutcome, ModelAlias, ModelSpec, Provider, ProviderId } from "./types";
 
 export const LANE_INTERPRETATION =
-  "스펙의 \"순차 호출\"을 \"같은 제공자에 동시 요청 없음\"으로 해석했다. 제공자별 레인 3개(jev · anthropic[haiku → sonnet] · openai[luna → sol])를 동시에 돌리고, 레인 안에서는 데이터셋 → 모델 → 케이스 순서로 한 건씩 호출한다.";
+  "스펙의 \"순차 호출\"을 \"같은 제공자에 동시 요청 없음\"으로 해석했다. 제공자별 레인 3개(jev, anthropic[haiku → sonnet], openai[luna → sol])를 동시에 돌리고, 레인 안에서는 데이터셋 → 모델 → 케이스 순서로 한 건씩 호출한다.";
 
 /** 진행 표시를 몇 건마다 찍을지 */
 const PROGRESS_EVERY = 50;
@@ -54,7 +54,7 @@ function record(outcomes: Outcomes, dataset: DatasetId, model: ModelAlias, id: s
   byCase.set(id, outcome);
 }
 
-/** 멈춘 모델의 남은 케이스 — 호출하지 않았으므로 시도 기록이 없다 */
+/** 멈춘 모델의 남은 케이스. 호출하지 않았으므로 시도 기록이 없다 */
 function abortedOutcome(detail: string): JudgeOutcome {
   return {
     ok: false,
@@ -139,7 +139,7 @@ async function runLane(
   return { provider: provider.id, models: models.map((m) => m.alias), start, end: new Date().toISOString() };
 }
 
-/** 레인을 동시에 돌린다. 진행 표시: . 성공 · x 실패 · c 캐시 적중 */
+/** 레인을 동시에 돌린다. 진행 표시: . 성공, x 실패, c 캐시 적중 */
 export async function runBench(input: RunInput): Promise<RunResult> {
   const outcomes: Outcomes = new Map();
   const skipped: Skipped[] = [];

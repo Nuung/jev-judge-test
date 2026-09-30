@@ -95,7 +95,7 @@ export async function POST(request: Request): Promise<Response> {
       console.error("[api/judge] Jev 인증 실패", error.status);
       return errorResponse(500, "config_error", "서버의 TYPESAFE_API_KEY가 유효하지 않아요.");
     }
-    // 나머지 SDK 에러(APIError·APIConnectionError·APIUserAbortError 등)과 응답 형식 오류
+    // 나머지 SDK 에러(APIError, APIConnectionError, APIUserAbortError 등)과 응답 형식 오류
     if (error instanceof TypeSafeError || error instanceof JevResponseError) {
       console.error("[api/judge] Jev 호출 실패", error.name, error.message);
       return errorResponse(502, "upstream_error", "Jev 판정 서버에서 답을 받지 못했어요.");

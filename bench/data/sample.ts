@@ -1,4 +1,4 @@
-// 층화 추출 — 층별로 시드 셔플한 뒤 최대 나머지법으로 비례 배분한 수만큼 앞에서 뽑는다(계획 §5).
+// 층화 추출. 층별로 시드 셔플한 뒤 최대 나머지법으로 비례 배분한 수만큼 앞에서 뽑는다(계획 §5).
 // 층마다 시드를 따로 파생하므로 n이 커져도 앞선 표본을 그대로 포함한다(부분집합 경향).
 import { BENCH_SEED, deriveSeed, mulberry32, shuffled } from "../stats/prng";
 import type { BenchCase, DatasetId } from "../types";

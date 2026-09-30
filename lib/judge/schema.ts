@@ -1,4 +1,4 @@
-// 신뢰 경계 스키마(zod 4) — 요청 본문, Jev 응답, 라우트 응답. SDK 비의존.
+// 신뢰 경계 스키마(zod 4)다. 요청 본문, Jev 응답, 라우트 응답. SDK 비의존.
 import { z } from "zod";
 import { MOOD_KEYS, REACTION_KINDS, type FACE_KEYS } from "./labels";
 

@@ -1,6 +1,6 @@
-// Anthropic 제공자 — Messages API + 구조화 출력(zodOutputFormat). SDK 재시도 0, 시도당 타임아웃은 요청 옵션으로 준다.
+// Anthropic 제공자. Messages API + 구조화 출력(zodOutputFormat). SDK 재시도 0, 시도당 타임아웃은 요청 옵션으로 준다.
 // 응답은 원문으로 저장하고 parse에서 읽는다. messages.parse()는 max_tokens로 잘린 JSON에서 예외를 던져
-// stop_reason·usage를 잃기 때문에, 같은 출력 형식을 create()에 넘긴다(요청 본문은 동일).
+// stop_reason과 usage를 잃기 때문에, 같은 출력 형식을 create()에 넘긴다(요청 본문은 동일).
 import Anthropic, {
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -15,7 +15,7 @@ import { buildOutputSchema, buildSystemPrompt, buildUserMessage, parseLlmOutput,
 
 /** 추론 끔(off)의 출력 상한 */
 export const MAX_TOKENS_OFF = 512;
-/** 제공자 기본 추론(default)의 출력 상한 — 비용 상한용 값 */
+/** 제공자 기본 추론(default)의 출력 상한. 비용 상한용 값 */
 export const MAX_TOKENS_DEFAULT = 4096;
 
 function parseAnthropic(raw: RawResponse, tasks: readonly TaskDefinition[]): ParsedResponse {
@@ -29,7 +29,7 @@ function parseAnthropic(raw: RawResponse, tasks: readonly TaskDefinition[]): Par
 }
 
 function classifyAnthropic(error: unknown): ErrorClassification {
-  // 타임아웃·중단은 APIConnectionError/APIError의 하위 클래스라 먼저 본다
+  // 타임아웃과 중단은 APIConnectionError/APIError의 하위 클래스라 먼저 본다
   if (error instanceof APIConnectionTimeoutError) return classifyNonHttp("retryable", "timeout");
   if (error instanceof APIConnectionError) return classifyNonHttp("retryable", "connection");
   if (error instanceof APIUserAbortError) return classifyNonHttp("config", "aborted");

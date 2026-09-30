@@ -1,9 +1,9 @@
-// 카메라 영역을 덮는 grey800 안내. 로딩·권한 거부·에러가 같은 모양을 쓴다.
+// 카메라 영역을 덮는 grey800 안내. 로딩, 권한 거부, 에러가 같은 모양을 쓴다.
 // WebcamPanel(동적 로드)과 그 로딩 자리 표시가 함께 쓰므로 별도 파일로 둔다.
 import type { LucideIcon } from "lucide-react";
 
 /**
- * 영상 영역. 모바일은 48dvh 전폭(아래 시트에 표정 수치·입력이 이어지도록), 데스크톱은 캠 섹션을 꽉 채운다.
+ * 영상 영역. 모바일은 48dvh 전폭(아래 시트에 표정 수치와 입력이 이어지도록), 데스크톱은 캠 섹션을 꽉 채운다.
  * WebcamPanel과 그 로딩 자리 표시가 같은 크기를 쓰도록 여기 둔다(WebcamPanel은 동적 로드라 거기서 import하지 않는다).
  */
 export const CAM_BOX_CLASS = "relative h-[48dvh] overflow-hidden bg-grey-800 lg:absolute lg:inset-0 lg:h-auto";

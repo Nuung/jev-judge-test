@@ -1,5 +1,5 @@
-// WildGuardMix(allenai/wildguardmix, wildguardtest) test 1,725건 — 옵션 데이터셋, 프롬프트 유해성.
-// gated(토큰+약관 동의)라 HF_TOKEN이 없거나 401·403이면 사유와 함께 건너뛴다. 라벨이 null인 행은 모집단에서 뺀다.
+// WildGuardMix(allenai/wildguardmix, wildguardtest) test 1,725건. 옵션 데이터셋, 프롬프트 유해성.
+// gated(토큰+약관 동의)라 HF_TOKEN이 없거나 401, 403이면 사유와 함께 건너뛴다. 라벨이 null인 행은 모집단에서 뺀다.
 import { z } from "zod";
 import { WILDGUARDMIX_TASK } from "../tasks";
 import type { DatasetSpec } from "../types";

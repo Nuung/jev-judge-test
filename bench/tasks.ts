@@ -1,4 +1,4 @@
-// 공개 벤치마크 질문 정의 단일 모듈 — 모든 모델이 같은 정의(SDK plain JSON)를 받는다(계획 §3·§5).
+// 공개 벤치마크 질문 정의 단일 모듈. 모든 모델이 같은 정의(SDK plain JSON)를 받는다(계획 §3, §5).
 // 지시(instructions)는 영어로 쓰고, 한국어 데이터셋은 기준(criteria)에 한국어 라벨명을 병기한다.
 // 데모 질문(demo-smoke)은 lib/jev/questions.ts의 JUDGE_QUESTIONS를 bench/datasets/demo-smoke.ts가 재export한다.
 import { choice, noul, type ChoiceCriteria } from "@typesafe-ai/sdk";
@@ -49,7 +49,7 @@ export const AG_NEWS_TASK = choiceTask(
 
 // ── Banking77 ──
 
-/** 데이터셋 ClassLabel 순서(원 라벨명 그대로 — 대소문자·물음표 포함) */
+/** 데이터셋 ClassLabel 순서(원 라벨명 그대로, 대소문자와 물음표 포함) */
 export const BANKING77_LABELS = [
   "activate_my_card",
   "age_limit",

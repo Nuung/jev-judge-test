@@ -1,7 +1,7 @@
-// 결과 폴더 읽기·쓰기 — bench/results/<YYYY-MM-DDTHH-mm-ss>/ 구조와 각 파일의 zod 스키마(계획 §3).
-//   run.json                       실행 설정·재현 정보(실행 시각은 여기에만 둔다)
+// 결과 폴더 읽기와 쓰기. bench/results/<YYYY-MM-DDTHH-mm-ss>/ 구조와 각 파일의 zod 스키마(계획 §3).
+//   run.json                       실행 설정과 재현 정보(실행 시각은 여기에만 둔다)
 //   requests/<데이터셋>/<모델>.jsonl  케이스별 기록(입력 텍스트 없음)
-//   metrics.json                   통계 결과 — summary.md와 차트의 유일한 입력
+//   metrics.json                   통계 결과. summary.md와 차트의 유일한 입력
 //   summary.md                     한국어 요약(생성 시각 미포함)
 //   charts/*.{svg,png}
 // 파일은 사람이 고칠 수도 있는 외부 데이터라 읽을 때 zod로 검증한다.
@@ -11,7 +11,7 @@ import { z } from "zod";
 import { DATASET_IDS, MODEL_ALIASES, REASONING_MODES } from "../types";
 import type { CaseRecord, DatasetId, ModelAlias } from "../types";
 
-// ── 폴더·경로 ──
+// ── 폴더와 경로 ──
 
 const pad2 = (n: number): string => String(n).padStart(2, "0");
 
@@ -129,7 +129,7 @@ export const runInfoSchema = z.object({
   timeoutMs: z.number().int(),
   /** 설정하지 않았으면 "unset" */
   temperature: z.union([z.number(), z.literal("unset")]),
-  /** bench/retry.ts의 분류표·헤더 처리·백오프 파라미터·상한 */
+  /** bench/retry.ts의 분류표, 헤더 처리, 백오프 파라미터, 상한 */
   retryPolicy: z.json(),
   parserHash: z.string(),
   /** 제공자 → 시스템 프롬프트 해시 / 출력 스키마 해시 */
@@ -169,7 +169,7 @@ export const runInfoSchema = z.object({
       notes: z.array(z.string()),
     }),
   ),
-  /** 건너뛴 모델·데이터셋과 사유(키 없음, HF_TOKEN 없음, config 실패 등) */
+  /** 건너뛴 모델, 데이터셋과 사유(키 없음, HF_TOKEN 없음, config 실패 등) */
   skipped: z.array(z.object({ target: z.string(), reason: z.string() })),
 });
 export type RunInfo = z.infer<typeof runInfoSchema>;
@@ -182,7 +182,7 @@ const estimateSchema = z.object({ value: z.number(), ci: ciSchema });
 export type Estimate = z.infer<typeof estimateSchema>;
 
 const binSchema = z.object({
-  /** 0..bins-1, index = min(⌊conf·bins⌋, bins−1) */
+  /** 0..bins-1, index = min(⌊conf×bins⌋, bins−1) */
   index: z.number().int(),
   n: z.number().int(),
   /** bin 안 평균 확률(n=0이면 null) */
@@ -339,7 +339,7 @@ export const metricsSchema = z.object({
     }),
   ),
   datasets: z.array(datasetMetricsSchema),
-  /** 모델별 신뢰도 곡선(Choice·Noul 분리, 해당 형식 데이터셋을 합쳐 계산) */
+  /** 모델별 신뢰도 곡선(Choice와 Noul 분리, 해당 형식 데이터셋을 합쳐 계산) */
   reliability: z.array(reliabilitySchema),
   holm: z.object({
     /** 이번 실행에서 Holm을 적용한 비교 수 */
@@ -354,7 +354,7 @@ export const metricsSchema = z.object({
 });
 export type Metrics = z.infer<typeof metricsSchema>;
 
-// ── 읽기·쓰기 ──
+// ── 읽기와 쓰기 ──
 
 export async function writeJson(file: string, value: unknown): Promise<void> {
   await mkdir(path.dirname(file), { recursive: true });

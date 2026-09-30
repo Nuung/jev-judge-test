@@ -1,5 +1,5 @@
-// 벤치 진입점 — pnpm bench. 공개 벤치마크로 Jev·Claude·OpenAI 모델을 같은 질문 정의·입력·표본으로 비교한다.
-// 흐름: 인자 해석 → 키 확인 → 데이터셋 준비·표본 → 캐시 조회 → 미리보기·확인 → 제공자별 레인 실행 → 결과 폴더.
+// 벤치 진입점(pnpm bench). 공개 벤치마크로 Jev, Claude, OpenAI 모델을 같은 질문 정의와 입력, 표본으로 비교한다.
+// 흐름: 인자 해석 → 키 확인 → 데이터셋 준비와 표본 → 캐시 조회 → 미리보기와 확인 → 제공자별 레인 실행 → 결과 폴더.
 import { execFileSync } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
@@ -55,8 +55,8 @@ const PARSER_SOURCES = ["providers/prompt.ts", "providers/jev.ts", "providers/an
 
 const HELP = `사용법: pnpm bench [옵션]
 
-공개 벤치마크로 Jev와 Claude·OpenAI 모델을 비교한다.
-실행 전에 호출 수·예상 캐시 적중·토큰·비용·시간을 보여 주고 확인을 받는다.
+공개 벤치마크로 Jev와 Claude, OpenAI 모델을 비교한다.
+실행 전에 호출 수, 예상 캐시 적중, 토큰, 비용, 시간을 보여 주고 확인을 받는다.
 결과는 bench/results/<시각>/에 저장한다.
 
 옵션:
@@ -64,16 +64,16 @@ const HELP = `사용법: pnpm bench [옵션]
                           별칭: ${MODEL_ALIASES.join(", ")}
   --datasets <id,...>     데이터셋(기본: 기본 세트 ${DEFAULT_DATASET_IDS.length}개)
                           id: ${DATASET_IDS.join(", ")}
-  --limit <n>             데이터셋당 표본 수(기본 ${DEFAULT_LIMIT}, 층화·시드 고정)
+  --limit <n>             데이터셋당 표본 수(기본 ${DEFAULT_LIMIT}, 층화, 시드 고정)
   --reasoning <모드>      추론 모드: ${REASONING_MODES.join(" | ")}(기본 off)
   -y, --yes               미리보기 확인을 건너뛴다(비TTY에서는 필수)
-  --no-cache              요청 캐시 읽기·쓰기를 모두 끈다
+  --no-cache              요청 캐시 읽기와 쓰기를 모두 끈다
   -h, --help              이 도움말을 출력한다
 
-진행 표시: . 성공 · x 실패 · c 캐시 적중
+진행 표시: . 성공, x 실패, c 캐시 적중
 
 관련 명령:
-  pnpm bench:report <폴더>  저장된 결과로 요약·차트 재생성(API 호출 없음)
+  pnpm bench:report <폴더>  저장된 결과로 요약과 차트 재생성(API 호출 없음)
 `;
 
 class UsageError extends Error {}
@@ -175,7 +175,7 @@ function caseRecords(dataset: PlannedDataset, model: ModelAlias, outcomes: Outco
   });
 }
 
-/** run.json 데이터셋 노트 — 표본 규칙·제외·절단·원 범주 등 재현과 해석에 필요한 기록 */
+/** run.json 데이터셋 노트. 표본 규칙, 제외, 절단, 원 범주 등 재현과 해석에 필요한 기록 */
 async function datasetNotes(d: PlannedDataset): Promise<string[]> {
   const notes = [`표본 시드: 층마다 deriveSeed(${BENCH_SEED}, "sample", "${d.spec.id}", <층 이름>)로 mulberry32 셔플 후 최대 나머지법 배분`];
   if (d.excluded > 0) notes.push(`toCase 제외 ${d.excluded}행(라벨 없음 등)`);
@@ -360,7 +360,7 @@ async function main(): Promise<void> {
     }
   }
   console.log("");
-  console.log(`완료: 호출 ${calls}건(캐시 적중 ${hits}건) · 이번 실행 청구 추정 $${billed.toFixed(4)}`);
+  console.log(`완료: 호출 ${calls}건(캐시 적중 ${hits}건), 이번 실행 청구 추정 $${billed.toFixed(4)}`);
   console.log(`결과: ${root}`);
 }
 

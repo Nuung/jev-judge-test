@@ -1,5 +1,5 @@
 // Jev 무드 미러 데모 화면. 웹캠(로컬 표정)과 한국어 한마디를 묶어 서버 라우트에 판정을 요청한다.
-// 데스크톱은 한 화면(h-dvh)에 캠을 주인공으로 꽉 채우고, 모바일은 캠 아래로 토스 바텀시트처럼 표정 수치·결과·입력이 올라온다.
+// 데스크톱은 한 화면(h-dvh)에 캠을 주인공으로 꽉 채우고, 모바일은 캠 아래로 토스 바텀시트처럼 표정 수치, 결과, 입력이 올라온다.
 "use client";
 
 import { CircleAlert, Loader, ShieldCheck } from "lucide-react";
@@ -42,13 +42,13 @@ function mismatchAlertPropsOf(
   return { status: "no_face" };
 }
 
-/** config_error·invalid_input은 서버가 준 한국어 메시지를 그대로 보여준다 */
+/** config_error, invalid_input은 서버가 준 한국어 메시지를 그대로 보여준다 */
 function errorMessageOf(error: JudgmentError): string {
   if (error.code === "config_error" || error.code === "invalid_input") return error.message;
   return ERROR_GUIDE_KO[error.code];
 }
 
-/** 토스 카드: 흰 배경, 테두리·그림자 없음. 모바일에서는 시트 안 구획이라 모서리를 없앤다 */
+/** 토스 카드: 흰 배경, 테두리와 그림자 없음. 모바일에서는 시트 안 구획이라 모서리를 없앤다 */
 const CARD = "bg-white px-5 lg:rounded-3xl lg:px-6";
 /** 캠 위에 뜨는 반투명 칩(blur 없이 검정 60%) */
 const CAM_CHIP = "inline-flex h-9 items-center gap-1.5 rounded-xl bg-black/60 px-3 text-[13px] font-semibold text-white";

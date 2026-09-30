@@ -1,6 +1,6 @@
-// metrics.json 조립 — 러너 결과를 bench/stats로 집계한다(계획 §4). summary.md·차트는 이 결과만 입력으로 쓴다.
+// metrics.json 조립. 러너 결과를 bench/stats로 집계한다(계획 §4). summary.md와 차트는 이 결과만 입력으로 쓴다.
 // 데이터셋 × 과제마다: 주지표 ITT + paired bootstrap CI, 성공 기준 수치, (모델 − Jev) 차이 CI, McNemar(+ Holm),
-// Brier(모든 모델 성공 교집합)·ECE, 지연(첫 시도 성공만), 비용 두 종(토큰 기준 단가 / 이번 실행 청구).
+// Brier(모든 모델 성공 교집합)와 ECE, 지연(첫 시도 성공만), 비용 두 종(토큰 기준 단가 / 이번 실행 청구).
 import { loadEnronTruncatedIds } from "../datasets/enron-spam";
 import {
   JBB_REFERENCE_JUDGES,
@@ -64,7 +64,7 @@ export interface BuildInput {
 
 // ── 케이스 단위 보조 ──
 
-/** 과제 답 → 예측 라벨(Noul은 p(true) ≥ 0.5 → true). 실패·답 없음은 abstain(null) */
+/** 과제 답 → 예측 라벨(Noul은 p(true) ≥ 0.5 → true). 실패나 답 없음은 abstain(null) */
 function predictionOf(task: TaskDefinition, outcome: JudgeOutcome | undefined): GoldValue | null {
   if (outcome === undefined || !outcome.ok) return null;
   const answer: Answer | undefined = outcome.answers[task.name];
@@ -245,7 +245,7 @@ async function buildTask(
       ECE_BINS,
     );
 
-    // 지연·비용은 호출 단위(과제와 무관) — 데이터셋의 모든 호출로 계산한다
+    // 지연과 비용은 호출 단위(과제와 무관)라서 데이터셋의 모든 호출로 계산한다
     const calls = d.cases.flatMap((c) => {
       const o = byModel.get(m.alias)?.get(c.id);
       return o === undefined ? [] : [o];
@@ -253,7 +253,7 @@ async function buildTask(
     const latency = summarizeLatency(calls);
 
     if (n > 0 && counts.client_4xx / n > CLIENT_4XX_WARN) {
-      warnings.push(`${label}/${m.alias}: client_4xx ${counts.client_4xx}/${n}건(5% 초과) — 설정 버그 여부 확인 후 --no-cache로 재실행`);
+      warnings.push(`${label}/${m.alias}: client_4xx ${counts.client_4xx}/${n}건(5% 초과). 설정 버그 여부를 확인한 뒤 --no-cache로 재실행`);
     }
     if (n > 0 && summary.failureRate > FAILURE_WARN) {
       warnings.push(`${label}/${m.alias}: 실패율 ${(summary.failureRate * 100).toFixed(1)}%(5% 초과)`);
@@ -300,7 +300,7 @@ async function buildTask(
   });
 
   if (cases.length > 0 && intersection.length < BRIER_MIN_N) {
-    warnings.push(`${label}: Brier 교집합 n=${intersection.length}(100 미만) — 보정 비교 해석에 주의`);
+    warnings.push(`${label}: Brier 교집합 n=${intersection.length}(100 미만)이라 보정 비교 해석에 주의`);
   }
 
   const referenceBaselines: ReferenceBaseline[] = [];

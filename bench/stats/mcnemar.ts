@@ -1,5 +1,5 @@
-// 정확 이항 McNemar(양측)와 Holm 보정 — 계획 §4.
-// 방향 고정: b = Jev만 정답, c = LLM만 정답. p = min(1, 2·P(X ≤ min(b, c))), X ~ Bin(b + c, 0.5), b + c = 0이면 1.
+// 정확 이항 McNemar(양측)와 Holm 보정(계획 §4).
+// 방향 고정: b = Jev만 정답, c = LLM만 정답. p = min(1, 2×P(X ≤ min(b, c))), X ~ Bin(b + c, 0.5), b + c = 0이면 1.
 
 const logFactorials: number[] = [0];
 
@@ -8,7 +8,7 @@ function logFactorial(n: number): number {
   return logFactorials[n];
 }
 
-/** P(X ≤ k), X ~ Bin(n, 0.5) — 로그 팩토리얼로 이항계수를 계산한다 */
+/** P(X ≤ k), X ~ Bin(n, 0.5). 로그 팩토리얼로 이항계수를 계산한다 */
 export function binomCdfHalf(k: number, n: number): number {
   const logHalfPow = n * Math.log(0.5);
   let sum = 0;
@@ -46,7 +46,7 @@ export interface McNemarResult {
   readonly c: number;
   readonly n: number;
   readonly p: number;
-  /** (LLM − Jev) accuracy 차이 = (c − b) / n — 부호가 verdict와 일치한다 */
+  /** (LLM − Jev) accuracy 차이 = (c − b) / n. 부호가 verdict와 일치한다 */
   readonly accuracyDiff: number;
   /** b > c면 jev, b < c면 llm */
   readonly verdict: McNemarVerdict;

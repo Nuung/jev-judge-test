@@ -1,4 +1,4 @@
-// summary.md 렌더링 — metrics.json만 입력으로 받는다(통계 계산은 bench/stats 몫).
+// summary.md 렌더링. metrics.json만 입력으로 받는다(통계 계산은 bench/stats 몫).
 // 같은 metrics.json이면 같은 문서가 나오도록 생성 시각은 넣지 않는다(시각은 run.json에만).
 import type { DatasetId, ModelAlias } from "../types";
 import { ERROR_KINDS } from "./raw";
@@ -39,14 +39,18 @@ const MODE_LABELS = { choice: "Choice 선택 라벨(top-label)", noul: "Noul p(t
 // ── 숫자 형식 ──
 
 const pct = (x: number): string => `${(x * 100).toFixed(1)}`;
-const pctOrDash = (x: number | null): string => (x === null ? "—" : pct(x));
+const pctOrDash = (x: number | null): string => (x === null ? "없음" : pct(x));
 const signedPct = (x: number): string => `${x > 0 ? "+" : x < 0 ? "−" : "±"}${Math.abs(x * 100).toFixed(1)}`;
-const dec3 = (x: number | null): string => (x === null ? "—" : x.toFixed(3));
-const ms = (x: number | null): string => (x === null ? "—" : `${Math.round(x).toLocaleString("en-US")}`);
+const dec3 = (x: number | null): string => (x === null ? "없음" : x.toFixed(3));
+const ms = (x: number | null): string => (x === null ? "없음" : `${Math.round(x).toLocaleString("en-US")}`);
 const pValue = (p: number): string => (p < 0.001 ? "<0.001" : p.toFixed(3));
 
+/** 저장된 metrics.json 문자열(노트, 경고, 레인 해석)의 가운뎃점과 줄표를 표시할 때만 바꾼다. 원본 값은 그대로 둔다 */
+const plain = (x: string): string =>
+  x.replaceAll(" \u2014 ", ": ").replaceAll(" \u00b7 ", ", ").replaceAll("\u00b7", ", ").replaceAll("\u2013", "~");
+
 function usd(x: number | null): string {
-  if (x === null) return "—";
+  if (x === null) return "없음";
   if (x === 0) return "$0";
   if (x < 0.01) return `$${x.toPrecision(2)}`;
   return `$${x.toFixed(2)}`;
@@ -95,14 +99,15 @@ function mainTable(metrics: Metrics, ds: DatasetMetrics): string {
   ];
   const rows = ds.results.map((r) => {
     const mc = r.vsJev?.mcnemar ?? null;
+    const blank = r.model === "jev" ? "기준" : "없음";
     return [
       modelName(metrics, r.model),
       estimate(r.primary),
       `${pctOrDash(r.successOnly.value)} (${r.successOnly.n})`,
-      r.vsJev === null ? "—" : diffEstimate(r.vsJev.diff),
-      mc === null ? "—" : `${mc.b}/${mc.c}`,
-      mc === null ? "—" : `${pValue(mc.p)} (${mc.pHolm === null ? "탐색적" : pValue(mc.pHolm)})`,
-      mc === null ? "—" : mcnemarVerdict(mc),
+      r.vsJev === null ? blank : diffEstimate(r.vsJev.diff),
+      mc === null ? blank : `${mc.b}/${mc.c}`,
+      mc === null ? blank : `${pValue(mc.p)} (${mc.pHolm === null ? "탐색적" : pValue(mc.pHolm)})`,
+      mc === null ? blank : mcnemarVerdict(mc),
       pct(r.successRate),
       pct(r.refusalRate),
       `${ms(r.latency.p50)} / ${ms(r.latency.p95)}`,
@@ -112,11 +117,11 @@ function mainTable(metrics: Metrics, ds: DatasetMetrics): string {
   });
   for (const b of ds.referenceBaselines) {
     const f1 = b.f1Positive === null ? "" : `, F1 ${pct(b.f1Positive)}`;
-    const published = b.published === null ? "" : ` · 공개 보고 ${b.published}`;
+    const published = b.published === null ? "" : `, 공개 보고 ${b.published}`;
     rows.push([
       `기준: ${b.name}`,
       `${pct(b.accuracy)}${f1} (n=${b.n}${published})`,
-      ...Array.from({ length: header.length - 2 }, () => "—"),
+      ...Array.from({ length: header.length - 2 }, () => "없음"),
     ]);
   }
   return table(header, rows);
@@ -128,8 +133,8 @@ function secondaryTable(metrics: Metrics, ds: DatasetMetrics): string {
     pct(r.secondary.accuracy),
     pctOrDash(r.secondary.f1Positive),
     pctOrDash(r.secondary.macroF1),
-    r.cost.meanInputTokens === null ? "—" : Math.round(r.cost.meanInputTokens).toString(),
-    r.cost.meanOutputTokens === null ? "—" : Math.round(r.cost.meanOutputTokens).toString(),
+    r.cost.meanInputTokens === null ? "없음" : Math.round(r.cost.meanInputTokens).toString(),
+    r.cost.meanOutputTokens === null ? "없음" : Math.round(r.cost.meanOutputTokens).toString(),
     usd(r.cost.perCallUsd),
     `${r.latency.n} (재시도 ${r.latency.retriedCalls}, 이전 실행 ${pct(r.latency.priorRunShare)}%)`,
   ]);
@@ -156,12 +161,12 @@ function calibrationTable(metrics: Metrics, ds: DatasetMetrics): string | null {
 
 function datasetSection(metrics: Metrics, ds: DatasetMetrics): string {
   const parts = [
-    `### ${DATASET_LABELS[ds.id]} (\`${ds.id}\`)${ds.task === null ? "" : ` · 과제 \`${ds.task}\``}`,
-    `표본 ${ds.n}건 · 주지표 ${METRIC_LABELS[ds.primaryMetric]} · 출처 \`${ds.source}\`${ds.revision === null ? "" : ` @ \`${ds.revision.slice(0, 12)}\``} · 라이선스 ${ds.license}`,
+    `### ${DATASET_LABELS[ds.id]} (\`${ds.id}\`${ds.task === null ? "" : `, 과제 \`${ds.task}\``})`,
+    `표본 ${ds.n}건, 주지표 ${METRIC_LABELS[ds.primaryMetric]}, 출처 \`${ds.source}\`${ds.revision === null ? "" : ` @ \`${ds.revision.slice(0, 12)}\``}, 라이선스 ${ds.license}`,
     "",
     mainTable(metrics, ds),
     "",
-    "<details><summary>보조 지표·토큰</summary>",
+    "<details><summary>보조 지표와 토큰</summary>",
     "",
     secondaryTable(metrics, ds),
     "",
@@ -172,11 +177,11 @@ function datasetSection(metrics: Metrics, ds: DatasetMetrics): string {
   const notes = [...ds.notes];
   if (ds.primaryMetric === "macro_f1") {
     notes.push(
-      `macro-F1은 라벨 체계 전체(${ds.labels?.length ?? 0}종)를 고정 클래스로 쓴다. 표본·재표집에 없는 클래스는 F1=0으로 평균에 들어가 소수 클래스가 빠지면 낮게 나올 수 있다.`,
+      `macro-F1은 라벨 체계 전체(${ds.labels?.length ?? 0}종)를 고정 클래스로 쓴다. 표본이나 재표집에 없는 클래스는 F1=0으로 평균에 들어가 소수 클래스가 빠지면 낮게 나올 수 있다.`,
       "McNemar는 정오답 일치 검정이며 F1 차이 검정이 아니다.",
     );
   }
-  if (notes.length > 0) parts.push("", ...notes.map((n) => `- ${n}`));
+  if (notes.length > 0) parts.push("", ...notes.map((n) => `- ${plain(n)}`));
   return parts.join("\n");
 }
 
@@ -191,7 +196,7 @@ function failureSection(metrics: Metrics): string {
   }
   const parts = ["## 실패 요약", ""];
   parts.push(rows.length === 0 ? "실패한 호출이 없다." : table(["데이터셋", "모델", "실패율 %", "종류별 건수"], rows));
-  if (metrics.warnings.length > 0) parts.push("", "경고:", "", ...metrics.warnings.map((w) => `- ${w}`));
+  if (metrics.warnings.length > 0) parts.push("", "경고:", "", ...metrics.warnings.map((w) => `- ${plain(w)}`));
   if (metrics.skipped.length > 0) {
     parts.push("", "건너뜀:", "", ...metrics.skipped.map((s) => `- ${s.target}: ${s.reason}`));
   }
@@ -209,29 +214,30 @@ function settingsSection(metrics: Metrics): string {
     m.pricing.source,
   ]);
   const datasetRows = metrics.datasets.map((d) => [
-    d.task === null ? DATASET_LABELS[d.id] : `${DATASET_LABELS[d.id]} · ${d.task}`,
+    d.task === null ? DATASET_LABELS[d.id] : `${DATASET_LABELS[d.id]} (${d.task})`,
     d.tier,
     `\`${d.source}\``,
-    d.revision === null ? "—" : `\`${d.revision.slice(0, 12)}\``,
+    d.revision === null ? "없음" : `\`${d.revision.slice(0, 12)}\``,
     d.n.toString(),
-    d.maxInputChars === null ? "—" : `${d.maxInputChars}자`,
+    d.maxInputChars === null ? "없음" : `${d.maxInputChars}자`,
     d.license,
   ]);
-  const laneRows = s.lanes.map((l) => [l.provider, l.models.join(" → "), l.start ?? "—", l.end ?? "—"]);
+  const laneRows = s.lanes.map((l) => [l.provider, l.models.join(" → "), l.start ?? "없음", l.end ?? "없음"]);
   const sdk = Object.entries(s.sdkVersions)
     .map(([k, v]) => `${k} ${v}`)
     .join(", ");
   return [
     "## 설정",
     "",
-    `- 추론: \`${s.reasoning}\` · 시도당 타임아웃 ${s.timeoutMs.toLocaleString("en-US")}ms · 최대 재시도 ${s.maxRetries}회 · temperature ${s.temperature === "unset" ? "설정 안 함(제공자 기본값)" : s.temperature}`,
-    `- 시드 ${metrics.seed}(mulberry32, 용도·데이터셋·모델 문자열 해시로 파생) · paired bootstrap B=${metrics.bootstrap.iterations.toLocaleString("en-US")}, ${Math.round(metrics.bootstrap.level * 100)}% CI(percentile \`${metrics.bootstrap.percentile}\`) · ECE ${metrics.eceBins} bin`,
+    `- 추론: \`${s.reasoning}\`, 시도당 타임아웃 ${s.timeoutMs.toLocaleString("en-US")}ms, 최대 재시도 ${s.maxRetries}회, temperature ${s.temperature === "unset" ? "설정 안 함(제공자 기본값)" : s.temperature}`,
+    `- 시드 ${metrics.seed}(mulberry32, 용도와 데이터셋, 모델 문자열 해시로 파생)`,
+    `- paired bootstrap B=${metrics.bootstrap.iterations.toLocaleString("en-US")}, ${Math.round(metrics.bootstrap.level * 100)}% CI(percentile \`${metrics.bootstrap.percentile}\`), ECE ${metrics.eceBins} bin`,
     `- 실패는 abstain(ITT)이다: 정확도에서는 오답, F1에서는 정답 클래스의 FN으로만 센다. 성공 기준 열은 성공 케이스만으로 계산했다.`,
-    `- McNemar: 정확 이항 양측, b = Jev만 정답, c = LLM만 정답. Holm은 이번 실행의 비교 ${metrics.holm.familySize}개에 적용(사전 선언 집합 ${metrics.holm.preregisteredSize}개${metrics.holm.familySize < metrics.holm.preregisteredSize ? "의 부분 집합 — 해석에 주의" : ""}).${metrics.holm.jevIncluded ? "" : " Jev가 실행에 없어 McNemar를 생략했다."}`,
+    `- McNemar: 정확 이항 양측, b = Jev만 정답, c = LLM만 정답. Holm은 이번 실행의 비교 ${metrics.holm.familySize}개에 적용(사전 선언 집합 ${metrics.holm.preregisteredSize}개${metrics.holm.familySize < metrics.holm.preregisteredSize ? "의 부분 집합이라 해석에 주의" : ""}).${metrics.holm.jevIncluded ? "" : " Jev가 실행에 없어 McNemar를 생략했다."}`,
     `- Noul 판정은 모든 모델에 p(true)≥0.5 → true를 적용한다. 지연 p50/p95는 첫 시도에 성공한 호출만(nearest-rank).`,
     `- 비용: "1천 건당"은 토큰 사용량 기준 단가(캐시 여부 무관), "이번 실행 청구"는 캐시 미스 호출만 합친 추정.`,
-    `- 레인: ${s.laneInterpretation}`,
-    `- SDK: ${sdk}${s.commit === null ? "" : ` · 커밋 \`${s.commit.slice(0, 12)}\``} · 파서 해시 \`${s.parserHash.slice(0, 12)}\``,
+    `- 레인: ${plain(s.laneInterpretation)}`,
+    `- SDK: ${sdk}${s.commit === null ? "" : `, 커밋 \`${s.commit.slice(0, 12)}\``}, 파서 해시 \`${s.parserHash.slice(0, 12)}\``,
     "",
     table(["별칭", "제공자", "API 모델", "단가 in/out ($/M)", "확률 출처", "단가 출처"], modelRows),
     "",
@@ -242,13 +248,13 @@ function settingsSection(metrics: Metrics): string {
 }
 
 const LIMITATIONS = [
-  "LLM 확률은 말로 답한(verbalized) 값이라 0.9·0.95처럼 몇몇 값에 몰린다(양자화). Jev는 모델이 직접 낸 확률이라 출처가 다르다(표의 확률 출처 열).",
+  "LLM 확률은 말로 답한(verbalized) 값이라 0.9나 0.95처럼 몇몇 값에 몰린다(양자화). Jev는 모델이 직접 낸 확률이라 출처가 다르다(표의 확률 출처 열).",
   "LLM 시스템 프롬프트에만 과신 경고 문구가 있어 보정 지표 비교에 이 개입의 효과가 섞여 있다.",
-  "추론은 기본으로 껐다(`--reasoning off`). 추론을 켜면 정확도·비용·지연이 달라질 수 있다.",
-  "제공자별 레인을 동시에 돌려 모델마다 측정 시간대가 다르다. 레인 시작·종료 시각은 설정 절과 run.json에 있다. 캐시 적중 호출의 지연은 이전 실행에서 잰 값이다.",
+  "추론은 기본으로 껐다(`--reasoning off`). 추론을 켜면 정확도와 비용, 지연이 달라질 수 있다.",
+  "제공자별 레인을 동시에 돌려 모델마다 측정 시간대가 다르다. 레인 시작과 종료 시각은 설정 절과 run.json에 있다. 캐시 적중 호출의 지연은 이전 실행에서 잰 값이다.",
   "Enron 스팸 본문은 모든 모델에 같은 길이로 잘라 보냈다(입력 절단 열).",
   "공개 데이터셋이라 학습 데이터 오염 가능성을 배제할 수 없다. JBB judge는 탈옥 프롬프트를 빼고 요청(goal)과 응답만 보냈다.",
-  "SST-2·AG News·Enron은 라이선스가 unknown/표기 없음이라 입력 텍스트를 재배포하지 않는다. 결과 파일에는 id·예측·확률·토큰·지연만 있다.",
+  "SST-2, AG News, Enron은 라이선스가 unknown/표기 없음이라 입력 텍스트를 재배포하지 않는다. 결과 파일에는 id, 예측, 확률, 토큰, 지연만 있다.",
   "입력 기인 4xx(client_4xx)는 재과금을 막으려고 결정적 실패로 캐시한다. 설정 버그로 생긴 400도 같은 경로로 캐시될 수 있어 비율이 5%를 넘으면 경고한다.",
 ];
 
@@ -259,24 +265,24 @@ export function renderSummary(metrics: Metrics): string {
   const parts = [
     "# 벤치마크 요약",
     "",
-    `모델: ${metrics.models.map((m) => m.alias).join(", ")} · 데이터셋: ${metrics.datasets.map((d) => d.id).join(", ")}`,
+    `모델: ${metrics.models.map((m) => m.alias).join(", ")}. 데이터셋: ${metrics.datasets.map((d) => d.id).join(", ")}`,
     "",
-    "수치는 %(정확도·F1)이고 대괄호는 95% paired bootstrap CI다. 차이는 (모델 − Jev), 판정은 Holm 보정 p<0.05 기준이다.",
+    "수치는 %(정확도, F1)이고 대괄호는 95% paired bootstrap CI다. 차이는 (모델 − Jev), 판정은 Holm 보정 p<0.05 기준이다.",
   ];
   if (defaults.length > 0) {
     parts.push("", "## 기본 데이터셋");
     for (const ds of defaults) parts.push("", datasetSection(metrics, ds));
   }
   if (others.length > 0) {
-    parts.push("", "## 옵션·스모크 데이터셋(탐색적, Holm 집합 밖)");
+    parts.push("", "## 옵션과 스모크 데이터셋(탐색적, Holm 집합 밖)");
     for (const ds of others) parts.push("", datasetSection(metrics, ds));
   }
   parts.push(
     "",
     "## 차트",
     "",
-    "- `charts/cost-accuracy.png` — 데이터셋별 1천 건당 비용(로그축)과 주지표·95% CI",
-    ...metrics.models.map((m) => `- \`charts/reliability-${m.alias}.png\` — ${m.alias} 신뢰도 곡선(Choice·Noul 분리, bin별 n)`),
+    "- `charts/cost-accuracy.png`: 데이터셋별 1천 건당 비용(로그축)과 주지표, 95% CI",
+    ...metrics.models.map((m) => `- \`charts/reliability-${m.alias}.png\`: ${m.alias} 신뢰도 곡선(Choice와 Noul 분리, bin별 n)`),
     "",
     settingsSection(metrics),
     "",
