@@ -17,7 +17,7 @@ TypeSafe는 "We deliberately chose *not* to publish performance against *public*
 
 ### Cookbook 실측 (근거 중간)
 공식 cookbook 16개 중 14개는 **jev-1.12**로 쟀고, jev-1.13은 일관성 실험 2개뿐이다. 표본이 작고(40~488건) 비교 대상이 BM25나 Jev 자신인 경우가 많다.
-- 질문 13개를 한 번에 묶으면 따로 보낼 때보다 12.2배 싸고 10.0배 빠름(순차 호출 합산 기준, 동시 호출이면 격차가 줄어든다고 명시).
+- 질문 13개를 한 번에 묶으면 따로 보낼 때보다 12.2배 싸고 10.0배 빠름. 순차 호출을 합산한 기준이고 동시 호출이면 격차가 줄어든다고 문서에 적혀 있다.
 - 법률 재랭킹(CLERC 40쿼리): top-1 5%→18%, top-10 38%→62%. 비교는 BM25뿐.
 - 산업 분류(SEC 60건): confidence 0.9 이상 30건은 27/30, 나머지는 12/30.
 - 일관성(1.13, 문서 1건 15회): Noul 111ms, $0.000043. Haiku와 gpt-5.4-mini보다 10~16배 빠르고 22~42배 쌈. Choice 같은 라벨 재현율 90.8%(LLM 87.5~100%), 문서가 "Haiku at temperature 0 varies less"라고 인정.
@@ -33,8 +33,8 @@ TypeSafe는 "We deliberately chose *not* to publish performance against *public*
 이해관계가 있는 자료(Langfuse, BenchLM, MarkTechPost, Vercel 인용, eesel)는 자체 측정이 없거나 방법론이 불명확하다.
 
 ### 종합
-- **유리:** 짧은 입력, 보기가 정해진 분류, 필터, 라우팅(스팸, 감성, 주제), 한 문서에 질문 여러 개, confidence로 확실한 것만 처리하고 나머지를 LLM에 넘기는 1차 필터, binary 판정. 비용과 지연 우위는 10배에서 수백 배로 일관되게 재현됨.
-- **불리:** 라벨이 많고 미세한 분류(Banking77), graded 척도, 도메인 판단이 필요한 판정(피싱), 긴 문서, 무관한 문맥, 수치, 날짜, 다단계 추론, 생성, 적대적 입력(공식 문서도 인젝션 취약을 인정), 한국어 등 비영어.
+- **유리:** 짧은 입력, 보기가 정해진 분류, 필터, 라우팅(스팸, 감성, 주제), 한 문서에 질문 여러 개, 1차 필터, binary 판정. 1차 필터로 쓸 때는 confidence로 확실한 것만 처리하고 나머지를 LLM에 넘긴다. 비용과 지연 우위는 10배에서 수백 배로 일관되게 재현됨.
+- **불리:** 라벨이 많고 미세한 분류(Banking77), graded 척도, 도메인 판단이 필요한 판정(피싱), 긴 문서, 무관한 문맥, 수치, 날짜, 다단계 추론, 생성, 적대적 입력, 한국어 등 비영어. 적대적 입력은 공식 문서도 인젝션에 취약하다고 스스로 밝혔다.
 - **보정:** 공식 수치 없음. 유일한 제3자 측정(피싱)에서 Jev ECE 0.154가 Haiku 0.097보다 나빴다. Score는 수치 보정이 약하고 Noul과 Choice 간 확률 합이 맞지 않으므로 출력 모드별로 따로 재야 한다.
 
 ## 2. 추천 공개 벤치마크
@@ -49,13 +49,13 @@ TypeSafe는 "We deliberately chose *not* to publish performance against *public*
 | 한국어 Noul | K-MHaS test(21,939건 중 층화 추출) | Noul(혐오 여부) | CC BY-SA 4.0, HF 자동 | 한국어 가드레일에 가장 가까운 공개 데이터 |
 | 한국어 감정 | KOTE(43종+없음) | 다중 레이블 → 매핑 필요 | HF, 라이선스 확인 필요 | 기분 6종으로 접는 규칙이 필요. AI Hub 감성 대화 말뭉치는 대분류 6종이 맞지만 AI Hub 전용, 승인 필요 |
 
-공개된 **한국어 프롬프트 인젝션, 탈옥 벤치마크는 찾지 못했다.** 영어 벤치를 기계 번역해 쓰면 신뢰도가 떨어진다는 근거가 있다(Deng 외 ICLR 2024 MultiJail은 원어민 수동 번역, KoBBQ는 단순 번역과 현지화의 측정치 차이를 보임).
+공개된 **한국어 프롬프트 인젝션, 탈옥 벤치마크는 찾지 못했다.** 영어 벤치를 기계 번역해 쓰면 신뢰도가 떨어진다는 근거가 있다. Deng 외 ICLR 2024의 MultiJail은 원어민 수동 번역을 썼다. KoBBQ는 단순 번역과 현지화의 측정치 차이를 보였다.
 
 ## 3. 논문 수준 평가 프로토콜
 - **비교 통계:** 같은 문항에 대한 두 모델의 정오를 짝지어 McNemar 검정과 paired bootstrap 신뢰구간으로 비교한다. 비용 때문에 부분 표본을 쓰면 검정력 분석으로 표본 크기를 정한다(arXiv:2411.00640).
 - **보정 지표:** ECE(15 등간격 bin, Guo 외 2017)를 주 지표로, Brier와 reliability diagram, risk-coverage를 함께 보고한다. 기존 가드 모델의 최저 평균 ECE는 프롬프트 분류 14.4%(WildGuard), 응답 분류 11.4%(MD-Judge)이고 10% 초과면 나쁜 보정으로 본다(Liu 외 ICLR 2025).
-- **확률 추출의 공정성:** Jev는 확률을 직접 준다. Claude Messages API에는 logprobs가 없어 스스로 말하는 확신도(verbalized)만 가능하다. OpenAI는 Chat Completions의 logprobs가 있지만 추론(reasoning)을 켜면 쓸 수 없다. 측정 프로토콜에 따라 logprobs와 verbalized 중 어느 쪽이 나은지가 뒤바뀐다는 보고가 있으므로(arXiv:2605.27752), 같은 데이터, 같은 bin, 같은 온도로 맞추고 확률 출처를 표에 명시한다.
-- **재현성:** 모델 버전 고정, 요청별 원본 로그 저장, 3회 반복, 순차 호출로 지연 측정, 데이터셋 버전, 분할, 표본 시드 기록, 학습 데이터 오염 가능성 명시(JBB는 AdvBench, HarmBench 유래 문항 포함).
+- **확률 추출의 공정성:** Jev는 확률을 직접 준다. Claude Messages API에는 logprobs가 없어 스스로 말하는 확신도(verbalized)만 가능하다. OpenAI는 Chat Completions의 logprobs가 있지만 추론(reasoning)을 켜면 쓸 수 없다. logprobs와 verbalized 중 어느 쪽이 나은지는 측정 프로토콜에 따라 뒤바뀐다는 보고가 있으므로(arXiv:2605.27752) 같은 데이터, 같은 bin, 같은 온도로 맞추고 확률 출처를 표에 적는다.
+- **재현성:** 모델 버전을 고정하고 요청별 원본 로그를 저장한다. 3회 반복하고 지연은 순차 호출로 측정한다. 데이터셋 버전, 분할, 표본 시드를 기록하고 학습 데이터 오염 가능성을 밝혀 둔다. JBB에는 AdvBench, HarmBench 유래 문항이 포함돼 있다.
 
 ## 4. 비교 모델 후보 (2026-09 공식 문서)
 | 제공자 | 모델 | 가격(입력/출력, 100만 토큰당) | 포지셔닝 | 확률 |
@@ -71,10 +71,10 @@ OpenAI는 Responses API를 권장하고 structured outputs는 `responses.parse` 
 ## 5. 누구나 돌리는 벤치 도구 설계 권고
 Inspect AI, promptfoo, lm-evaluation-harness, HELM에서 가져올 패턴:
 1. 모델은 `provider/model` 한 문자열로 고른다. 예: `pnpm bench --models jev,anthropic/claude-haiku-4-5,openai/gpt-6-luna`
-2. 키가 없는 제공자는 실행 전에 알리고 건너뛴다(지금 Claude 처리 방식을 모든 제공자로 확장).
+2. 키가 없는 제공자는 실행 전에 알리고 건너뛴다. 지금 Claude 처리 방식을 모든 제공자로 넓힌다.
 3. `--limit`(개수 또는 비율)과 `--datasets`로 범위를 줄이고 실행 전에 예상 호출 수와 비용을 출력한다.
 4. 요청 단위 디스크 캐시(제공자+모델+프롬프트+입력 해시)로 재실행 비용을 없앤다.
-5. 요약 표와 별도로 요청별 원본 로그(JSON)를 남긴다(지금 eval의 .json 방식 확장).
+5. 요약 표와 별도로 요청별 원본 로그(JSON)를 남긴다. 지금 eval의 .json 방식을 확장한다.
 6. 데이터셋은 HF에서 자동으로 받고 버전, 분할, 시드를 결과에 기록한다. gated(WildGuardMix)나 NC(ToxicChat)는 기본값에서 빼고 옵션으로 둔다.
 7. 실행과 요약을 나눈다(`bench run` → `bench report`).
 
@@ -83,7 +83,7 @@ Inspect AI, promptfoo, lm-evaluation-harness, HELM에서 가져올 패턴:
 - 옵션 스위트: WildGuardMix(HF 약관 동의), ToxicChat(비상업).
 - 모델: 기본 jev + 키가 있는 제공자 자동 포함, `--models`로 선택.
 - 지표: 정확도, F1과 paired 신뢰구간, ECE와 Brier(확률 출처 표기), 지연 p50/p95, 호출당 비용.
-- 기대치: 독립 재현을 보면 Jev는 정확도에서 flash급 LLM과 비슷하거나 낮고 비용과 지연에서 크게 앞선다. 벤치마크는 이 가설을 확인하는 설계여야 하며 Jev 우위를 전제하면 안 된다.
+- 기대치: 독립 재현을 보면 Jev는 정확도에서 flash급 LLM과 비슷하거나 낮고 비용과 지연에서 크게 앞선다. 벤치마크는 Jev 우위를 전제하지 말고 이 가설을 확인하도록 설계해야 한다.
 
 ## 확인하지 못한 것
 - evals.typesafe.ai의 사례 수와 원본 쿼리, TypeSafe 공식 1.13 보정 수치
